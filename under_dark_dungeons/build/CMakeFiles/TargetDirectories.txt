@@ -1,0 +1,3 @@
+/home/Yura/Documentos/TRABAJOFINALPOO/under_dark_dungeons/build/CMakeFiles/mi_proyecto.dir
+/home/Yura/Documentos/TRABAJOFINALPOO/under_dark_dungeons/build/CMakeFiles/edit_cache.dir
+/home/Yura/Documentos/TRABAJOFINALPOO/under_dark_dungeons/build/CMakeFiles/rebuild_cache.dir
