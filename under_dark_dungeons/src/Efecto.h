@@ -25,6 +25,7 @@ class Efecto {
 		static Efecto Congelacion();
 		static Efecto Veneno();
 		static Efecto Paralisis();
+		static Efecto Sangrado();
 
 		// Getters
 		std::string getname();
