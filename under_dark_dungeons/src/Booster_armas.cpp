@@ -14,6 +14,7 @@ Booster_armas::Booster_armas() {
     armas.push_back(Arma("Hacha de hielo", "Congelación", 45));
     armas.push_back(Arma("Lanza venenosa", "Veneno", 40));
     armas.push_back(Arma("Arco eléctrico", "Parálisis", 35));
+
 }
 
 void Booster_armas::abrir() {

@@ -29,6 +29,7 @@ class Armadura {
 		int getDef();
 		int getVel();
 
+
 };
 
 #endif

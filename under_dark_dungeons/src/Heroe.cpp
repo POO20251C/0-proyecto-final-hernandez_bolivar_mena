@@ -1,3 +1,5 @@
+
+
 #include "Heroe.h"
 
 Heroe::Heroe(std::string name, int hp, int atk, int def, int des, int lck, int p,
@@ -10,5 +12,18 @@ Heroe::Heroe(std::string name, int hp, int atk, int def, int des, int lck, int p
 		this->arma = arma_inicial;
 		this->armadura = armadura_inicial;
 
+
     }
 
+void Heroe::setArma(Arma arma) {
+	this->arma = arma;
+}
+
+void Heroe::setArmadura(Armadura armadura) {
+	this->armadura = armadura;
+}
+
+bool Heroe::recibeDanoPor(const std::string& efecto) {
+
+	return !armadura.esInmuneA(efecto);
+}
