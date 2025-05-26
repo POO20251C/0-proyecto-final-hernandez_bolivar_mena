@@ -21,18 +21,21 @@ private:
     vector<Arma*> armas;
 
 public:
-    GrupoJugador();
+
+    // Constructor
     GrupoJugador(string name, int dano_t, int oro);
 
+    // getters
     string getName();
     int getOro();
     vector<Heroe*> getHeroes();
     vector<Objeto*> getInventario();
     vector<Armadura*> getArmaduras();
     vector<Arma*> getArmas();
-
     void setHeroes(vector<Heroe*> grupo);
     
+
+    // Acciones
     void sumarDano_t(int dano);
     std::string sumarOro(int oro);
 

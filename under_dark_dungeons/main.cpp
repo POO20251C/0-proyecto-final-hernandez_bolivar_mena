@@ -25,9 +25,6 @@ void combate(GrupoJugador* jugador) {
 
 
 
-
-
-
 int main() {
 
 
@@ -39,7 +36,15 @@ int main() {
 		Efecto("Nada", 0, 0, 0, 0), 
 		Efecto("Aun nada", 0, 0, 0, 0) 
 	};
+
+	// prueba de armas (Sobrecarga)
 	
+	vector<Arma*> armas_base = {
+		Arma::Espada_basica(),
+		Arma::Baston_basico(),
+		Arma::Daga_basica(),
+		Arma::Palo_desgastado()
+	};	
 	
 	// menu de juego principal
 	
@@ -58,7 +63,11 @@ int main() {
 		cout << "Presione una telca para iniciar (ESC para salir)..." << endl;
 		cin.get(eleccion_usuario_menu_p);
 
-		if (eleccion_usuario_menu_p != static_cast<char>(27)) {
+		if (eleccion_usuario_menu_p == static_cast<char>(27)) {
+			menu_principal = false;
+		}
+
+		else {
 			juego = true;
 		}
 		
@@ -81,6 +90,7 @@ int main() {
 				int p_heroe = 0;
 				
 				cout << "1. Guerrero\n2. Mago\n3. Ladron\n4. Marginado" << endl;
+				cin >> p_heroe;
 
 				if (p_heroe == 1) {
 					// Seleccion Guerrero
@@ -107,9 +117,14 @@ int main() {
 			while (in_game) 
 			{
 				
+				int eleccion_in_game;
+
 				int nivel = 0;
 
-				cout << "1. Avanzar\n2. Ver Armas\n3. Ver Armaduras\n 4. Ver equipo" << endl;
+				cout << "1. Avanzar\n2. Ver Armas\n3. Ver Armaduras\n4. Ver equipo" << endl;
+				cin >> eleccion_in_game;
+
+
 
 				
 				
@@ -125,7 +140,7 @@ int main() {
 
 
 	}
-
+ 
 
 	
 	

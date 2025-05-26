@@ -128,10 +128,24 @@ CMakeFiles/mi_proyecto.dir/src/Booster_armas.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/mi_proyecto.dir/src/Booster_armas.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Booster_armas.cpp -o CMakeFiles/mi_proyecto.dir/src/Booster_armas.cpp.s
 
+CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.o: CMakeFiles/mi_proyecto.dir/flags.make
+CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.o: /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Objeto.cpp
+CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.o: CMakeFiles/mi_proyecto.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.o -MF CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.o.d -o CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.o -c /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Objeto.cpp
+
+CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Objeto.cpp > CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.i
+
+CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Objeto.cpp -o CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.s
+
 CMakeFiles/mi_proyecto.dir/src/Efecto.cpp.o: CMakeFiles/mi_proyecto.dir/flags.make
 CMakeFiles/mi_proyecto.dir/src/Efecto.cpp.o: /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Efecto.cpp
 CMakeFiles/mi_proyecto.dir/src/Efecto.cpp.o: CMakeFiles/mi_proyecto.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/mi_proyecto.dir/src/Efecto.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/mi_proyecto.dir/src/Efecto.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mi_proyecto.dir/src/Efecto.cpp.o -MF CMakeFiles/mi_proyecto.dir/src/Efecto.cpp.o.d -o CMakeFiles/mi_proyecto.dir/src/Efecto.cpp.o -c /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Efecto.cpp
 
 CMakeFiles/mi_proyecto.dir/src/Efecto.cpp.i: cmake_force
@@ -145,7 +159,7 @@ CMakeFiles/mi_proyecto.dir/src/Efecto.cpp.s: cmake_force
 CMakeFiles/mi_proyecto.dir/src/Heroe.cpp.o: CMakeFiles/mi_proyecto.dir/flags.make
 CMakeFiles/mi_proyecto.dir/src/Heroe.cpp.o: /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Heroe.cpp
 CMakeFiles/mi_proyecto.dir/src/Heroe.cpp.o: CMakeFiles/mi_proyecto.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/mi_proyecto.dir/src/Heroe.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/mi_proyecto.dir/src/Heroe.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mi_proyecto.dir/src/Heroe.cpp.o -MF CMakeFiles/mi_proyecto.dir/src/Heroe.cpp.o.d -o CMakeFiles/mi_proyecto.dir/src/Heroe.cpp.o -c /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Heroe.cpp
 
 CMakeFiles/mi_proyecto.dir/src/Heroe.cpp.i: cmake_force
@@ -159,7 +173,7 @@ CMakeFiles/mi_proyecto.dir/src/Heroe.cpp.s: cmake_force
 CMakeFiles/mi_proyecto.dir/src/Entidad.cpp.o: CMakeFiles/mi_proyecto.dir/flags.make
 CMakeFiles/mi_proyecto.dir/src/Entidad.cpp.o: /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Entidad.cpp
 CMakeFiles/mi_proyecto.dir/src/Entidad.cpp.o: CMakeFiles/mi_proyecto.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/mi_proyecto.dir/src/Entidad.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/mi_proyecto.dir/src/Entidad.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mi_proyecto.dir/src/Entidad.cpp.o -MF CMakeFiles/mi_proyecto.dir/src/Entidad.cpp.o.d -o CMakeFiles/mi_proyecto.dir/src/Entidad.cpp.o -c /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Entidad.cpp
 
 CMakeFiles/mi_proyecto.dir/src/Entidad.cpp.i: cmake_force
@@ -170,10 +184,24 @@ CMakeFiles/mi_proyecto.dir/src/Entidad.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/mi_proyecto.dir/src/Entidad.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Entidad.cpp -o CMakeFiles/mi_proyecto.dir/src/Entidad.cpp.s
 
+CMakeFiles/mi_proyecto.dir/src/Grupo_jugador.cpp.o: CMakeFiles/mi_proyecto.dir/flags.make
+CMakeFiles/mi_proyecto.dir/src/Grupo_jugador.cpp.o: /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Grupo_jugador.cpp
+CMakeFiles/mi_proyecto.dir/src/Grupo_jugador.cpp.o: CMakeFiles/mi_proyecto.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/mi_proyecto.dir/src/Grupo_jugador.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mi_proyecto.dir/src/Grupo_jugador.cpp.o -MF CMakeFiles/mi_proyecto.dir/src/Grupo_jugador.cpp.o.d -o CMakeFiles/mi_proyecto.dir/src/Grupo_jugador.cpp.o -c /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Grupo_jugador.cpp
+
+CMakeFiles/mi_proyecto.dir/src/Grupo_jugador.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/mi_proyecto.dir/src/Grupo_jugador.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Grupo_jugador.cpp > CMakeFiles/mi_proyecto.dir/src/Grupo_jugador.cpp.i
+
+CMakeFiles/mi_proyecto.dir/src/Grupo_jugador.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/mi_proyecto.dir/src/Grupo_jugador.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Grupo_jugador.cpp -o CMakeFiles/mi_proyecto.dir/src/Grupo_jugador.cpp.s
+
 CMakeFiles/mi_proyecto.dir/src/Armadura.cpp.o: CMakeFiles/mi_proyecto.dir/flags.make
 CMakeFiles/mi_proyecto.dir/src/Armadura.cpp.o: /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Armadura.cpp
 CMakeFiles/mi_proyecto.dir/src/Armadura.cpp.o: CMakeFiles/mi_proyecto.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/mi_proyecto.dir/src/Armadura.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/mi_proyecto.dir/src/Armadura.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mi_proyecto.dir/src/Armadura.cpp.o -MF CMakeFiles/mi_proyecto.dir/src/Armadura.cpp.o.d -o CMakeFiles/mi_proyecto.dir/src/Armadura.cpp.o -c /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Armadura.cpp
 
 CMakeFiles/mi_proyecto.dir/src/Armadura.cpp.i: cmake_force
@@ -187,7 +215,7 @@ CMakeFiles/mi_proyecto.dir/src/Armadura.cpp.s: cmake_force
 CMakeFiles/mi_proyecto.dir/src/Tienda.cpp.o: CMakeFiles/mi_proyecto.dir/flags.make
 CMakeFiles/mi_proyecto.dir/src/Tienda.cpp.o: /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Tienda.cpp
 CMakeFiles/mi_proyecto.dir/src/Tienda.cpp.o: CMakeFiles/mi_proyecto.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/mi_proyecto.dir/src/Tienda.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/mi_proyecto.dir/src/Tienda.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mi_proyecto.dir/src/Tienda.cpp.o -MF CMakeFiles/mi_proyecto.dir/src/Tienda.cpp.o.d -o CMakeFiles/mi_proyecto.dir/src/Tienda.cpp.o -c /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Tienda.cpp
 
 CMakeFiles/mi_proyecto.dir/src/Tienda.cpp.i: cmake_force
@@ -201,7 +229,7 @@ CMakeFiles/mi_proyecto.dir/src/Tienda.cpp.s: cmake_force
 CMakeFiles/mi_proyecto.dir/src/Booster_armaduras.cpp.o: CMakeFiles/mi_proyecto.dir/flags.make
 CMakeFiles/mi_proyecto.dir/src/Booster_armaduras.cpp.o: /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Booster_armaduras.cpp
 CMakeFiles/mi_proyecto.dir/src/Booster_armaduras.cpp.o: CMakeFiles/mi_proyecto.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/mi_proyecto.dir/src/Booster_armaduras.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/mi_proyecto.dir/src/Booster_armaduras.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mi_proyecto.dir/src/Booster_armaduras.cpp.o -MF CMakeFiles/mi_proyecto.dir/src/Booster_armaduras.cpp.o.d -o CMakeFiles/mi_proyecto.dir/src/Booster_armaduras.cpp.o -c /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Booster_armaduras.cpp
 
 CMakeFiles/mi_proyecto.dir/src/Booster_armaduras.cpp.i: cmake_force
@@ -218,9 +246,11 @@ mi_proyecto_OBJECTS = \
 "CMakeFiles/mi_proyecto.dir/src/Arma.cpp.o" \
 "CMakeFiles/mi_proyecto.dir/src/Habilidad.cpp.o" \
 "CMakeFiles/mi_proyecto.dir/src/Booster_armas.cpp.o" \
+"CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.o" \
 "CMakeFiles/mi_proyecto.dir/src/Efecto.cpp.o" \
 "CMakeFiles/mi_proyecto.dir/src/Heroe.cpp.o" \
 "CMakeFiles/mi_proyecto.dir/src/Entidad.cpp.o" \
+"CMakeFiles/mi_proyecto.dir/src/Grupo_jugador.cpp.o" \
 "CMakeFiles/mi_proyecto.dir/src/Armadura.cpp.o" \
 "CMakeFiles/mi_proyecto.dir/src/Tienda.cpp.o" \
 "CMakeFiles/mi_proyecto.dir/src/Booster_armaduras.cpp.o"
@@ -232,16 +262,18 @@ mi_proyecto: CMakeFiles/mi_proyecto.dir/main.cpp.o
 mi_proyecto: CMakeFiles/mi_proyecto.dir/src/Arma.cpp.o
 mi_proyecto: CMakeFiles/mi_proyecto.dir/src/Habilidad.cpp.o
 mi_proyecto: CMakeFiles/mi_proyecto.dir/src/Booster_armas.cpp.o
+mi_proyecto: CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.o
 mi_proyecto: CMakeFiles/mi_proyecto.dir/src/Efecto.cpp.o
 mi_proyecto: CMakeFiles/mi_proyecto.dir/src/Heroe.cpp.o
 mi_proyecto: CMakeFiles/mi_proyecto.dir/src/Entidad.cpp.o
+mi_proyecto: CMakeFiles/mi_proyecto.dir/src/Grupo_jugador.cpp.o
 mi_proyecto: CMakeFiles/mi_proyecto.dir/src/Armadura.cpp.o
 mi_proyecto: CMakeFiles/mi_proyecto.dir/src/Tienda.cpp.o
 mi_proyecto: CMakeFiles/mi_proyecto.dir/src/Booster_armaduras.cpp.o
 mi_proyecto: CMakeFiles/mi_proyecto.dir/build.make
 mi_proyecto: CMakeFiles/mi_proyecto.dir/compiler_depend.ts
 mi_proyecto: CMakeFiles/mi_proyecto.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable mi_proyecto"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable mi_proyecto"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mi_proyecto.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

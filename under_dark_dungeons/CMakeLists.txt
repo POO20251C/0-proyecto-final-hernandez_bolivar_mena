@@ -11,9 +11,11 @@ add_executable(mi_proyecto
     main.cpp src/Arma.cpp
 src/Habilidad.cpp
 src/Booster_armas.cpp
+src/Objeto.cpp
 src/Efecto.cpp
 src/Heroe.cpp
 src/Entidad.cpp
+src/Grupo_jugador.cpp
 src/Armadura.cpp
 src/Tienda.cpp
 src/Booster_armaduras.cpp

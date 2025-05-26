@@ -113,9 +113,9 @@ CMakeFiles/mi_proyecto.dir/src/Tienda.cpp.o: \
  /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Objeto.h \
  /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Booster_armas.h \
  /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Arma.h \
+ /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Efecto.h \
  /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Booster_armaduras.h \
  /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Armadura.h \
- /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Efecto.h \
  /usr/include/c++/15.1.1/iostream /usr/include/c++/15.1.1/ostream \
  /usr/include/c++/15.1.1/bits/ostream.h /usr/include/c++/15.1.1/ios \
  /usr/include/c++/15.1.1/exception \

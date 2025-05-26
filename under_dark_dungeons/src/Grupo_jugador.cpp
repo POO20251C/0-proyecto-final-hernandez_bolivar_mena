@@ -56,6 +56,7 @@ std::string  GrupoJugador::sumarOro(int oro) {
 
 std::string GrupoJugador::usarItem(int indx, Heroe* heroe) 
 {
+
 	std::string ans = "Se uso " + inventario[indx]->getName() + " en " + heroe->nameGetter();
 	return ans;	
 }

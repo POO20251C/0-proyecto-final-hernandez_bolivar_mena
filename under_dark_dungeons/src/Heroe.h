@@ -16,24 +16,35 @@
 class Heroe: public Entidad {
 
 	private:
-		Armadura armadura;
-		Arma arma;
-	
+		
+		Armadura* armadura;
+		Arma* arma;
+
 	public:
 		
-		// Constructor
+		// Constructores
     		Heroe(std::string name, int hp, int atk, int def, int des, int lck, int p,
           	std::vector<Habilidad> habilidades,
           	std::vector<Efecto> efectos,
-          	Armadura armadura_inicial,
-          	Arma arma_inicial);
+          	Armadura* armadura_inicial,
+          	Arma* arma_inicial);
 
+		//static Heroe Caballero();
 		
+		// getters
+		
+		int getHp();
+		int getAtk();
+		int getDef();
+		int getDes();
+		int getLck();
+
+
+
 		// Setters
 		
-		void setArma(Arma arma);
-
-		void setArmadura(Armadura armadura);
+		void setArma(Arma* arma);
+		void setArmadura(Armadura* armadura);
 
 		// Funciones de Heroe
 

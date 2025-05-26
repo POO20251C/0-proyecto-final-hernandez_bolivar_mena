@@ -14,9 +14,19 @@ class Efecto {
 		int mult_lck;
 
 	public:
-
+		
+		// Constructores
+	
 		Efecto(std::string name, int hp, int def, int vel, int lck);
+		
+		static Efecto Nada();
 
+		static Efecto Quemadura();
+		static Efecto Congelacion();
+		static Efecto Veneno();
+		static Efecto Paralisis();
+
+		// Getters
 		std::string getname();
 		int gethp();
 		int getdef();

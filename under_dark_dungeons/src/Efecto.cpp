@@ -1,5 +1,7 @@
 #include "Efecto.h"
 
+// Constructores
+
 Efecto::Efecto(std::string name, int hp, int def, int vel, int lck) {
 
 	this->name = name;
@@ -10,6 +12,30 @@ Efecto::Efecto(std::string name, int hp, int def, int vel, int lck) {
 
 }
 
+
+Efecto Efecto::Nada() {
+	return Efecto("Nada", 0, 0, 0, 0);
+}
+
+
+Efecto Efecto::Quemadura() {
+	return Efecto("Quemadura", -5, -2, -1, 0);
+}
+
+Efecto Efecto::Congelacion() {
+	return Efecto("Congelacion", -5, 5, -10, -2);
+}
+
+Efecto Efecto::Veneno() {
+	return Efecto("Veneno", -10, 0, -3, -1);
+}
+
+Efecto Efecto::Paralisis() {
+	return Efecto("Paralisis", 0, -5, -100, -5);
+}
+
+
+// Getters
 
 std::string Efecto::getname() {
 	return this->name;
