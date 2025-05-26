@@ -1,4 +1,5 @@
 #include "Armadura.h"
+#include <algorithm>
 
 Armadura::Armadura(std::string name, int def, int vel, std::vector<Efecto> inv) {
 
@@ -21,3 +22,4 @@ int Armadura::getDef() {
 int Armadura::getVel() {
 	return this->vel_n;
 }
+

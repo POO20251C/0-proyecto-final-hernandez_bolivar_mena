@@ -49,6 +49,9 @@ class Heroe: public Entidad {
 		// Funciones de Heroe
 
 		std::string mostrarHabilidades();
+
+		bool recibeDanoPor(const std::string& efecto);
+
 	
 
 };

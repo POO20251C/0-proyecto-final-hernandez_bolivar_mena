@@ -10,15 +10,15 @@
 Booster_armas::Booster_armas() {
     nombre = "Booster de Armas";
 
-
     armas.push_back(Arma("Espada de fuego", Efecto::Quemadura(), 50, 1, 1));
     armas.push_back(Arma("Hacha de hielo", Efecto::Congelacion(), 45, 1, 1));
     armas.push_back(Arma("Lanza venenosa", Efecto::Veneno(), 40, 1, 1));
     armas.push_back(Arma("Arco eléctrico", Efecto::Paralisis(), 35, 1, 1));
+
 }
 
 void Booster_armas::abrir() {
-    std::cout << "Abriendo... " << nombre << std::endl;
+
 
     static bool seed_inicializada = false;
     if (!seed_inicializada) {

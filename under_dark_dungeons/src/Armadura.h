@@ -29,6 +29,10 @@ class Armadura {
 		int getDef();
 		int getVel();
 
+		//bool esInmuneA(const std::string& efecto) const;
+
+
+
 };
 
 #endif
