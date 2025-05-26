@@ -110,6 +110,7 @@ CMakeFiles/mi_proyecto.dir/src/Booster_armas.cpp.o: \
  /usr/include/c++/15.1.1/bits/stl_bvector.h \
  /usr/include/c++/15.1.1/bits/vector.tcc \
  /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Arma.h \
+ /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Efecto.h \
  /usr/include/c++/15.1.1/iostream /usr/include/c++/15.1.1/ostream \
  /usr/include/c++/15.1.1/bits/ostream.h /usr/include/c++/15.1.1/ios \
  /usr/include/c++/15.1.1/exception \

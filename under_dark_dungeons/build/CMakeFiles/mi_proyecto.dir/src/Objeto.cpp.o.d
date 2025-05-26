@@ -1,8 +1,7 @@
-CMakeFiles/mi_proyecto.dir/src/Arma.cpp.o: \
- /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Arma.cpp \
+CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.o: \
+ /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Objeto.cpp \
  /usr/include/stdc-predef.h \
- /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Arma.h \
- /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Efecto.h \
+ /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Objeto.h \
  /usr/include/c++/15.1.1/string \
  /usr/include/c++/15.1.1/bits/requires_hosted.h \
  /usr/include/c++/15.1.1/x86_64-pc-linux-gnu/bits/c++config.h \

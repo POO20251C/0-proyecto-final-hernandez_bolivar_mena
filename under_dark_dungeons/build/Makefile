@@ -297,6 +297,30 @@ src/Entidad.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Entidad.cpp.s
 .PHONY : src/Entidad.cpp.s
 
+src/Grupo_jugador.o: src/Grupo_jugador.cpp.o
+.PHONY : src/Grupo_jugador.o
+
+# target to build an object file
+src/Grupo_jugador.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Grupo_jugador.cpp.o
+.PHONY : src/Grupo_jugador.cpp.o
+
+src/Grupo_jugador.i: src/Grupo_jugador.cpp.i
+.PHONY : src/Grupo_jugador.i
+
+# target to preprocess a source file
+src/Grupo_jugador.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Grupo_jugador.cpp.i
+.PHONY : src/Grupo_jugador.cpp.i
+
+src/Grupo_jugador.s: src/Grupo_jugador.cpp.s
+.PHONY : src/Grupo_jugador.s
+
+# target to generate assembly for a file
+src/Grupo_jugador.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Grupo_jugador.cpp.s
+.PHONY : src/Grupo_jugador.cpp.s
+
 src/Habilidad.o: src/Habilidad.cpp.o
 .PHONY : src/Habilidad.o
 
@@ -344,6 +368,30 @@ src/Heroe.s: src/Heroe.cpp.s
 src/Heroe.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Heroe.cpp.s
 .PHONY : src/Heroe.cpp.s
+
+src/Objeto.o: src/Objeto.cpp.o
+.PHONY : src/Objeto.o
+
+# target to build an object file
+src/Objeto.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.o
+.PHONY : src/Objeto.cpp.o
+
+src/Objeto.i: src/Objeto.cpp.i
+.PHONY : src/Objeto.i
+
+# target to preprocess a source file
+src/Objeto.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.i
+.PHONY : src/Objeto.cpp.i
+
+src/Objeto.s: src/Objeto.cpp.s
+.PHONY : src/Objeto.s
+
+# target to generate assembly for a file
+src/Objeto.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Objeto.cpp.s
+.PHONY : src/Objeto.cpp.s
 
 src/Tienda.o: src/Tienda.cpp.o
 .PHONY : src/Tienda.o
@@ -399,12 +447,18 @@ help:
 	@echo "... src/Entidad.o"
 	@echo "... src/Entidad.i"
 	@echo "... src/Entidad.s"
+	@echo "... src/Grupo_jugador.o"
+	@echo "... src/Grupo_jugador.i"
+	@echo "... src/Grupo_jugador.s"
 	@echo "... src/Habilidad.o"
 	@echo "... src/Habilidad.i"
 	@echo "... src/Habilidad.s"
 	@echo "... src/Heroe.o"
 	@echo "... src/Heroe.i"
 	@echo "... src/Heroe.s"
+	@echo "... src/Objeto.o"
+	@echo "... src/Objeto.i"
+	@echo "... src/Objeto.s"
 	@echo "... src/Tienda.o"
 	@echo "... src/Tienda.i"
 	@echo "... src/Tienda.s"

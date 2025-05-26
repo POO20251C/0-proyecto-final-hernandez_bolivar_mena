@@ -85,12 +85,12 @@ clean: CMakeFiles/mi_proyecto.dir/clean
 CMakeFiles/mi_proyecto.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Built target mi_proyecto"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13 "Built target mi_proyecto"
 .PHONY : CMakeFiles/mi_proyecto.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mi_proyecto.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles 13
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/mi_proyecto.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles 0
 .PHONY : CMakeFiles/mi_proyecto.dir/rule
@@ -102,7 +102,7 @@ mi_proyecto: CMakeFiles/mi_proyecto.dir/rule
 # codegen rule for target.
 CMakeFiles/mi_proyecto.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Finished codegen for target mi_proyecto"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13 "Finished codegen for target mi_proyecto"
 .PHONY : CMakeFiles/mi_proyecto.dir/codegen
 
 # clean rule for target.

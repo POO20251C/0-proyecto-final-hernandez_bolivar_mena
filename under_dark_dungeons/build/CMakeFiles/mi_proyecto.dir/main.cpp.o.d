@@ -154,10 +154,13 @@ CMakeFiles/mi_proyecto.dir/main.cpp.o: \
  /usr/include/c++/15.1.1/bits/vector.tcc \
  /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Habilidad.h \
  /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Efecto.h \
- /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Habilidad.h \
+ /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Grupo_jugador.h \
  /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Heroe.h \
  /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Entidad.h \
  /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Arma.h \
  /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Armadura.h \
+ /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Objeto.h \
+ /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Habilidad.h \
+ /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Heroe.h \
  /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Armadura.h \
  /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src/Arma.h
