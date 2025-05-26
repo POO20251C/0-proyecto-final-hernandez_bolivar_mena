@@ -9,9 +9,6 @@
 Booster_armaduras::Booster_armaduras() {
     nombre = "Booster de Armaduras";
 
-
-
-
     armaduras.push_back(Armadura("Armadura de Escarcha", 50, -10, {Efecto::Congelacion()}));
     armaduras.push_back(Armadura("Armadura de Lava", 60, -15, {Efecto::Quemadura()}));
     armaduras.push_back(Armadura("Armadura Transistora", 40, 5, {Efecto::Paralisis()}));
@@ -37,5 +34,5 @@ void Booster_armaduras::abrir() {
 
     std::cout << "Has obtenido: " << armadura_obtenida.getName()
               << " Defensa: " << armadura_obtenida.getDef()
-              << ", Velocidad: " << armadura_obtenida.getVel() << ")!\n";
+              << ", Velocidad: " << armadura_obtenida.getVel() << "\n";
 }

@@ -21,20 +21,20 @@ Heroe::Heroe(std::string name, int hp, int atk, int def, int des, int lck, int p
 
     }
 
-<<<<<<< HEAD
-void Heroe::setArma(Arma arma) {
+
+void Heroe::setArma(Arma* arma) {
 	this->arma = arma;
 }
 
-void Heroe::setArmadura(Armadura armadura) {
+void Heroe::setArmadura(Armadura* armadura) {
 	this->armadura = armadura;
 }
 
-bool Heroe::recibeDanoPor(const std::string& efecto) {
+//bool Heroe::recibeDanoPor(const std::string& efecto) {
 
-	return !armadura.esInmuneA(efecto);
-}
-=======
+//	return !armadura->esInmuneA(efecto);
+//}
+
 
 
 /*Heroe Heroe::Caballero() {
@@ -67,16 +67,8 @@ int Heroe::getLck() {
 
 // setters
 
-void Heroe::setArma(Arma* nueva_arma) {
-	this->arma = nueva_arma;
-}
-
-void Heroe::setArmadura(Armadura* nueva_armadura) {
-	this->armadura = nueva_armadura;
-}
 
 
 
 
 
->>>>>>> 952591cf624ab9ea87e656ccfc366cd941ea80b1

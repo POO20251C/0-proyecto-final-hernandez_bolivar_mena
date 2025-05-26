@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.30"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "under_dark_dungeons",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "under_dark_dungeons::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-under_dark_dungeons-Debug-cef4c9d320bd9cd2a8a9.json",
+					"name" : "under_dark_dungeons",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/juanj/OneDrive/Escritorio/Trabajos Poo/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/cmake-build-debug",
+		"source" : "C:/Users/juanj/OneDrive/Escritorio/Trabajos Poo/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

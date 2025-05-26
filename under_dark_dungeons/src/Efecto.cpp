@@ -33,6 +33,7 @@ Efecto Efecto::Veneno() {
 Efecto Efecto::Paralisis() {
 	return Efecto("Paralisis", 0, -5, -100, -5);
 }
+
 Efecto Efecto::Sangrado() {
   return Efecto("Sangrado", -2, -10, -20, 10);
 }
