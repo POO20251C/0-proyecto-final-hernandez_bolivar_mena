@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/Yura/Documentos/TRABAJOFINALPOO/under_dark_dungeons
+CMAKE_SOURCE_DIR = /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/Yura/Documentos/TRABAJOFINALPOO/under_dark_dungeons/build
+CMAKE_BINARY_DIR = /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/Yura/Documentos/TRABAJOFINALPOO/under_dark_dungeons/build/CMakeFiles /home/Yura/Documentos/TRABAJOFINALPOO/under_dark_dungeons/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/Yura/Documentos/TRABAJOFINALPOO/under_dark_dungeons/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -201,6 +201,54 @@ src/Armadura.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Armadura.cpp.s
 .PHONY : src/Armadura.cpp.s
 
+src/Booster_armaduras.o: src/Booster_armaduras.cpp.o
+.PHONY : src/Booster_armaduras.o
+
+# target to build an object file
+src/Booster_armaduras.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Booster_armaduras.cpp.o
+.PHONY : src/Booster_armaduras.cpp.o
+
+src/Booster_armaduras.i: src/Booster_armaduras.cpp.i
+.PHONY : src/Booster_armaduras.i
+
+# target to preprocess a source file
+src/Booster_armaduras.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Booster_armaduras.cpp.i
+.PHONY : src/Booster_armaduras.cpp.i
+
+src/Booster_armaduras.s: src/Booster_armaduras.cpp.s
+.PHONY : src/Booster_armaduras.s
+
+# target to generate assembly for a file
+src/Booster_armaduras.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Booster_armaduras.cpp.s
+.PHONY : src/Booster_armaduras.cpp.s
+
+src/Booster_armas.o: src/Booster_armas.cpp.o
+.PHONY : src/Booster_armas.o
+
+# target to build an object file
+src/Booster_armas.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Booster_armas.cpp.o
+.PHONY : src/Booster_armas.cpp.o
+
+src/Booster_armas.i: src/Booster_armas.cpp.i
+.PHONY : src/Booster_armas.i
+
+# target to preprocess a source file
+src/Booster_armas.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Booster_armas.cpp.i
+.PHONY : src/Booster_armas.cpp.i
+
+src/Booster_armas.s: src/Booster_armas.cpp.s
+.PHONY : src/Booster_armas.s
+
+# target to generate assembly for a file
+src/Booster_armas.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Booster_armas.cpp.s
+.PHONY : src/Booster_armas.cpp.s
+
 src/Efecto.o: src/Efecto.cpp.o
 .PHONY : src/Efecto.o
 
@@ -297,6 +345,30 @@ src/Heroe.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Heroe.cpp.s
 .PHONY : src/Heroe.cpp.s
 
+src/Tienda.o: src/Tienda.cpp.o
+.PHONY : src/Tienda.o
+
+# target to build an object file
+src/Tienda.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Tienda.cpp.o
+.PHONY : src/Tienda.cpp.o
+
+src/Tienda.i: src/Tienda.cpp.i
+.PHONY : src/Tienda.i
+
+# target to preprocess a source file
+src/Tienda.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Tienda.cpp.i
+.PHONY : src/Tienda.cpp.i
+
+src/Tienda.s: src/Tienda.cpp.s
+.PHONY : src/Tienda.s
+
+# target to generate assembly for a file
+src/Tienda.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mi_proyecto.dir/build.make CMakeFiles/mi_proyecto.dir/src/Tienda.cpp.s
+.PHONY : src/Tienda.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -315,6 +387,12 @@ help:
 	@echo "... src/Armadura.o"
 	@echo "... src/Armadura.i"
 	@echo "... src/Armadura.s"
+	@echo "... src/Booster_armaduras.o"
+	@echo "... src/Booster_armaduras.i"
+	@echo "... src/Booster_armaduras.s"
+	@echo "... src/Booster_armas.o"
+	@echo "... src/Booster_armas.i"
+	@echo "... src/Booster_armas.s"
 	@echo "... src/Efecto.o"
 	@echo "... src/Efecto.i"
 	@echo "... src/Efecto.s"
@@ -327,6 +405,9 @@ help:
 	@echo "... src/Heroe.o"
 	@echo "... src/Heroe.i"
 	@echo "... src/Heroe.s"
+	@echo "... src/Tienda.o"
+	@echo "... src/Tienda.i"
+	@echo "... src/Tienda.s"
 .PHONY : help
 
 

@@ -21,6 +21,14 @@ class Armadura {
 
 		Armadura(std::string name, int def_p, int vel_n, std::vector<Efecto> inv);
 
+
+		// getters
+		
+		std::string getName();
+		
+		int getDef();
+		int getVel();
+
 };
 
 #endif

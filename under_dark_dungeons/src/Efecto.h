@@ -17,6 +17,12 @@ class Efecto {
 
 		Efecto(std::string name, int hp, int def, int vel, int lck);
 
+		std::string getname();
+		int gethp();
+		int getdef();
+		int getvel();
+		int getlck();
+
 
 };
 

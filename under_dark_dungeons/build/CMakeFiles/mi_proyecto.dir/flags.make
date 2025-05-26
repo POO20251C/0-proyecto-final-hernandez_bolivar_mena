@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/Yura/Documentos/TRABAJOFINALPOO/under_dark_dungeons/src
+CXX_INCLUDES = -I/home/Yura/Documentos/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/src
 
 CXX_FLAGS = -std=gnu++17
 
