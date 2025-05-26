@@ -25,10 +25,23 @@ class Entidad {
 		
 	public:
 
-		// Constructor
+		// Constructores
 
 		Entidad(std::string name, int hp, int atk, int def, int des, int lck, int p, std::vector<Habilidad> habilidades, std::vector<Efecto> efectos);
+
+
+		// Enemigos_simples
 		
+		static Entidad* generarGoblin(int nivel);
+		static Entidad* generarAraña(int nivel);
+		static Entidad* generarOrco(int nivel);
+		static Entidad* generarLagarto(int nivel);
+			 
+		static std::vector<Entidad*> Goblings(int cantidad, int nivel);
+		static std::vector<Entidad*> Lagartos(int cantidad, int nivel);
+		static std::vector<Entidad*> Araña_gigantes(int cantidad, int nivel);
+		static std::vector<Entidad*> Orcos(int cantidad, int nivel);
+
 		// Getters - Setters
 
 		void nameSetter(std::string name);

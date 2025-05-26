@@ -21,6 +21,88 @@ Entidad::Entidad(std::string name, int hp, int atk, int def, int des, int lck, i
 	this->p = p;
 }
 
+// Enemigos
+
+Entidad* Entidad::generarGoblin(int nivel) {
+    int hp = 40 + (nivel * 20);
+    int atk = 15 + (nivel * 20);
+    int def = 5 + (nivel * 20);
+    int des = 20 + (nivel * 20);
+    int lck = 10 + (nivel * 20);
+    int p = 100 + (nivel * 20);
+    return new Entidad("Goblin", hp, atk, def, des, lck, p, {}, {});
+}
+
+Entidad* Entidad::generarLagarto(int nivel) {
+    int hp = 60 + (nivel * 20);
+    int atk = 22 + (nivel * 20);
+    int def = 10 + (nivel * 20);
+    int des = 12 + (nivel * 20);
+    int lck = 6 + (nivel * 20);
+    int p = 200 + (nivel * 20);
+    return new Entidad("Lagarto", hp, atk, def, des, lck, p, {}, {});
+}
+
+Entidad* Entidad::generarAraña(int nivel) {
+    int hp = 80 + (nivel * 20);
+    int atk = 20 + (nivel * 20);
+    int def = 15 + (nivel * 20);
+    int des = 15 + (nivel * 20);
+    int lck = 10 + (nivel * 20);
+    int p = 200 + (nivel * 20);
+    return new Entidad("Araña", hp, atk, def, des, lck, p, {}, {});
+}
+
+Entidad* Entidad::generarOrco(int nivel) {
+    int hp = 100 + (nivel * 20);
+    int atk = 25 + (nivel * 20);
+    int def = 20 + (nivel * 20);
+    int des = 28 + (nivel * 20);
+    int lck = 3 + (nivel * 20);
+    int p = 400 + (nivel * 20);
+    return new Entidad("Goblin", hp, atk, def, des, lck, p, {}, {});
+}
+
+std::vector<Entidad*> Entidad::Goblings(int cantidad, int nivel ) {
+	std::vector<Entidad*> grupo;
+	for (int i = 0; i < cantidad; i++) {
+		grupo.push_back(generarGoblin(nivel));
+		grupo[i]->nameSetter(grupo[i]->nameGetter() + " " + std::to_string(i+1));
+	}
+	return grupo;
+}
+
+std::vector<Entidad*> Entidad::Lagartos(int cantidad, int nivel ) {
+	std::vector<Entidad*> grupo;
+	for (int i = 0; i < cantidad; i++) {
+		grupo.push_back(generarLagarto(nivel));
+		grupo[i]->nameSetter(grupo[i]->nameGetter() + " " + std::to_string(i+1));
+	}
+	return grupo;
+}
+
+std::vector<Entidad*> Entidad::Araña_gigantes(int cantidad, int nivel ) {
+	std::vector<Entidad*> grupo;
+	for (int i = 0; i < cantidad; i++) {
+		grupo.push_back(generarAraña(nivel));
+		grupo[i]->nameSetter(grupo[i]->nameGetter() + " " + std::to_string(i+1));
+	}
+	return grupo;
+}
+
+std::vector<Entidad*> Entidad::Orcos(int cantidad, int nivel ) {
+	std::vector<Entidad*> grupo;
+	for (int i = 0; i < cantidad; i++) {
+		grupo.push_back(generarOrco(nivel));
+		grupo[i]->nameSetter(grupo[i]->nameGetter() + " " + std::to_string(i+1));
+	}
+	return grupo;
+}
+
+// BOSSES
+
+
+
 // Getters - Setters
 
 void Entidad::nameSetter(std::string name) {

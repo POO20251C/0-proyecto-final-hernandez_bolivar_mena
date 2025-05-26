@@ -1,6 +1,9 @@
+#include <cstdlib>
 #include <iostream>
 #include <ostream>
 #include <string>
+#include <random>
+#include <time.h>
 
 #include "src/Efecto.h"
 #include "src/Entidad.h"
@@ -11,15 +14,72 @@
 #include "src/Arma.h"
 
 
-
 using namespace std;
 
 
-void combate(GrupoJugador* jugador) {
-
-		
 
 
+
+
+void combate(GrupoJugador* jugador, int nivel) {
+	srand(time(nullptr));
+	int number_of_enemies = rand() % 3 + 1;
+	string nombre_mounstros;
+	vector<Entidad*> grupo_enemigo;
+	bool derrota_grupo_enemigo = true;
+
+	// Mercado inicial sala 1
+	// Cofre sala 3
+	// Tesoro sala 6
+	// Santo grial y boss final sala 8
+
+	if (nivel == 1 || nivel == 5) {
+		grupo_enemigo = Entidad::Goblings(number_of_enemies, nivel);
+		if (number_of_enemies != 1) {
+			nombre_mounstros = "un grupo de goblings.";
+		}
+		else {
+			nombre_mounstros = "un gobling.";
+		}
+	}	
+
+	else if (nivel == 2 || nivel == 6) {
+		grupo_enemigo = Entidad::Lagartos(number_of_enemies, nivel);
+		if (number_of_enemies != 1) {
+			nombre_mounstros = "un grupo de lagartos.";
+		}
+		else {
+			nombre_mounstros = "un lagarto.";
+		}
+	}
+
+	else if (nivel == 3 || nivel == 7) {
+		grupo_enemigo = Entidad::Araña_gigantes(number_of_enemies, nivel);
+		if (number_of_enemies != 1) {
+			nombre_mounstros = "un grupo de arañas.";
+		}
+		else {
+			nombre_mounstros = "una araña.";
+		}
+	}
+
+	else if (nivel == 4) {
+		grupo_enemigo = Entidad::Orcos(number_of_enemies, nivel);
+		if (number_of_enemies != 1) {
+			nombre_mounstros = "un grupo de orcos.";
+		}
+		else {
+			nombre_mounstros = "un orco.";
+		}
+	}
+
+
+	cout << "Has entrado en combate contra " + nombre_mounstros << endl;
+	
+
+	while (jugador->getDerrota() && derrota_grupo_enemigo) {
+			
+	}
 
 }
 
@@ -60,7 +120,7 @@ int main() {
 		char eleccion_usuario_menu_p;
 		bool juego = false;
 
-		cout << "Presione una telca para iniciar (ESC para salir)..." << endl;
+		cout << "Presione una tecla para iniciar (ESC para salir)..." << endl;
 		cin.get(eleccion_usuario_menu_p);
 
 		if (eleccion_usuario_menu_p == static_cast<char>(27)) {
@@ -77,7 +137,7 @@ int main() {
 		if (juego) 
 		{
 			string nombre_jugador;
-			cout << "Ingrese su nomre: ";
+			cout << "Ingrese su nombre: ";
 			cin >> nombre_jugador;
 
 			GrupoJugador Jugador(nombre_jugador, 0, 300);

@@ -19,6 +19,7 @@ private:
     vector<Objeto*> inventario;
     vector<Armadura*> armaduras;
     vector<Arma*> armas;
+    bool derrotado = true;
 
 public:
 
@@ -33,7 +34,7 @@ public:
     vector<Armadura*> getArmaduras();
     vector<Arma*> getArmas();
     void setHeroes(vector<Heroe*> grupo);
-    
+    bool getDerrota();
 
     // Acciones
     void sumarDano_t(int dano);

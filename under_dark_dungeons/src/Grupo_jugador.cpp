@@ -74,4 +74,6 @@ std::string GrupoJugador::equiparArmadura(int indx, Heroe* heroe)
 	return ans;
 }
 
-
+bool GrupoJugador::getDerrota() {
+	return this->derrotado;
+}
