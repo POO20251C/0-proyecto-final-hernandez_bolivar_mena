@@ -2,38 +2,31 @@
 #define TIENDA_H
 
 #include <vector>
-#include <memory>
 #include <string>
-using namespace std;
-
-class Arma;
-class Armadura;
-class Booster_armas;
-class Booster_armaduras;
-
-class Nivel {
-public:
-    int numero;
-    bool completado;
-    Nivel(int n) : numero(n), completado(false) {}
-};
+#include "Arma.h"
+#include "Armadura.h"
+#include "Booster_armas.h"
+#include "Booster_armaduras.h"
+#include "Grupo_jugador.h"
 
 class Tienda {
 private:
-    vector<Nivel> niveles;
-    vector<unique_ptr<Arma>> armasOferta;
-    vector<Armadura> armadurasOferta;
-    unique_ptr<Booster_armas> boosterArmas;
-    unique_ptr<Booster_armaduras> boosterArmaduras;
+    struct Nivel {
+        int numero;
+        bool completado;
+        Nivel(int n) : numero(n), completado(false) {}
+    };
+    std::vector<Nivel> niveles;
+
     bool boosterElegido;
 
-    void crearOfertas(const vector<shared_ptr<Arma>>&, const vector<Armadura>&);
-    void mostrarOfertas() const;
-    void elegir();
-    void elegirBooster(char opcion);
-    void comprarArma(int indice);
-    void comprarArmadura(int indice);
-    void aplicarBooster();
+    Booster_armas boosterArmas;
+    Booster_armaduras boosterArmaduras;
+
+    std::vector<Arma> armasOferta;
+    std::vector<Armadura> armadurasOferta;
+
+    GrupoJugador* jugador = nullptr;
 
 public:
     Tienda();
@@ -42,7 +35,19 @@ public:
     void iniciarNiveles(int cantidad);
     bool marcarNivelComoTerminado(int nivel);
     bool puedeEntrar();
-    void abrirTienda(const vector<shared_ptr<Arma>>&, const vector<Armadura>&);
+
+    void abrirTienda(const std::vector<Arma>& todasLasArmas, const std::vector<Armadura>& todasLasArmaduras);
+
+    void crearOfertas(const std::vector<Arma>& todasLasArmas, const std::vector<Armadura>& todasLasArmaduras);
+    void mostrarOfertas() const;
+    void elegir();
+
+    void elegirBooster(char opcion);
+    void comprarArma(int indice);
+    void comprarArmadura(int indice);
+    void aplicarBooster();
+
+    void setJugador(GrupoJugador* jugadorPtr) { jugador = jugadorPtr; }
 };
 
-#endif
+#endif // TIENDA_H
