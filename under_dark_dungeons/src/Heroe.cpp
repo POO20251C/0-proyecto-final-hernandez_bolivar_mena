@@ -18,9 +18,19 @@ Heroe::Heroe(std::string name, int hp, int atk, int def, int des, int lck, int p
 		this->arma = arma_inicial;
 		this->armadura = armadura_inicial;
 
+		this->vivo = true;
+
 
     }
 
+
+
+Heroe* Heroe::Caballero() {
+	return new Heroe("Charles", 120, 80, 100, 40, 30, 0, {}, {}, Armadura::mallaLigera(), Arma::Espada_basica());
+}
+
+
+// Fin constructores
 
 void Heroe::setArma(Arma* arma) {
 	this->arma = arma;
@@ -37,9 +47,7 @@ void Heroe::setArmadura(Armadura* armadura) {
 
 
 
-/*Heroe Heroe::Caballero() {
-	return Heroe("Charles", 120, 80, 100, 40, 30, 0, habilidades, efectos, Armadura("Armadura basica", 1, 1, []) ,Arma::Espada_basica());
-}*/
+
 
 
 // Getters

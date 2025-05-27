@@ -1,6 +1,7 @@
 //
 // Created by juanj on 07/05/2025.
 //
+
 #ifndef BOOSTER_ARMAS_H
 #define BOOSTER_ARMAS_H
 
@@ -15,7 +16,7 @@ private:
 
 public:
     Booster_armas();
-    void abrir();
+    Arma abrir();
 };
 
 #endif //BOOSTER_ARMAS_H

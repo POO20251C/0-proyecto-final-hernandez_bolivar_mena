@@ -78,7 +78,7 @@ void combate(GrupoJugador* jugador, int nivel) {
 	
 
 	while (jugador->getDerrota() && derrota_grupo_enemigo) {
-			
+	
 	}
 
 }

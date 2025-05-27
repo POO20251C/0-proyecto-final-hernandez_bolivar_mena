@@ -20,17 +20,24 @@ private:
     int precio; 
 
 public:
+	
+
+    // Constructores 
 
     Armadura(std::string name, int def_p, int vel_n, std::vector<Efecto> inv, int precio);
+	
+    static Armadura* mallaLigera();
+
+    // Fin constructores
 
     // getters
     
-    std::string getName() const;
+    std::string getName();
     
-    int getDef() const;
-    int getVel() const;
+    int getDef();
+    int getVel();
 
-    int getPrecio() const;
+    int getPrecio();
 
     //bool esInmuneA(const std::string& efecto) const;
 

@@ -22,6 +22,8 @@ class Entidad {
 		int lck;
 
 		int p;
+
+		bool vivo;
 		
 	public:
 

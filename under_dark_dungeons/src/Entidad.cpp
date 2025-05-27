@@ -19,6 +19,8 @@ Entidad::Entidad(std::string name, int hp, int atk, int def, int des, int lck, i
 	this->lck = lck;
 
 	this->p = p;
+
+	this->vivo = true;
 }
 
 // Enemigos

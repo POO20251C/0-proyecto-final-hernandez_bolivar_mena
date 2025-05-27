@@ -29,7 +29,7 @@ class Heroe: public Entidad {
           	Armadura* armadura_inicial,
           	Arma* arma_inicial);
 
-		//static Heroe Caballero();
+		static Heroe* Caballero();
 		
 		// getters
 		

@@ -16,7 +16,7 @@ private:
 
 public:
     Booster_armaduras();
-    void abrir();
+    Armadura abrir();
 };
 
 #endif //BOOSTER_ARMADURAS_H

@@ -9,6 +9,9 @@ Armadura::Armadura(std::string name, int def, int vel, std::vector<Efecto> inv, 
     this->precio = precio; 
 }
 
+Armadura* Armadura::mallaLigera() {
+	return new Armadura("Malla ligera", 30, 10, {}, 100);
+}
 
 std::string Armadura::getName() {
     return this->name;
