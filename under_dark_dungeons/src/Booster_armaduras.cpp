@@ -13,6 +13,9 @@ Booster_armaduras::Booster_armaduras() {
     armaduras.push_back(Armadura("Armadura de Lava", 60, -15, {Efecto::Quemadura()}));
     armaduras.push_back(Armadura("Armadura Transistora", 40, 5, {Efecto::Paralisis()}));
     armaduras.push_back(Armadura("Malla ligera", 30, 10, {}));
+    armaduras.push_back(Armadura("Armadura de Rayo", 55, 0, {Efecto::Electrocucion()}));
+    armaduras.push_back(Armadura("Armadura de Hielo", 45, -5, {Efecto::Congelacion()}));
+    armaduras.push_back(Armadura("Armadura de Sombra", 35, 8, {Efecto::Invisibilidad()}));
 }
 
 void Booster_armaduras::abrir() {
