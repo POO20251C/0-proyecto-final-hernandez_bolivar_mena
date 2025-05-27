@@ -6,33 +6,29 @@
 
 class Arma {
 
-	private:
-		
-		std::string name;
-		Efecto efecto;
+private:
+    std::string name;
+    Efecto efecto;
 
-		int atk_p;
-		int des_p;
-		int lck_p;
-	
-	public:
-		
-		// constructores
-		
-		Arma(std::string name, Efecto efecto, int atk, int des, int lck);
-		
-		static Arma* Espada_basica();
-		static Arma* Baston_basico();
-		static Arma* Daga_basica();
-		static Arma* Palo_desgastado();
+    int atk_p;
+    int des_p;
+    int lck_p;
+    int precio; 
 
+public:
+    Arma(std::string name, Efecto efecto, int atk, int des, int lck, int precio);
 
-		// Getters
-		std::string getName() const;
-		Efecto getEfecto() const;
-		int getAtk() const;
-		int getDes() const;
-		int getLck() const;
+    static Arma* Espada_basica();
+    static Arma* Baston_basico();
+    static Arma* Daga_basica();
+    static Arma* Palo_desgastado();
+
+    std::string getName() const;
+    Efecto getEfecto() const;
+    int getAtk() const;
+    int getDes() const;
+    int getLck() const;
+    int getPrecio() const;
 };
 
 #endif
