@@ -1,8 +1,8 @@
 #include "Tienda.h"
 #include <iostream>
-#include <limits>
 #include <algorithm>
 #include <random>
+#include <cctype>
 
 using namespace std;
 
@@ -28,20 +28,28 @@ bool Tienda::marcarNivelComoTerminado(int nivel) {
 }
 
 bool Tienda::puedeEntrar() {
+    // Lógica para permitir entrar a la tienda (puedes modificar)
     return true;
 }
 
 void Tienda::abrirTienda(const vector<Arma>& todasLasArmas, const vector<Armadura>& todasLasArmaduras) {
     cout << "\nBienvenido a la Tienda!" << endl;
+    if (jugador) {
+        cout << "Tu oro actual: " << jugador->getOro() << endl;
+    }
     crearOfertas(todasLasArmas, todasLasArmaduras);
     mostrarOfertas();
     elegir();
     cout << "\nGracias por visitar la tienda." << endl;
+    if (jugador) {
+        cout << "Tu oro restante: " << jugador->getOro() << endl;
+    }
 }
 
 void Tienda::crearOfertas(const vector<Arma>& todasLasArmas, const vector<Armadura>& todasLasArmaduras) {
     boosterArmas = Booster_armas();
     boosterArmaduras = Booster_armaduras();
+
     armasOferta.clear();
     armadurasOferta.clear();
 
@@ -63,28 +71,28 @@ void Tienda::crearOfertas(const vector<Arma>& todasLasArmas, const vector<Armadu
 
 void Tienda::mostrarOfertas() const {
     cout << "\nOfertas disponibles:" << endl;
-    cout << "Q. Booster de Armas: " << boosterArmas.getNombre() << endl;
-    cout << "E. Booster de Armaduras: " << boosterArmaduras.getNombre() << endl;
+    cout << "Q. Booster de Armas (" << boosterArmas.getNombre() << ") - Precio: " << boosterArmas.getPrecio() << " oro" << endl;
+    cout << "E. Booster de Armaduras (" << boosterArmaduras.getNombre() << ") - Precio: " << boosterArmaduras.getPrecio() << " oro" << endl;
 
     for (size_t i = 0; i < armasOferta.size(); ++i) {
         cout << (i + 1) << ". Arma: " << armasOferta[i].getName()
              << " (Atk: " << armasOferta[i].getAtk()
              << ", Des: " << armasOferta[i].getDes()
              << ", Lck: " << armasOferta[i].getLck()
-             << ") --> \"" << armasOferta[i].getPrecio() << "\"" << endl;
+             << ") Precio: " << armasOferta[i].getPrecio() << " oro" << endl;
     }
 
     if (!armadurasOferta.empty())
         cout << "A. Armadura: " << armadurasOferta[0].getName()
              << " (Def: " << armadurasOferta[0].getDef()
              << ", Vel: " << armadurasOferta[0].getVel()
-             << ") --> \"" << armadurasOferta[0].getPrecio() << "\"" << endl;
+             << ") Precio: " << armadurasOferta[0].getPrecio() << " oro" << endl;
 
     if (armadurasOferta.size() > 1)
         cout << "S. Armadura: " << armadurasOferta[1].getName()
              << " (Def: " << armadurasOferta[1].getDef()
              << ", Vel: " << armadurasOferta[1].getVel()
-             << ") --> \"" << armadurasOferta[1].getPrecio() << "\"" << endl;
+             << ") Precio: " << armadurasOferta[1].getPrecio() << " oro" << endl;
 
     cout << "0. Salir de la tienda" << endl;
 }
@@ -138,12 +146,31 @@ void Tienda::elegir() {
 }
 
 void Tienda::elegirBooster(char opcion) {
+    if (!jugador) {
+        cout << "Jugador no asignado." << endl;
+        return;
+    }
+
     if (opcion == 'q') {
-        boosterArmas.abrir();
-        boosterElegido = true;
+        int precio = boosterArmas.getPrecio();
+        if (jugador->getOro() >= precio) {
+            jugador->sumarOro(-precio);
+            cout << "Compraste el Booster de Armas por " << precio << " de oro." << endl;
+            boosterArmas.abrir();
+            boosterElegido = true;
+        } else {
+            cout << "No tienes suficiente oro para comprar el Booster de Armas." << endl;
+        }
     } else if (opcion == 'e') {
-        boosterArmaduras.abrir();
-        boosterElegido = true;
+        int precio = boosterArmaduras.getPrecio();
+        if (jugador->getOro() >= precio) {
+            jugador->sumarOro(-precio);
+            cout << "Compraste el Booster de Armaduras por " << precio << " de oro." << endl;
+            boosterArmaduras.abrir();
+            boosterElegido = true;
+        } else {
+            cout << "No tienes suficiente oro para comprar el Booster de Armaduras." << endl;
+        }
     } else {
         cout << "Opcion invalida." << endl;
     }
@@ -156,43 +183,4 @@ void Tienda::comprarArma(int indice) {
         cout << "Jugador no asignado." << endl;
         return;
     }
-    if (indice >= 0 && indice < (int)armasOferta.size()) {
-        int precio = armasOferta[indice].getPrecio();
-        if (jugador->getOro() >= precio) {
-            jugador->sumarOro(-precio);
-            cout << "Compraste: " << armasOferta[indice].getName()
-                 << " por --> \"" << precio << "\" de oro." << endl;
-            cout << "Oro restante: " << jugador->getOro() << endl;
-        } else {
-            cout << "No tienes suficiente oro para comprar esa arma." << endl;
-        }
-    } else {
-        cout << "No existe ese objeto." << endl;
-    }
-}
-
-void Tienda::comprarArmadura(int indice) {
-    if (!jugador) {
-        cout << "Jugador no asignado." << endl;
-        return;
-    }
-    if (indice >= 0 && indice < (int)armadurasOferta.size()) {
-        int precio = armadurasOferta[indice].getPrecio();
-        if (jugador->getOro() >= precio) {
-            jugador->sumarOro(-precio);
-            cout << "Compraste: " << armadurasOferta[indice].getName()
-                 << " por --> \"" << precio << "\" de oro." << endl;
-            cout << "Oro restante: " << jugador->getOro() << endl;
-        } else {
-            cout << "No tienes suficiente oro para comprar esa armadura." << endl;
-        }
-    } else {
-        cout << "No existe ese objeto." << endl;
-    }
-}
-
-void Tienda::aplicarBooster() {
-    if (!boosterElegido) {
-        cout << "No hay booster seleccionado." << endl;
-    }
-}
+    if (indice >= 0 && indice < (
