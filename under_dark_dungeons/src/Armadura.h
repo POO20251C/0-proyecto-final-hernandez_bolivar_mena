@@ -8,30 +8,31 @@
 
 class Armadura {
 
-	private:
+private:
 
-		std::string name;
+    std::string name;
 
-		int def_p;
-		int vel_n;
+    int def_p;
+    int vel_n;
 
-		std::vector<Efecto> invulnerable;
+    std::vector<Efecto> invulnerable;
 
-	public:
+    int precio; 
 
-		Armadura(std::string name, int def_p, int vel_n, std::vector<Efecto> inv);
+public:
 
+    Armadura(std::string name, int def_p, int vel_n, std::vector<Efecto> inv, int precio);
 
-		// getters
-		
-		std::string getName();
-		
-		int getDef();
-		int getVel();
+    // getters
+    
+    std::string getName() const;
+    
+    int getDef() const;
+    int getVel() const;
 
-		//bool esInmuneA(const std::string& efecto) const;
+    int getPrecio() const;
 
-
+    //bool esInmuneA(const std::string& efecto) const;
 
 };
 
