@@ -1,3 +1,0 @@
-C:/Users/juanj/OneDrive/Escritorio/Trabajos Poo/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/cmake-build-debug/CMakeFiles/under_dark_dungeons.dir
-C:/Users/juanj/OneDrive/Escritorio/Trabajos Poo/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/juanj/OneDrive/Escritorio/Trabajos Poo/0-proyecto-final-hernandez_bolivar_mena/under_dark_dungeons/cmake-build-debug/CMakeFiles/rebuild_cache.dir

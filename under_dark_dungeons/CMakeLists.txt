@@ -1,22 +1,32 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.30)
 
-project(mi_proyecto VERSION 1.0)
+project(under_dark_dungeons)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_STANDARD 14)
 
 include_directories(src)
 
-add_executable(mi_proyecto
-    main.cpp src/Arma.cpp
-src/Habilidad.cpp
-src/Booster_armas.cpp
-src/Objeto.cpp
-src/Efecto.cpp
-src/Heroe.cpp
-src/Entidad.cpp
-src/Grupo_jugador.cpp
-src/Armadura.cpp
-src/Tienda.cpp
-src/Booster_armaduras.cpp
-)
+add_executable(under_dark_dungeons
+        src/Arma.cpp
+        src/Arma.h
+        src/Armadura.cpp
+        src/Armadura.h
+        src/Booster_armaduras.cpp
+        src/Booster_armaduras.h
+        src/Booster_armas.cpp
+        src/Booster_armas.h
+        src/Efecto.cpp
+        src/Efecto.h
+        src/Entidad.cpp
+        src/Entidad.h
+        src/Grupo_jugador.cpp
+        src/Grupo_jugador.h
+        src/Habilidad.cpp
+        src/Habilidad.h
+        src/Heroe.cpp
+        src/Heroe.h
+        src/Objeto.cpp
+        src/Objeto.h
+        src/Tienda.cpp
+        src/Tienda.h
+        main.cpp)
