@@ -2,22 +2,45 @@
 #include <iostream>
 #include <ostream>
 #include <string>
-#include <random>
 #include <time.h>
+#include <chrono>
+#include <thread>
+#include <vector>
 
 #include "src/Efecto.h"
 #include "src/Entidad.h"
 #include "src/Grupo_jugador.h"
-#include "src/Habilidad.h"
 #include "src/Heroe.h"
-#include "src/Armadura.h"
 #include "src/Arma.h"
 
 
 using namespace std;
 
+void narrar(const std::string& linea, int milisegundos = 1500) {
+    std::cout << linea << std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(milisegundos));
+}
 
-
+void inicioNarracion(vector<Heroe*> grupoJugador) {
+	narrar("Una lluvia fría cae sobre los restos del mundo conocido...");
+	narrar("Entre los susurros del viento, una antigua entrada emerge del abismo: la entrada a la Dark Dungeon.");
+    	narrar("Dicen que ninguna luz escapa de sus muros, y que quienes entran... rara vez regresan.");
+    	narrar("");
+   	narrar("Un grupo de guerreros, marcado por cicatrices físicas y espirituales, se reúne frente a la grieta en la tierra.");
+    	narrar("No por gloria, no por oro... sino porque ya no tienen nada que perder.");
+    	narrar("");
+    	narrar("El primero en entrar es un caballero exiliado, cuyo nombre fue borrado de los libros por traición.");
+    	narrar("A su lado, un mago que olvidó su rostro entre llamas negras y pactos prohibidos.");
+    	narrar("Les sigue un ladrón, que camina sin sombra desde que robó de un dios dormido.");
+    	narrar("Y por último, un marginado sin nombre ni historia, que ríe cada vez que escucha el llanto de los vivos.");
+    	narrar("");
+    	narrar("Avanzan por túneles donde la piedra sangra y los ecos devoran los pensamientos.");
+    	narrar("Cada nivel los lleva más profundo, no solo en la dungeon... sino en sí mismos.");
+    	narrar("La oscuridad no los envuelve... los absorbe.");
+    	narrar("");
+    	narrar("Bienvenidos a Dark Dungeon.");
+    	narrar("Aquí no hay héroes. Solo sobrevivientes.\n");
+}
 
 
 
@@ -173,18 +196,30 @@ int main() {
 			bool in_game = true;
 
 			// Loop del juego
-
+			int nivel = 0;
 			while (in_game) 
 			{
 				
+				// Historia de como llegaron a la dungeon
+				if(nivel == 0) {
+					inicioNarracion(grupo_jugador);	
+				}
+
+
 				int eleccion_in_game;
 
-				int nivel = 0;
+				
 
 				cout << "1. Avanzar\n2. Ver Armas\n3. Ver Armaduras\n4. Ver equipo" << endl;
 				cin >> eleccion_in_game;
 
-
+				if (eleccion_in_game == 1) {
+					nivel++;
+				}
+				
+				if (nivel == 8 && Jugador.getDerrota()) {
+					in_game = false;
+				}
 
 				
 				
