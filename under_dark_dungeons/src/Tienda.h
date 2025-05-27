@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <memory>
+#include <string>
 using namespace std;
 
 class Arma;
@@ -29,8 +30,9 @@ private:
     void crearOfertas(const vector<shared_ptr<Arma>>&, const vector<Armadura>&);
     void mostrarOfertas() const;
     void elegir();
-    void elegirBooster();
-    void comprar(int tipo, int cual);
+    void elegirBooster(char opcion);
+    void comprarArma(int indice);
+    void comprarArmadura(int indice);
     void aplicarBooster();
 
 public:
