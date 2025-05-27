@@ -44,6 +44,39 @@ class Entidad {
 		static std::vector<Entidad*> Araña_gigantes(int cantidad, int nivel);
 		static std::vector<Entidad*> Orcos(int cantidad, int nivel);
 
+		// Mini Bosses
+		
+		/* 
+			ejemplo:
+
+			static entidad* nombre_del_miniboss()
+
+			// en el cpp
+			
+			 entidad* entidad::nombre_del_miniboss(argumentos si tiene) {
+			 return new entidad("nombre", hp, atk, def, des, lck, p (puntos o oro que da), {hacen daño y aplican efectos}, {} )
+			 }
+
+		 */
+
+		
+		// Bosses
+		
+		/* 
+			ejemplo:
+
+			static entidad* nombre_del_boss()
+
+			// en el cpp
+			
+			 entidad* entidad::nombre_del_boss(argumentos si tiene) {
+			 return new entidad("nombre", hp, atk, def, des, lck, p (puntos o oro que da), {Habilidades que hagan daño, apliquen efectos y invoquen a mas aliados}, {} )
+			 }
+
+		 */
+
+		// Fin constructores
+
 		// Getters - Setters
 
 		void nameSetter(std::string name);

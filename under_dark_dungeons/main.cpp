@@ -42,7 +42,23 @@ void inicioNarracion(vector<Heroe*> grupoJugador) {
     	narrar("Aquí no hay héroes. Solo sobrevivientes.\n");
 }
 
+void eventoCofre(GrupoJugador* jugador) {
 
+	// logica del cofre
+	// 1 objeto ?
+
+}
+
+
+void eventoSantogrial(GrupoJugador* jugador, int nivel) {
+
+	// Logica del santo grial
+	// Cura a todos los heroes
+	// aumenta la vida y todos los atributos de las entidades/heroes en un 10%?
+	//
+	// Entonces por cada heroe -> Heroe.setHp( Heroe.getHp + (Heroe.getHp * (0.10 * nivel)) )
+
+}
 
 void combate(GrupoJugador* jugador, int nivel) {
 	srand(time(nullptr));
