@@ -1,23 +1,40 @@
 #ifndef TIENDA_H
 #define TIENDA_H
 
-#include <vector>
-#include <string>
-#include "Objeto.h"
+#include "Arma.h"
+#include "Armadura.h"
 #include "Booster_armas.h"
 #include "Booster_armaduras.h"
+#include <vector>
+#include <random>
+#include <memory>
 
 using namespace std;
 
 class Tienda {
 private:
-    vector<Objeto*> objetos;
-    Booster_armas booster_armas;
-    Booster_armaduras booster_armaduras;
+    vector<Arma*> armasOferta;
+    vector<Armadura> armadurasOferta;
+    unique_ptr<Booster_armas> boosterArmas;
+    unique_ptr<Booster_armaduras> boosterArmaduras;
+    bool boosterElegido;
+    vector<Nivel> niveles;
 
 public:
     Tienda();
-    void seleccionar();
+    ~Tienda();
+    
+    void iniciarNiveles(int cantidad);
+    bool marcarNivelComoTerminado(int nivel);
+    bool puedeEntrar();
+    
+    void abrirTienda(const vector<Arma*>& todasLasArmas, const vector<Armadura>& todasLasArmaduras);
+    void crearOfertas(const vector<Arma*>& todasLasArmas, const vector<Armadura>& todasLasArmaduras);
+    void mostrarOfertas() const;
+    void elegir();
+    void elegirBooster();
+    void comprar(int tipo, int cual);
+    void aplicarBooster();
 };
 
-#endif
+#endif  // TIENDA_H
