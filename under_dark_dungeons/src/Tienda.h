@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+
 #include "Arma.h"
 #include "Armadura.h"
 #include "Booster_armas.h"
@@ -13,18 +14,19 @@ class Tienda {
 private:
     struct Nivel {
         int numero;
-        bool completado;
-        Nivel(int n) : numero(n), completado(false) {}
+        bool completado = false;
+        Nivel(int num) : numero(num), completado(false) {}
     };
-    std::vector<Nivel> niveles;
 
-    bool boosterElegido;
+    std::vector<Nivel> niveles;
 
     Booster_armas boosterArmas;
     Booster_armaduras boosterArmaduras;
 
     std::vector<Arma> armasOferta;
     std::vector<Armadura> armadurasOferta;
+
+    bool boosterElegido;
 
     GrupoJugador* jugador = nullptr;
 
@@ -48,6 +50,9 @@ public:
     void aplicarBooster();
 
     void setJugador(GrupoJugador* jugadorPtr) { jugador = jugadorPtr; }
+
+    Booster_armas getBoosterArmas() const { return boosterArmas; }
+    Booster_armaduras getBoosterArmaduras() const { return boosterArmaduras; }
 };
 
-#endif // TIENDA_H
+#endif
