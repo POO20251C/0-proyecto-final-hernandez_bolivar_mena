@@ -1,22 +1,26 @@
-//
-// Created by juanj on 07/05/2025.
-//
-
-#ifndef BOOSTER_ARMADURAS_H
-#define BOOSTER_ARMADURAS_H
+//uwu
+#ifndef ARMADURA_H
+#define ARMADURA_H
 
 #include <string>
 #include <vector>
-#include "Armadura.h"
+#include "Efecto.h"
 
-class Booster_armaduras {
+class Armadura {
 private:
-    std::string nombre;
-    std::vector<Armadura> armaduras;
+    std::string name;
+    int def_p;
+    int vel_n;
+    int precio;              
+    std::vector<Efecto> invulnerable;
 
 public:
-    Booster_armaduras();
-    void abrir();
+    Armadura(std::string name, int def_p, int vel_n, std::vector<Efecto> inv, int precio);
+
+    std::string getName();
+    int getDef();
+    int getVel();
+    int getPrecio();          
 };
 
-#endif //BOOSTER_ARMADURAS_H
+#endif
