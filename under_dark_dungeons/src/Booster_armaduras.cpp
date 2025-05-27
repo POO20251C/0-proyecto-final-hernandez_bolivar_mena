@@ -1,6 +1,3 @@
-//
-// Created by juanj on 07/05/2025.
-//
 #include "Booster_armaduras.h"
 #include <iostream>
 #include <cstdlib>
@@ -9,13 +6,13 @@
 Booster_armaduras::Booster_armaduras() {
     nombre = "Booster de Armaduras";
 
-    armaduras.push_back(Armadura("Armadura de Escarcha", 50, -10, {Efecto::Congelacion()}));
-    armaduras.push_back(Armadura("Armadura de Lava", 60, -15, {Efecto::Quemadura()}));
-    armaduras.push_back(Armadura("Armadura Transistora", 40, 5, {Efecto::Paralisis()}));
-    armaduras.push_back(Armadura("Malla ligera", 30, 10, {}));
-    armaduras.push_back(Armadura("Armadura de Rayo", 55, 0, {Efecto::Electrocucion()}));
-    armaduras.push_back(Armadura("Armadura de Hielo", 45, -5, {Efecto::Congelacion()}));
-    armaduras.push_back(Armadura("Armadura de Sombra", 35, 8, {Efecto::Invisibilidad()}));
+    armaduras.push_back(Armadura("Armadura de Escarcha", 50, -10, {Efecto::Congelacion()}, 150));
+    armaduras.push_back(Armadura("Armadura de Lava", 60, -15, {Efecto::Quemadura()}, 180));
+    armaduras.push_back(Armadura("Armadura Transistora", 40, 5, {Efecto::Paralisis()}, 130));
+    armaduras.push_back(Armadura("Malla ligera", 30, 10, {}, 100));
+    armaduras.push_back(Armadura("Armadura de Rayo", 55, 0, {Efecto::Electrocucion()}, 170));
+    armaduras.push_back(Armadura("Armadura de Hielo", 45, -5, {Efecto::Congelacion()}, 140));
+    armaduras.push_back(Armadura("Armadura de Sombra", 35, 8, {Efecto::Invisibilidad()}, 120));
 }
 
 void Booster_armaduras::abrir() {
@@ -37,5 +34,6 @@ void Booster_armaduras::abrir() {
 
     std::cout << "Has obtenido: " << armadura_obtenida.getName()
               << " Defensa: " << armadura_obtenida.getDef()
-              << ", Velocidad: " << armadura_obtenida.getVel() << "\n";
+              << ", Velocidad: " << armadura_obtenida.getVel()
+              << ", Precio: " << armadura_obtenida.getPrecio() << " de oro.\n";
 }
