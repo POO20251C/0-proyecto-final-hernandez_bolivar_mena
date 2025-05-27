@@ -38,7 +38,7 @@ public:
 
     // Acciones
     void sumarDano_t(int dano);
-    std::string sumarOro(int oro);
+    std::string sumarOro(int cantidad);
 
     std::string usarItem(int itemIndex, Heroe* heroe);
     std::string equiparArmadura(int armaduraIndex, Heroe* heroe);
