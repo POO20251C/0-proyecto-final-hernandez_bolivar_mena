@@ -67,5 +67,27 @@ std::string GrupoJugador::equiparArmadura(int indx, Heroe* heroe) {
 }
 
 bool GrupoJugador::getDerrota() {
-    return this->derrotado;
+	
+	
+
+    	if ( !this->heroes[0]->getVivo() && !this->heroes[1]->getVivo() && !this->heroes[2]->getVivo() ) {
+	
+		this->derrotado = false;
+
+    	}
+	return this->derrotado;
+}
+
+
+std::string GrupoJugador::subirDeNivelElEquipo(int nivel) {
+	
+	std::string ans = "Tu equipo se siente mas fuerte";
+
+
+	for (Heroe* h : heroes) {
+		h->subirDeNivel(nivel);
+	}
+
+	return ans;
+
 }

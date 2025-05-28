@@ -43,6 +43,8 @@ public:
     std::string usarItem(int itemIndex, Heroe* heroe);
     std::string equiparArmadura(int armaduraIndex, Heroe* heroe);
     std::string equiparArma(int armaIndex, Heroe* heroe);
+
+    std::string subirDeNivelElEquipo(int nivel);
 };
 
 #endif // GRUPOJUGADOR_H
