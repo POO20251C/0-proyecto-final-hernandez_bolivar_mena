@@ -6,7 +6,7 @@ Arma::Arma(std::string name, Efecto efecto, int atk, int des, int lck, int preci
     : name(name), efecto(efecto), atk_p(atk), des_p(des), lck_p(lck), precio(precio) {}
 
 Arma* Arma::Espada_basica() {
-    return new Arma("Espada basica", Efecto::Nada(), 15, -2, 0, 100);
+    return new Arma("Espada basica", Efecto::Nada(), 5, -2, 0, 100);
 }
 
 Arma* Arma::Baston_basico() {

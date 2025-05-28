@@ -1,5 +1,6 @@
 #include "Grupo_jugador.h"
 #include <string>
+#include <vector>
 
 GrupoJugador::GrupoJugador(std::string name, int dano_t, int oro) {
     this->name = name;
@@ -68,13 +69,18 @@ std::string GrupoJugador::equiparArmadura(int indx, Heroe* heroe) {
 
 bool GrupoJugador::getDerrota() {
 	
-	
+	vector<Heroe*> heroes_muertos;
 
-    	if ( !this->heroes[0]->getVivo() && !this->heroes[1]->getVivo() && !this->heroes[2]->getVivo() ) {
-	
+	for (Heroe* h : this->heroes ) {
+		if (!h->getVivo()) {
+			heroes_muertos.push_back(h);
+		}
+	}
+
+	if ((int) heroes_muertos.size() == (int) this->heroes.size()) {
 		this->derrotado = false;
-
-    	}
+	}
+    	
 	return this->derrotado;
 }
 
