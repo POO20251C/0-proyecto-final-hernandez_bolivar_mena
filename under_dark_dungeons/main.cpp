@@ -14,6 +14,7 @@
 #include "src/Grupo_jugador.h"
 #include "src/Heroe.h"
 #include "src/Arma.h"
+#include "src/Objeto.h"
 
 
 using namespace std;
@@ -49,8 +50,23 @@ void eventoCofre(GrupoJugador* jugador ) {
 	// logica del cofre
 	// 1 objeto ?
 	std::cout<< "Felicidades, has temrinado la sala 3! \n";
+	srand(static_cast<unsigned int>(time(nullptr)));
+
+	std::vector<Objeto> objetosCofre = {
+		Objeto::Pocion(),
+		Objeto::MegaPocion(),
+		Objeto::HiperPocion(),
+		Objeto::BayaZidra(),
+		Objeto::BayaAranja()
+		};
+
+	int indiceAleatorio = rand() % objetosCofre.size();
+	Objeto objetoObtenido = objetosCofre[indiceAleatorio];
 
 
+	std::cout << "¡Has abierto un cofre y encontrado: " << objetoObtenido.getName() << "!\n";
+	std::cout << "Vida proporcionada: " << objetoObtenido.getVida_proporcionada() << "\n";
+	std::cout << "Precio: " << objetoObtenido.getPrecio() << " monedas\n";
 }
 
 
@@ -373,7 +389,8 @@ int main() {
 				
 				// Historia de como llegaron a la dungeon
 				if(nivel == 0) {
-					inicioNarracion(grupo_jugador);	
+					inicioNarracion(grupo_jugador);
+
 				}
 
 				if (nivel == 1) {
