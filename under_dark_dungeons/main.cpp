@@ -7,6 +7,7 @@
 #include <chrono>
 #include <thread>
 #include <algorithm>
+#include <GrupoEnemigo.h>
 #include <vector>
 
 #include "src/Efecto.h"
@@ -80,6 +81,7 @@ void eventoCofre(GrupoJugador* jugador ) {
 
 
 void eventoSantogrial(GrupoJugador* jugador) {
+
 
 	// Logica del santo grial
 	// Cura a todos los heroes
@@ -457,7 +459,7 @@ int main() {
 				}
 
 				if (nivel == 1) {
-					combate(&Jugador, nivel);
+					combate(&Jugador, GrupoEnemigo::genGrupoEnemigo(nivel));
 				}
 
 
