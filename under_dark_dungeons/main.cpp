@@ -81,15 +81,24 @@ void eventoCofre(GrupoJugador* jugador ) {
 
 void eventoSantogrial(GrupoJugador* jugador) {
 
+	cout << "Legendario Heroe, has encontrado una pequeña luz en el grande camino\n" ;
+	cout << "Has llegado al santo Grial\n";
+	cout << "Una energía invade tu cuerpo\n";
+
+	vector<Heroe*> heroes = jugador->getHeroes();
+
+	for (Heroe* h : heroes) {
+
+		h->setHp(h->getHpMax());
+		cout << h->nameGetter()<< " ha sido curado. Ahora su vida actual es: "
+		<< h->getHp() << "/" << h->getHpMax() << "\n";
+	}
 
 	// Logica del santo grial
 	// Cura a todos los heroes
 	// aumenta la vida y todos los atributos de las entidades/heroes en un 10%?
 	//
 	// Entonces por cada heroe -> Heroe.setHp( Heroe.getHp + (Heroe.getHp * (0.10 * 8)) )
-
-
-
 
 }
 
@@ -362,6 +371,8 @@ int main() {
 	};
 
 	Yura.setHeroes(testCaballero);
+
+	eventoSantogrial(&Yura);
 
 
 	if ( combate(&Yura, GrupoEnemigo::genGrupoEnemigo(1)) )

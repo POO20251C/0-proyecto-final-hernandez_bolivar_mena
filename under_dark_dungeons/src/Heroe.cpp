@@ -18,8 +18,10 @@ Heroe::Heroe(std::string name, int hp, int hp_base, int atk, int def, int des, i
 
 		this->arma = arma_inicial;
 		this->armadura = armadura_inicial;
-		this->hp_base = hp_base;
+		this->hp = hp;
 		this->vivo = true;
+		this->hp_max = hp_base;
+
     }
 
 Heroe* Heroe::Caballero() {
@@ -38,12 +40,38 @@ void Heroe::setArmadura(Armadura* armadura) {
 	this->armadura = armadura;
 }
 
+void Heroe::setHp(int nueva_hp) {
+	this->hp = std::min(nueva_hp,hp_max);
+}
+
+void Heroe::setHpMax(int max) {
+	this->hp_max = max;
+}
+
+void Heroe::setHpBase(int base) {
+	this->hp_base = base;
+}
+
 // Getters
+
+int Heroe::getHpMax() {
+	return this->hp_max;
+}
+
+int Heroe::getHp() {
+	return this->hp;
+}
+
 
 int Heroe::getAtk() {
 	int dano = this->atk  + this->arma->getAtk();
 	return dano;
-} 
+}
+
+int Heroe::getDes() {
+	return this->des;
+}
+
 
 
 int Heroe::getDef() {
@@ -164,9 +192,10 @@ void Heroe::subirDeNivel(int nivel) {
 
 	// Entonces por cada heroe -> Heroe.setHp( Heroe.getHp + (Heroe.getHp * (0.10 * nivel)) )
 	 
-	this->hp = this->hp_base + (this->hp_base * (0.10 * nivel));
+	this->hp = this->hp + (this->hp * (0.10 * nivel));
 	this->atk = this->atk + (nivel * 25);
 	this->def = this->def + (nivel * 25);
 	this->des = this->des + (nivel * 25); 
 	this->lck = this->lck + (nivel * 5);
 }
+
