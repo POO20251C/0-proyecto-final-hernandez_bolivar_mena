@@ -9,11 +9,10 @@
 #include <algorithm>
 #include <vector>
 
-#include "src/Efecto.h"
 #include "src/Entidad.h"
+#include "src/GrupoEnemigo.h"
 #include "src/Grupo_jugador.h"
 #include "src/Heroe.h"
-#include "src/Arma.h"
 #include "src/Objeto.h"
 
 
@@ -457,7 +456,7 @@ int main() {
 				}
 
 				if (nivel == 1) {
-					combate(&Jugador, nivel);
+					combate(&Jugador, GrupoEnemigo::genGrupoEnemigo(nivel));
 				}
 
 
