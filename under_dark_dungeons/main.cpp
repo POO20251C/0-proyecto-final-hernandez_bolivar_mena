@@ -3,7 +3,7 @@
 #include <iostream>
 #include <ostream>
 #include <string>
-#include <time.h>
+#include <ctime>
 #include <chrono>
 #include <thread>
 #include <algorithm>
@@ -49,10 +49,10 @@ void eventoCofre(GrupoJugador* jugador ) {
 
 	// logica del cofre
 	// 1 objeto ?
-	std::cout<< "Felicidades, has temrinado la sala 3! \n";
+	cout<< "Felicidades, has temrinado la sala 3! \n";
 	srand(static_cast<unsigned int>(time(nullptr)));
 
-	std::vector<Objeto> objetosCofre = {
+	vector<Objeto> objetosCofre = {
 		Objeto::Pocion(),
 		Objeto::MegaPocion(),
 		Objeto::HiperPocion(),
@@ -61,22 +61,27 @@ void eventoCofre(GrupoJugador* jugador ) {
 		};
 
 	int indiceAleatorio = rand() % objetosCofre.size();
-	Objeto objetoObtenido = objetosCofre[indiceAleatorio];
+	Objeto* objetoObtenido = new Objeto(objetosCofre[indiceAleatorio]);
 
 
-	std::cout << "¡Has abierto un cofre y encontrado: " << objetoObtenido.getName() << "!\n";
-	std::cout << "Vida proporcionada: " << objetoObtenido.getVida_proporcionada() << "\n";
-	std::cout << "Precio: " << objetoObtenido.getPrecio() << " monedas\n";
+	cout << "¡Has abierto un cofre y encontrado: " << objetoObtenido->getName() << "!\n";
+	cout << "Vida proporcionada: " << objetoObtenido->getVida_proporcionada() << "\n";
+	cout << "Precio: " << objetoObtenido->getPrecio() << " monedas\n";
+
+	jugador->agregarObjeto(objetoObtenido);
+
 }
 
 
-void eventoSantogrial(GrupoJugador* jugador, int nivel) {
+
+
+void eventoSantogrial(GrupoJugador* jugador) {
 
 	// Logica del santo grial
 	// Cura a todos los heroes
 	// aumenta la vida y todos los atributos de las entidades/heroes en un 10%?
 	//
-	// Entonces por cada heroe -> Heroe.setHp( Heroe.getHp + (Heroe.getHp * (0.10 * nivel)) )
+	// Entonces por cada heroe -> Heroe.setHp( Heroe.getHp + (Heroe.getHp * (0.10 * 8)) )
 
 
 
@@ -296,22 +301,17 @@ int main() {
 
 	// Inicializacion de cosas
 	
+	GrupoJugador boli("juan", 0,300);
+	vector<Objeto*> objetosboli = boli.getInventario();
 
-	// prueba de efectos 
-	vector<Efecto> efectos_base = { 
-		Efecto("Nada", 0, 0, 0, 0), 
-		Efecto("Aun nada", 0, 0, 0, 0) 
-	};
+	eventoCofre(&boli);
 
-	// prueba de armas (Sobrecarga)
-	
-	vector<Arma*> armas_base = {
-		Arma::Espada_basica(),
-		Arma::Baston_basico(),
-		Arma::Daga_basica(),
-		Arma::Palo_desgastado()
-	};	
-	
+
+	for (Objeto* o : boli.getInventario()) {
+		cout << o->getName() << endl;
+	}
+
+
 	// menu de juego principal
 	
 	cout << "Under dark dugeons" << endl;

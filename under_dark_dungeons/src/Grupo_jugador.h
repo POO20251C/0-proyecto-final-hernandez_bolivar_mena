@@ -38,12 +38,12 @@ public:
 
     // Acciones
     void sumarDano_t(int dano);
+    void agregarObjeto(Objeto* objeto);
     std::string sumarOro(int cantidad);
 
     std::string usarItem(int itemIndex, Heroe* heroe);
     std::string equiparArmadura(int armaduraIndex, Heroe* heroe);
     std::string equiparArma(int armaIndex, Heroe* heroe);
-
     std::string subirDeNivelElEquipo(int nivel);
 };
 

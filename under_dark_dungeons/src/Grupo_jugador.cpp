@@ -91,3 +91,7 @@ std::string GrupoJugador::subirDeNivelElEquipo(int nivel) {
 	return ans;
 
 }
+
+void GrupoJugador::agregarObjeto(Objeto* objeto) {
+    this->inventario.push_back(objeto);
+}
