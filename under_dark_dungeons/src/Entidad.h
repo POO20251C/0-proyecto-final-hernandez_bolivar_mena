@@ -45,23 +45,27 @@ class Entidad {
 		static std::vector<Entidad*> Orcos(int cantidad, int nivel);
 
 		// Mini Bosses
-		
-		/* 
-			ejemplo:
 
-			static entidad* nombre_del_miniboss()
-
-			// en el cpp
-			
-			 entidad* entidad::nombre_del_miniboss(argumentos si tiene) {
-			 return new entidad("nombre", hp, atk, def, des, lck, p (puntos o oro que da), {hacen daño y aplican efectos}, {} )
-			 }
-
-		 */
-
+		static Entidad* MiguelDavidArroyo(int nivel);
+		static Entidad* Frostbane(int nivel);
+		static Entidad* Toxsydra(int nivel);
+		static Entidad* Voltstryx(int nivel);
+		static Entidad* Razorbleed(int nivel);
+		static Entidad* JimboElPayasoAsesino(int nivel);
+		static Entidad* CianotipoElMounstroCopiador(int nivel);
 		
 		// Bosses
-		
+
+		static Entidad* AshkarIncandescente();
+		static Entidad* GelumdraSilente();
+		static Entidad* XyrothInfecto();
+		static Entidad* VoltumnDevorasínapsis();
+		static Entidad* VarkhemSangrante();
+		static Entidad* SatanasElDiablo();
+
+
+
+
 		/* 
 			ejemplo:
 

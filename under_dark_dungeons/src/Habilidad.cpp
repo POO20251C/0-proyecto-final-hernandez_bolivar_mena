@@ -1,34 +1,48 @@
 #include "Habilidad.h"
 
+#include "Efecto.h"
+
 // Constructor
 
-Habilidad::Habilidad(std::string name, std::string tipo, int mult, int usos) {
+Habilidad::Habilidad(std::string name, Efecto efecto, int mult):
+	name(name), efecto(efecto), mult(mult) {
 
-	this->name = name;
-	this->tipo = tipo;
-
-	this->mult = mult;
-	this->usos = usos;
 }
 
-// Getters y setter
+// Getters y setters
 
 std::string Habilidad::nameGetter() {
 	return this->name;
 }
 
-std::string Habilidad::tipoGetter() {
-	return this->tipo;
+Efecto Habilidad::efectoGetter() {
+	return this->efecto;
 }
 
-int Habilidad::multGetter() {
+int Habilidad::multGetter() const {
 	return this->mult;
 }
 
-void Habilidad::usosSetter(int usos) {
-	this->usos = usos;
+Habilidad Habilidad::HitoHitoNoMi() {
+	return {"Nada",{Efecto::Nada()},1};
 }
 
-int Habilidad::usosGetter() {
-	return this->usos;
+Habilidad Habilidad::GoroGoroNoMi() {
+	return {"Electrificacion",{Efecto::Paralisis()},2};
+}
+
+Habilidad Habilidad::MeraMeraNoMi() {
+	return {"Calcinacion", {Efecto::Quemadura()},3 };
+}
+
+Habilidad Habilidad::DokuDokuNoMi() {
+	return {"Toxicidad", {Efecto::Veneno()},4};
+}
+
+Habilidad Habilidad::OpeOpeNoMi() {
+	return {"Escama Roja Fluyente", {Efecto::Sangrado()},2};
+}
+
+class Habilidad Habilidad::HieHieNoMi() {
+	return {"Ice Saber", {Efecto::Congelacion()},2};
 }

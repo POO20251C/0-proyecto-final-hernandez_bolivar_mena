@@ -14,28 +14,28 @@ Efecto::Efecto(std::string name, int hp, int def, int vel, int lck) {
 
 
 Efecto Efecto::Nada() {
-	return Efecto("Nada", 0, 0, 0, 0);
+	return {"Nada", 0, 0, 0, 0};
 }
 
 
 Efecto Efecto::Quemadura() {
-	return Efecto("Quemadura", -5, -2, -1, 0);
+	return {"Quemadura", -5, -2, -1, 0};
 }
 
 Efecto Efecto::Congelacion() {
-	return Efecto("Congelacion", -5, 5, -10, -2);
+	return {"Congelacion", -5, 5, -10, -2};
 }
 
 Efecto Efecto::Veneno() {
-	return Efecto("Veneno", -10, 0, -3, -1);
+	return {"Veneno", -10, 0, -3, -1};
 }
 
 Efecto Efecto::Paralisis() {
-	return Efecto("Paralisis", 0, -5, -100, -5);
+	return {"Paralisis", 0, -5, -100, -5};
 }
 
 Efecto Efecto::Sangrado() {
-  return Efecto("Sangrado", -2, -10, -20, 10);
+  return {"Sangrado", -2, -10, -20, 10};
 }
 
 // Getters

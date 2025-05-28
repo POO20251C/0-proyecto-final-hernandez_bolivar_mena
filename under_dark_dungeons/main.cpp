@@ -16,7 +16,7 @@
 
 using namespace std;
 
-void narrar(const std::string& linea, int milisegundos = 1500) {
+void narrar(const std::string& linea, int milisegundos = 3000) {
     std::cout << linea << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(milisegundos));
 }
@@ -42,10 +42,12 @@ void inicioNarracion(vector<Heroe*> grupoJugador) {
     	narrar("Aquí no hay héroes. Solo sobrevivientes.\n");
 }
 
-void eventoCofre(GrupoJugador* jugador) {
+void eventoCofre(GrupoJugador* jugador ) {
 
 	// logica del cofre
 	// 1 objeto ?
+	std::cout<< "Felicidades, has temrinado la sala 3! \n";
+
 
 }
 
@@ -57,6 +59,9 @@ void eventoSantogrial(GrupoJugador* jugador, int nivel) {
 	// aumenta la vida y todos los atributos de las entidades/heroes en un 10%?
 	//
 	// Entonces por cada heroe -> Heroe.setHp( Heroe.getHp + (Heroe.getHp * (0.10 * nivel)) )
+
+
+
 
 }
 

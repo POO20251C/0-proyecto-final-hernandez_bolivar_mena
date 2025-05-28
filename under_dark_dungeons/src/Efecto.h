@@ -18,7 +18,9 @@ class Efecto {
 		// Constructores
 	
 		Efecto(std::string name, int hp, int def, int vel, int lck);
-		
+
+		Efecto();
+
 		static Efecto Nada();
 
 		static Efecto Quemadura();

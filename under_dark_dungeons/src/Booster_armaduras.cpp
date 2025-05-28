@@ -6,12 +6,6 @@
 Booster_armaduras::Booster_armaduras() {
     nombre = "Booster de Armaduras";
 
-    armaduras.push_back(Armadura("Armadura de Escarcha", 50, -10, {Efecto::Congelacion()}, 150));
-    armaduras.push_back(Armadura("Armadura de Lava", 60, -15, {Efecto::Quemadura()}, 180));
-    armaduras.push_back(Armadura("Armadura Transistora", 40, 5, {Efecto::Paralisis()}, 130));
-    armaduras.push_back(Armadura("Armadura de Rayo", 55, 0, {Efecto::Paralisis()}, 170));
-    armaduras.push_back(Armadura("Armadura de Hielo", 45, -5, {Efecto::Congelacion()}, 140));
-    armaduras.push_back(Armadura("Armadura de Sombra", 35, 8, {}, 120));
 }
 
 Armadura Booster_armaduras::abrir() {
