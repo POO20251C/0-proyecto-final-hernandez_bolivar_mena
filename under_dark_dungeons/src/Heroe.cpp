@@ -23,7 +23,7 @@ Heroe::Heroe(std::string name, int hp, int hp_base, int atk, int def, int des, i
     }
 
 Heroe* Heroe::Caballero() {
-	return new Heroe("Charles el caballero sin nombre", 120, 120, 30, 40, 40, 30, 0, {}, {}, Armadura::mallaLigera(), Arma::Espada_basica());
+	return new Heroe("Charles el caballero sin nombre", 120, 120, 30, 40, 40, 30, 0, Habilidad::Habilidades_caballero(), {}, Armadura::mallaLigera(), Arma::Espada_basica());
 }
 
 // Fin constructores

@@ -30,6 +30,9 @@ class Heroe: public Entidad {
           	Arma* arma_inicial);
 
 		static Heroe* Caballero();
+		static Heroe* Mago();
+		static Heroe* Ladron();
+		static Heroe* Marginado();
 		
 		// Setters
 		
