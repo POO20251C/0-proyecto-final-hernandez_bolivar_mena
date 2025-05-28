@@ -23,7 +23,7 @@ Heroe::Heroe(std::string name, int hp, int hp_base, int atk, int def, int des, i
     }
 
 Heroe* Heroe::Caballero() {
-	return new Heroe("Charles", 120, 120, 80, 100, 40, 30, 0, {}, {}, Armadura::mallaLigera(), Arma::Espada_basica());
+	return new Heroe("Charles el caballero sin nombre", 120, 120, 30, 40, 40, 30, 0, {}, {}, Armadura::mallaLigera(), Arma::Espada_basica());
 }
 
 // Fin constructores
@@ -62,7 +62,7 @@ int Heroe::getDef() {
 
 // Funciones heroe
 
-std::string Heroe::atacar(Entidad* enemigo, int nivel) {
+std::string Heroe::atacar(Entidad* enemigo) {
 	
 	std::string ans;
 
@@ -72,7 +72,7 @@ std::string Heroe::atacar(Entidad* enemigo, int nivel) {
 		
 
 		enemigo->recibirAtaque(dano, this->arma->getEfecto());
-		ans = this->name + " Ataco a " + enemigo->nameGetter() + "con " + this->arma->getName() + " y le hizo " + std::to_string(dano) + " de daño\n";
+		ans = this->name + " Ataco a " + enemigo->nameGetter() + " con " + this->arma->getName() + " y le hizo " + std::to_string(int(dano - (enemigo->defGetter() * 0.3)) ) + " de daño\n";
 
 	}
 
@@ -87,14 +87,16 @@ std::string Heroe::recibirAtaque(int dano) {
 
 
 	std::string ans;
-	int dano_total = dano - (dano * (this->getDef()/100));
+	int dano_total = dano -  ( this->getDef() * 0.2);
 	if(this->hp - dano_total <= 0) {
 		this->hp = 0;
+		this->vivo = false;
 		ans = this->name + " recibio " + std::to_string(dano_total) +" de daño y cayó muerto.\n";
 	}
 	
 	else {
-		
+
+		this->hp -= dano_total;
 		ans = this->name + " recibio " + std::to_string(dano_total) + " de daño.\n"; 
 
 	}

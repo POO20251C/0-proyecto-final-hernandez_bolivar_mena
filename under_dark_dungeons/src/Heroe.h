@@ -49,7 +49,7 @@ class Heroe: public Entidad {
 		
 		std::string mostrarHabilidades();
 
-		std::string atacar(Entidad* enemigo, int nivel);
+		std::string atacar(Entidad* enemigo);
 
 		std::string recibirAtaque(int dano);
 

@@ -6,7 +6,6 @@
 
 #include "Efecto.h"
 #include "Habilidad.h"
-#include "Heroe.h"
 
 
 // Constructor
@@ -67,7 +66,7 @@ Entidad* Entidad::generarOrco(int nivel) {
     int des = 28 + (nivel * 20);
     int lck = 3 + (nivel * 7);
     int p = 400 + (nivel * 20);
-    return new Entidad("Goblin", hp, atk, def, des, lck, p, {}, {});
+    return new Entidad("Orco", hp, atk, def, des, lck, p, {}, {});
 }
 
 std::vector<Entidad*> Entidad::Goblings(int cantidad, int nivel ) {
@@ -335,13 +334,18 @@ std::string Entidad::recibirAtaque(int dano, Efecto posible_efecto) {
 
 	srand(time(nullptr));
 	std::string ans;
-	int dano_total = dano - (dano * (this->defGetter()/100));
+	int dano_total = dano - (this->defGetter() * 0.3);
 	if(this->hpGetter() - dano_total <= 0) {
 		this->hp = 0;
 		ans = this->name + " cayó muerto.\n";
 	}
 	
 	else {
+
+		// RECIBE EL DAÑOOOO
+
+		this->hp -= dano_total;
+
 		int prob = 1 + rand() % 100;
 		if (prob > lck) {
 			this->efectos.push_back(posible_efecto);

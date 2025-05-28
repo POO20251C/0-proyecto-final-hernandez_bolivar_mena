@@ -3,7 +3,7 @@
 #include <iostream>
 #include <ostream>
 #include <string>
-#include <ctime>
+#include <time.h>
 #include <chrono>
 #include <thread>
 #include <algorithm>
@@ -23,6 +23,8 @@ void narrar(const std::string& linea, int milisegundos = 3000) {
     std::cout << linea << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(milisegundos));
 }
+
+// INICIO DIALOGOS ===========================================================================================================================
 
 void inicioNarracion(vector<Heroe*> grupoJugador) {
 	narrar("Una lluvia fría cae sobre los restos del mundo conocido...");
@@ -44,6 +46,8 @@ void inicioNarracion(vector<Heroe*> grupoJugador) {
     	narrar("Bienvenidos a Dark Dungeon.");
     	narrar("Aquí no hay héroes. Solo sobrevivientes.\n");
 }
+
+// FIN DIALOGOS ==============================================================================================================================
 
 void eventoCofre(GrupoJugador* jugador ) {
 
@@ -88,200 +92,249 @@ void eventoSantogrial(GrupoJugador* jugador) {
 
 }
 
-void combate(GrupoJugador* jugador, int nivel) {
-	srand(time(nullptr));
-	int number_of_enemies = rand() % 3 + 1;
-	string nombre_mounstros;
-	vector<Entidad*> grupo_enemigo;
-	bool derrota_grupo_enemigo = true;
+bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos) {
 
-	// Mercado inicial sala 1
-	// Cofre sala 3
-	// Miniboss sala 4
-	// Tesoro sala 6
-	// Miniboss Sala 7
-	// Santo grial y boss final sala 8
+	vector<Entidad*> grupo_enemigo = enemigos->getEnemigos();
+	vector<Heroe*> grupo_jugador = jugador->getHeroes();
 
-	if (nivel == 1 || nivel == 5) {
-		grupo_enemigo = Entidad::Goblings(number_of_enemies, nivel);
-		if (number_of_enemies != 1) {
-			nombre_mounstros = "un grupo de goblings.";
-		}
-		else {
-			nombre_mounstros = "un gobling.";
-		}
-	}	
-
-	else if (nivel == 2) {
-		grupo_enemigo = Entidad::Lagartos(number_of_enemies, nivel);
-		if (number_of_enemies != 1) {
-			nombre_mounstros = "un grupo de lagartos.";
-		}
-		else {
-			nombre_mounstros = "un lagarto.";
-		}
+	string mensaje_combate;
+	if (enemigos->getEnemigos().size() > 1) {
+		mensaje_combate = "un grupo de " + enemigos->getEnemigos()[0]->nameGetter() + "\n";
 	}
 
-	else if (nivel == 3) {
-		grupo_enemigo = Entidad::Araña_gigantes(number_of_enemies, nivel);
-		if (number_of_enemies != 1) {
-			nombre_mounstros = "un grupo de arañas.";
-		}
-		else {
-			nombre_mounstros = "una araña.";
-		}
+	else {
+		mensaje_combate = "un " + enemigos->getEnemigos()[0]->nameGetter() + "\n";
 	}
 
-	else if (nivel == 4) {
-		grupo_enemigo = Entidad::Orcos(number_of_enemies, nivel);
-		if (number_of_enemies != 1) {
-			nombre_mounstros = "un grupo de orcos.";
+	cout << "Entraste en combate contra " + mensaje_combate + "\n";
+
+	// HACER COMBATE OTRA FOKIN VEZ
+	while (jugador->getDerrota() && enemigos->getVivios()) {
+
+
+
+		vector<Entidad*> orden;
+
+		for(Heroe* h: grupo_jugador) {
+			if (h->getVivo()) {
+				orden.push_back(h);
+			}
 		}
-		else {
-			nombre_mounstros = "un orco.";
+
+		for (Entidad* e : grupo_enemigo) {
+			if (e->getVivo()) {
+				orden.push_back(e);
+			}
 		}
-	}
-	
-	vector<Entidad*> orden;
 
-	for (Heroe* h : jugador->getHeroes()) {
-		orden.push_back(static_cast<Entidad*>(h));
-	}
+		sort(orden.begin(), orden.end(), [](Entidad* a, Entidad* b) {return a->desGetter() > b->desGetter();
+				});
 
-	orden.insert(orden.end(), grupo_enemigo.begin(), grupo_enemigo.end());
 
-	narrar("Has entrado en combate contra " + nombre_mounstros);
-	
-	while (jugador->getDerrota() && derrota_grupo_enemigo) {
-
-		orden.erase(
-    		remove_if(orden.begin(), orden.end(), [](Entidad* e) { return !e->getVivo(); }),
-    		orden.end());
-
-		sort(orden.begin(), orden.end(), [](Entidad* a, Entidad* b) {
-		return a->desGetter() > b->desGetter();
-					});
-	
-		for (Entidad* e : orden) {
+		for (Entidad* e: orden) {
 			
-			Heroe* h = dynamic_cast<Heroe*>(e);
-			
-			if (h != nullptr) {
-			// ES UN HEROE
-			// Logica del combate para el heroe
-			int jugador_eleccion_combate;
+			if (!e->getVivo()) {
+				continue;
+			}
+
+		if (Heroe* h = dynamic_cast<Heroe*>(e))
+		{
+
+			// ===========================================================================
+			//
+			// LOGICA PARA EL JUGADOR
+			//
+			// 1. Atacar
+			// 	|-----> Muestra enemigos y selecciona un objetivo.
+			//
+			// 2. Habilidades
+			// 	|-----> Muestra las habilidades, luego enemigos y selecciona un objetivo.
+			//
+			// 3. Items
+			//	|------> Muestra los items y selecciona a un heroe al cual hacerle efecto.
+			//
+			// ===========================================================================
+
+
+				vector<Entidad*> posiblesObjetivos;
+
+				// TODOS LOS OBJETIVOS VALIDOS EN OTRO VECTOR
+				for(Entidad* e : grupo_enemigo) {
+
+					if(e->getVivo()) {
+						posiblesObjetivos.push_back(e);
+					}
+
+				}
+
+				// EN CASO DE QUE SE MUERAN TODOS?
+				if (posiblesObjetivos.empty()) {
+					break;
+				}
+
+
+			int eleccion_jugador = 0;
 			bool eleccion_valida = false;
 
+			cout << "Turno de " + h->nameGetter() + "\n\n";
+
 			while (!eleccion_valida) {
+			bool target_valido = false;
 
-				cout << "Estas usando a " + h->nameGetter() + " que deseas hacer?\n";
+			cout << "1. Atacar\n2. Habilidades\n3. Usar un item\n";
 
-				cout << "1. Atacar\n2. Usar habilidad\n3. Usar un item\n";
+			cout << "Vida de " << h->nameGetter() << " " << h->hpGetter() << endl;
 			
-				cout << "Selecciona una opcion: ";
-				cin >> jugador_eleccion_combate;
+			cout << "Seleccione una opcion: ";
+			cin >> eleccion_jugador;
 
-				if (jugador_eleccion_combate == 1) {
-				
-					while (!eleccion_valida) {
+			cout << endl;
 
-						// Verificar muertos
-						
-						grupo_enemigo.erase(remove_if(grupo_enemigo.begin(), grupo_enemigo.end(),[](Entidad* e) {return !e->getVivo(); }));
 
-						// Mostrar y seleccionar enemigo/s
-						cout << "#	Nombre		Vida\n";
-						for (int i = 0; i < grupo_enemigo.size(); i++) {
+			// CASO DE ATAQUE
+			if (eleccion_jugador == 1) {
 
-							cout << to_string(i+1) + ". \t" + grupo_enemigo[i]->nameGetter() + " \t" + to_string(grupo_enemigo[i]->hpGetter()) << endl; 
-						}
-						
-						cout << endl;
-						cout << "Selecciona un objetivo: ";
-						cin >> jugador_eleccion_combate;
-						if (jugador_eleccion_combate > grupo_enemigo.size() || jugador_eleccion_combate < 0) {
-						
-							cout << "Selecciona un objetivo valido!!\n";
-						
-						}
 
-						else {
+				while (!target_valido) {
 
-							narrar( h->atacar(grupo_enemigo[jugador_eleccion_combate - 1], nivel) );
-							eleccion_valida = true;
-
-						}
-
-					
+					for(size_t i = 0; i < posiblesObjetivos.size(); i++) {
+						cout << to_string(i + 1) << ". " << posiblesObjetivos[i]->nameGetter() << "\t" << posiblesObjetivos[i]->hpGetter() << endl;
 					}
-				
+
+					cout << "4. Volver\n";
+
+					int target = 0;
+					cout << "Elije un objetivo: ";
+					cin.clear();
+					cin >> target;
+
+					if (target > 0 && target <= posiblesObjetivos.size()) {
+
+						cout << "\n";
+
+						narrar( h->atacar(posiblesObjetivos[target - 1]) );
+						target_valido = true;
+						eleccion_valida = true;
+
+					}
+
+
+
+					// VOLVER ESTA ROTO POR AHORA NO SÉ PORQUE.
+
+					if (target == 4) {
+
+						break;
+
+					}
+
+
+
+
 
 				}
 
-				else if (jugador_eleccion_combate == 2) {
-	
-					// Mostrar habilidades, seleccionar habilidad, Mostrar y seleccionar enemigo/s
 
-				}
 
-				else if (jugador_eleccion_combate == 3) {
+			}
 
-					// Mostrar items y seleccionar heroe al cual afectar
+			// CASO DE USAR HABILIDAD
+			else if (eleccion_jugador == 2) {
 
-				}
+
+
+			}
+
+			// CASO DE USAR UN ITEM
+			else if (eleccion_jugador == 3) {
 
 			}
 
 
+			}
+
+
+		}
+
+		else
+
+		{
+
+			// LOGICA PARA LA IA ========================================================
+			
+			srand(time(nullptr));
+			int prob_hab = 1 + rand() % 100;
+
+			vector<Heroe*> posibleTargetEnemigo;
+
+			for (Heroe* h : grupo_jugador) {
+				if (h->getVivo()) {
+					posibleTargetEnemigo.push_back(h);
+				}
+			}
+
+			if (posibleTargetEnemigo.empty()) {
+				break;
+			}
+
+			if (!e->getHabilidades().empty() && prob_hab < 20) {
+
+				// IA USA UNA HABILIDAD
+
+				narrar(e->nameGetter() + " va a usar una habilidad\n");
 
 			}
 
 			else {
 
-				// ES UNA ENTIDAD
-				// Logica para el combate de la IA
-			
-				int hab_atk_enemigo = 1 + rand() % 100;
+			int target_enemigo = rand() % (int)posibleTargetEnemigo.size();
 
-				if (!e->getHabilidades().empty() && hab_atk_enemigo < 20) {
-
-					narrar("No hizo nada " + e->nameGetter());
-
-				}
-				
-				else {
-
-					int target = rand() % jugador->getHeroes().size();
-					
-					narrar(jugador->getHeroes()[target]->recibirAtaque(e->atkGetter()));
-
-				}
-
-
+			narrar( posibleTargetEnemigo[target_enemigo]->recibirAtaque(e->atkGetter()) );
 
 
 			}
+
+
 		}
 
 
 
-			grupo_enemigo.erase(
-    				remove_if(
-        				grupo_enemigo.begin(),
-        				grupo_enemigo.end(),
-        				[](Entidad* e) { return !e->getVivo(); }
-    				),
-   	 			grupo_enemigo.end()
-		);	
-		
-		if (grupo_enemigo.empty()) {
-			derrota_grupo_enemigo = false;
-		}
-		
-	
+
+
+
 	}
 
+
+
+		// FIN BUCLE PRINCIPAL DEL COMBATE ==============================================================
+
+	}
+
+	//===========================================================================
+	//
+	// LOGICA DE QUE RETORNAR
+	//
+	// jugador->getDerrota() == false -> Derrota del jugador -> devolver false
+	//
+	// enemigos->getVivos() == false -> Derrota de los enemigos -> devolver true
+	//
+	// ==========================================================================
+
+	bool ans;
+
+	if (!jugador->getDerrota()) {
+		ans = false;
+	}
+
+	else if (!enemigos->getVivios()) {
+		ans = true;
+	}
+
+
+	return ans;
+
 }
+
 
 // MAIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIN ACA ESTA EL PROGRAMA PRINCIPAL
 //
@@ -299,22 +352,32 @@ void combate(GrupoJugador* jugador, int nivel) {
 int main() {
 
 
-	// Inicializacion de cosas
+	// Pruebas cacorras para el combate
 	
-	GrupoJugador boli("juan", 0,300);
-	vector<Objeto*> objetosboli = boli.getInventario();
 
-	eventoCofre(&boli);
+	GrupoJugador Yura("Yura", 0, 300);
+	vector<Heroe*> testCaballero = {
+		Heroe::Caballero()
+	};
+
+	Yura.setHeroes(testCaballero);
 
 
-	for (Objeto* o : boli.getInventario()) {
-		cout << o->getName() << endl;
+	if ( combate(&Yura, GrupoEnemigo::genGrupoEnemigo(1)) )
+	 {
+		narrar("Ganaste el combate.\n");
+	 }
+
+	else
+	{
+		narrar("Perdiste el combate, todo tu equipo fue masacrado.\n");
 	}
+
 
 
 	// menu de juego principal
 	
-	cout << "Under dark dugeons" << endl;
+	cout << "\nUnder dark dugeons" << endl;
 
 	cout << endl;
 	
@@ -423,6 +486,9 @@ int main() {
 		} 
 
 	}
+
+
+
 
 	return 0;
 }
