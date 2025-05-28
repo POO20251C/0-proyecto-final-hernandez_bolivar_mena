@@ -1,7 +1,12 @@
 #include "Entidad.h"
+#include <cstdlib>
+#include <ctime>
 #include <string>
+#include <vector>
 
+#include "Efecto.h"
 #include "Habilidad.h"
+#include "Heroe.h"
 
 
 // Constructor
@@ -30,17 +35,17 @@ Entidad* Entidad::generarGoblin(int nivel) {
     int atk = 15 + (nivel * 20);
     int def = 5 + (nivel * 20);
     int des = 20 + (nivel * 20);
-    int lck = 20 + (nivel * 20);
+    int lck = 10 + (nivel * 7);
     int p = 100 + (nivel * 20);
     return new Entidad("Goblin", hp, atk, def, des, lck, p, {}, {});
 }
 
 Entidad* Entidad::generarLagarto(int nivel) {
-    int hp = 60 + (nivel * 20);
-    int atk = 22 + (nivel * 20);
-    int def = 10 + (nivel * 20);
-    int des = 12 + (nivel * 20);
-    int lck = 20 + (nivel * 20);
+	int hp = 60 + (nivel * 20);
+	int atk = 22 + (nivel * 20);
+	int def = 10 + (nivel * 20);
+	int des = 12 + (nivel * 20);
+    int lck = 6 + (nivel * 7);
     int p = 200 + (nivel * 20);
     return new Entidad("Lagarto", hp, atk, def, des, lck, p, {}, {});
 }
@@ -50,7 +55,7 @@ Entidad* Entidad::generarAraña(int nivel) {
     int atk = 20 + (nivel * 20);
     int def = 15 + (nivel * 20);
     int des = 15 + (nivel * 20);
-    int lck = 20 + (nivel * 20);
+    int lck = 10 + (nivel * 7);
     int p = 200 + (nivel * 20);
     return new Entidad("Araña", hp, atk, def, des, lck, p, {}, {});
 }
@@ -60,7 +65,7 @@ Entidad* Entidad::generarOrco(int nivel) {
     int atk = 25 + (nivel * 20);
     int def = 20 + (nivel * 20);
     int des = 28 + (nivel * 20);
-    int lck = 20 + (nivel * 20);
+    int lck = 3 + (nivel * 7);
     int p = 400 + (nivel * 20);
     return new Entidad("Goblin", hp, atk, def, des, lck, p, {}, {});
 }
@@ -248,7 +253,17 @@ void Entidad::defSetter(int def) {
 }
 
 int Entidad::defGetter() {
-	return this->def;
+	
+	int trueDef = this->def;
+
+	if (!this->efectos.empty()) {
+
+		for (int i = 0; i < this->efectos.size(); i++ ) {
+			trueDef += efectos[i].getdef();
+		}
+	}
+
+	return trueDef;
 }
 
 void Entidad::desSetter(int des) {
@@ -256,15 +271,33 @@ void Entidad::desSetter(int des) {
 }
 
 int Entidad::desGetter() {
-	return this->des;
+	int trueDes = this->des;
+
+	if (!this->efectos.empty()) {
+
+		for (int i = 0; i < this->efectos.size(); i++ ) {
+			trueDes += efectos[i].getvel();
+		}
+	}
+
+	return trueDes;
 }
 
 void Entidad::lckSetter(int lck) {
-	this->lck = lck;
+	this->lck = lck;	
 }
 
 int Entidad::lckGetter() {
-	return this->lck;
+	int trueLck = this->lck;
+
+	if (!this->efectos.empty()) {
+
+		for (int i = 0; i < this->efectos.size(); i++ ) {
+			trueLck += efectos[i].getlck();
+		}
+	}
+
+	return trueLck;
 }
 
 void Entidad::pSetter(int p) {
@@ -275,10 +308,81 @@ int Entidad::pGetter() {
 	return this-> p;
 }
 
+bool Entidad::getVivo() {
+	bool ans = true;
+	if (this->hp <= 0) {
+		if (this->hp < 0) {
+			this->hp = 0;
+		}
+		ans = false;
+	}
+	return ans;
+}
+
+
+std::vector<Habilidad> Entidad::getHabilidades() {
+	return this->habilidades;
+}
+
 // Funciones generales de identidad
 
 
+std::string Entidad::recibirAtaque(int dano, Efecto posible_efecto) {
+
+	// def es un porcentaje -> dano - (dano * (def/100))
+	// lck es un una probabilidad de que no se aplique el efecto
+
+
+	srand(time(nullptr));
+	std::string ans;
+	int dano_total = dano - (dano * (this->defGetter()/100));
+	if(this->hpGetter() - dano_total <= 0) {
+		this->hp = 0;
+		ans = this->name + " cayó muerto.\n";
+	}
+	
+	else {
+		int prob = 1 + rand() % 100;
+		if (prob > lck) {
+			this->efectos.push_back(posible_efecto);
+			ans  = this->name + " recibio " +  posible_efecto.getname();
+		}
+	}
+
+	return ans;
+
+}
+
+std::string Entidad::aplicarEfecto() {
+
+	int dano_total = 0;
+	std::string ans;
+
+	for (Efecto e : this->efectos) {
+		
+		dano_total += e.gethp();
+		ans = this->name + " recibio " + std::to_string(e.gethp()) + " por "  + e.getname() + "\n";
+
+		if (this->hpGetter() + dano_total <= 0) 
+		{
+			ans += this->name + " murio por " + e.getname() + "\n";
+		}
+
+	}
+
+	return ans;
+
+}
+
+
+
+
 // ESTA FUNCION ES PARA HEROE NO PARA ENTIDAD
+//
+// QUIEN HIZO ESTO AQUI??
+//
+// AAAAH NO, Los minibosses y los bosses tambien usan habilidades MLP.
+
 std::string Entidad::mostrarHabilidades() {
 
 	std::string ans = "";
@@ -289,9 +393,6 @@ std::string Entidad::mostrarHabilidades() {
 
 	return ans;
 }
-
-
-
 
 
 

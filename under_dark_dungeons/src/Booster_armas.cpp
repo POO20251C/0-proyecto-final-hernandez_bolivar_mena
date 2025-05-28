@@ -20,6 +20,5 @@ Arma Booster_armas::abrir() {
               << " | Efecto: " << arma_obtenida.getEfecto().getname()
               << " | Ataque: " << arma_obtenida.getAtk()
               << " | Precio: " << arma_obtenida.getPrecio() << "\n";
-
     return arma_obtenida;
 }

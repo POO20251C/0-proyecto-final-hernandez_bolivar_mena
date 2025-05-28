@@ -16,14 +16,14 @@
 class Heroe: public Entidad {
 
 	private:
-		
+		int hp_base;	
 		Armadura* armadura;
 		Arma* arma;
 
 	public:
 		
 		// Constructores
-    		Heroe(std::string name, int hp, int atk, int def, int des, int lck, int p,
+    		Heroe(std::string name, int hp, int hp_base, int atk, int def, int des, int lck, int p,
           	std::vector<Habilidad> habilidades,
           	std::vector<Efecto> efectos,
           	Armadura* armadura_inicial,
@@ -31,26 +31,33 @@ class Heroe: public Entidad {
 
 		static Heroe* Caballero();
 		
-		// getters
-		
-		int getHp();
-		int getAtk();
-		int getDef();
-		int getDes();
-		int getLck();
-
-
-
 		// Setters
 		
 		void setArma(Arma* arma);
 		void setArmadura(Armadura* armadura);
+		void setHp(int hp_base, int nivel);
+
+
+		// Getters
+		int getHp();
+		int getAtk();
+		int getDef();
 
 		// Funciones de Heroe
-
+		
+		void subirDeNivel(int nivel);
+		
 		std::string mostrarHabilidades();
 
-		bool recibeDanoPor(const std::string& efecto);
+		std::string atacar(Entidad* enemigo, int nivel);
+
+		std::string recibirAtaque(int dano);
+
+		std::string recibirAtaqueHabilidad(int dano, Efecto posible_efecto);
+
+		std::string aplicarEfecto();
+
+
 
 	
 

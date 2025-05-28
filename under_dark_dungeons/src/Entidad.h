@@ -27,6 +27,10 @@ class Entidad {
 		
 	public:
 
+		// Destructor
+
+		virtual ~Entidad() {};
+
 		// Constructores
 
 		Entidad(std::string name, int hp, int atk, int def, int des, int lck, int p, std::vector<Habilidad> habilidades, std::vector<Efecto> efectos);
@@ -104,14 +108,21 @@ class Entidad {
 		void pSetter(int p);
 		int pGetter();
 
+		bool getVivo();
+
+		std::vector<Habilidad> getHabilidades();
+
 		// Funciones de ENTIDAD
 		
 		// std::string atacar(Heroe* objetivo);
 		
 		std::string mostrarHabilidades();
 		std::string usarHabilidad(int habilidad);
+		
+		virtual std::string recibirAtaque(int dano, Efecto posible_efecto);
 
+		virtual std::string aplicarEfecto();
 
-};
+}; 
 
 #endif
