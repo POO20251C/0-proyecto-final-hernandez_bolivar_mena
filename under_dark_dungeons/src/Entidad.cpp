@@ -380,8 +380,11 @@ std::vector<Habilidad> Entidad::getHabilidades() {
 	return this->habilidades;
 }
 
-// Funciones generales de identidad
+std::vector<Efecto> Entidad::getEfectosActivos() {
+	return this->efectos;
+}
 
+// Funciones generales de identidad
 
 std::string Entidad::recibirAtaque(int dano, Efecto posible_efecto) {
 
@@ -418,17 +421,27 @@ std::string Entidad::aplicarEfecto() {
 
 	int dano_total = 0;
 	std::string ans;
-
+	std::vector<Efecto> efectos_validos;
 	for (Efecto e : this->efectos) {
+		if (e.getname() != "Nada" ) {
+			efectos_validos.push_back(e);
+		}
+	}
+
+	for (Efecto e : efectos_validos) {
 		
 		dano_total += e.gethp();
-		ans = this->name + " recibio " + std::to_string(e.gethp()) + " por "  + e.getname() + "\n";
+		ans = this->name + " recibio " + std::to_string(e.gethp() * -1) + " por "  + e.getname() + "\n";
 
-		if (this->hpGetter() + dano_total <= 0) 
+		if (this->hp + dano_total <= 0)
 		{
 			ans += this->name + " murio por " + e.getname() + "\n";
+			this->vivo = false;
+			this->hp = 0;
+			break;
 		}
 
+		this->hp += dano_total;
 	}
 
 	return ans;

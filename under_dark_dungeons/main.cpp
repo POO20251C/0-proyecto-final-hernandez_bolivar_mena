@@ -1,5 +1,7 @@
 #include <cstddef>
+#include <iomanip>
 #include <cstdlib>
+#include <ios>
 #include <iostream>
 #include <ostream>
 #include <string>
@@ -8,6 +10,9 @@
 #include <thread>
 #include <algorithm>
 #include <vector>
+#include <fstream>
+#include <sstream>
+#include <utility>
 
 #include "src/Entidad.h"
 #include "src/GrupoEnemigo.h"
@@ -18,22 +23,255 @@
 
 using namespace std;
 
-void narrar(const std::string& linea, int milisegundos = 3000) {
+void mostrarBanner() {
+    std::cout << R"(
+
+▗▖ ▗▖▗▖  ▗▖▗▄▄▄ ▗▄▄▄▖▗▄▄▖     ▗▄▄▄  ▗▄▖ ▗▄▄▖ ▗▖ ▗▖    ▗▄▄▄ ▗▖ ▗▖▗▖  ▗▖ ▗▄▄▖▗▄▄▄▖ ▗▄▖ ▗▖  ▗▖ ▗▄▄▖
+▐▌ ▐▌▐▛▚▖▐▌▐▌  █▐▌   ▐▌ ▐▌    ▐▌  █▐▌ ▐▌▐▌ ▐▌▐▌▗▞▘    ▐▌  █▐▌ ▐▌▐▛▚▖▐▌▐▌   ▐▌   ▐▌ ▐▌▐▛▚▖▐▌▐▌   
+▐▌ ▐▌▐▌ ▝▜▌▐▌  █▐▛▀▀▘▐▛▀▚▖    ▐▌  █▐▛▀▜▌▐▛▀▚▖▐▛▚▖     ▐▌  █▐▌ ▐▌▐▌ ▝▜▌▐▌▝▜▌▐▛▀▀▘▐▌ ▐▌▐▌ ▝▜▌ ▝▀▚▖
+▝▚▄▞▘▐▌  ▐▌▐▙▄▄▀▐▙▄▄▖▐▌ ▐▌    ▐▙▄▄▀▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌    ▐▙▄▄▀▝▚▄▞▘▐▌  ▐▌▝▚▄▞▘▐▙▄▄▖▝▚▄▞▘▐▌  ▐▌▗▄▄▞▘
+                                                                                                
+    )" << std::endl;
+}
+
+void narrar(const std::string& linea, int milisegundos = 500) {
     std::cout << linea << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(milisegundos));
 }
 
+void narrarSinEspacio(const std::string& linea, int milisegundos = 3000) {
+    std::cout << linea;
+    std::this_thread::sleep_for(std::chrono::milliseconds(milisegundos));
+}
+
 // INICIO DIALOGOS ===========================================================================================================================
+	
+Heroe* elegirHeroe(vector<string> dialogos, vector<Heroe*> yaElejidos, string pregunta) {
+
+	Heroe* ans;
+
+	vector<Heroe*> heroes = {
+		Heroe::Caballero(),
+		Heroe::Mago(),
+		Heroe::Ladron(),
+		Heroe::Marginado()
+
+	};
+
+	vector<string> nombres_heroes = {
+		"Caballero",
+		"Mago",
+		"Ladron",
+		"Marginado"
+	}; 
+
+	vector<pair<string, string>> heroe_dialogo;
+
+	for (int i = 0; i < dialogos.size(); i++) {
+			heroe_dialogo.push_back(make_pair(nombres_heroes[i], dialogos[i]));
+	}
+
+	vector<Heroe*> disponibles;
+
+	for (Heroe* h_d : heroes) {
+
+		bool noEsta = true;
+	
+
+
+		for (Heroe* h_s : yaElejidos) {
+			if (h_d->nameGetter() == h_s->nameGetter()) {
+				noEsta = false;
+			}
+		}
+
+		if (noEsta) {
+			disponibles.push_back(h_d);
+		}
+
+	}
+		
+
+	bool eleccion = true;
+
+	while (eleccion) {
+
+
+
+		for (int i = 0; i < disponibles.size(); i++) {
+			for (const auto& p : heroe_dialogo) {
+				if(disponibles[i]->nameGetter() == p.first) {
+					narrar(to_string(i+1) + ". " + p.second);
+				}
+			}
+		}
+
+		cout << endl;
+		int eleccion_heroe = 0;
+		narrarSinEspacio(pregunta, 700);
+		cin >> eleccion_heroe;
+
+		cout << endl;
+
+		if (eleccion_heroe > 0 && eleccion_heroe <= disponibles.size()) {
+
+			ans = disponibles[eleccion_heroe - 1];
+			eleccion = false;
+
+		}
+
+
+
+	
+	}
+	
+	return ans;
+
+}
+
+
+
+Heroe* HistoriaI(vector<Heroe*> yaElejidos) {
+    // I. El primero
+    narrar("Hay quienes son olvidados.");
+    narrar("Y hay quienes eligen desaparecer antes de serlo.");
+    narrar("");
+    narrar("Caminó durante años por caminos que no llevaban a ningún lugar.");
+    narrar("Ya no recordaba el motivo…");
+    narrar("solo que no podía detenerse sin escuchar los gritos de su propio pasado.");
+    narrar("");
+    narrar("Una noche sin luna, bajo la sombra de una torre derrumbada, se detuvo.");
+    narrar("No porque encontrara algo.");
+    narrar("Sino porque ya no quedaba nada que encontrar.");
+    narrar("");
+
+
+      vector<string> dialogos = {
+	"Una espada envuelta en paños, rechazada por su reino, bañada en sangre de aliados.",
+    	"Un tomo encadenado, sellado con pactos que chillan cuando se abre.",
+    	"Una sortija negra, robada de un altar donde dormía algo que aún respira.",
+    	"Una carcajada nerviosa, como un eco constante que nadie más oye."
+      };
+
+    Heroe* ans = elegirHeroe(dialogos, yaElejidos, "Escoge que lo mantenia atado al mundo: ");
+
+    narrar("");
+    narrar("Ese fue el inicio del silencio.");
+    narrar("");
+
+    return ans;
+
+}
+
+
+
+
+
+Heroe* HistoriaII(vector<Heroe*> yaElejidos) {
+    // II. El segundo
+    narrar("El tiempo se deformó, estirado entre estaciones que ya no tenían color.");
+    narrar("Una figura apareció entre la niebla.");
+    narrar("No como aparición.");
+    narrar("Sino como si hubiera estado allí todo el tiempo, esperando a ser notada.");
+    narrar("");
+    narrar("No dijo su nombre.");
+    narrar("No miró a los ojos.");
+    narrar("Solo compartió el calor precario de un fuego improvisado.");
+    narrar("");
+
+    narrar("Escoge cómo revelaba su pasado sin palabras:");
+
+	vector<string> dialogos = {
+    "Un yelmo agrietado, el blasón arrancado a cuchillo.",
+    "Una máscara quemada, pegada a la piel.",
+    "Un saco raído, con el tintinear de algo imposible dentro.",
+    "Un silbido desafinado que nadie logra recordar después de escucharlo."
+	};
+
+    Heroe* ans = elegirHeroe(dialogos, yaElejidos, "Escoge cómo revelaba su pasado sin palabras: ");
+
+    narrar("");
+    narrar("No hubo acuerdos.");
+    narrar("Solo caminaron juntos al día siguiente.");
+    narrar("");
+
+    return ans;
+
+}
+
+Heroe* HistoriaIII(vector<Heroe*> yaElejidos) {
+    // III. El tercero
+    narrar("Estaba allí.");
+    narrar("Simplemente… estaba.");
+    narrar("");
+    narrar("Sentado sobre un muro roto, mirando un cielo sin estrellas.");
+    narrar("No parecía tener edad, ni pasado, ni intención de moverse.");
+    narrar("Pero lo hizo.");
+    narrar("");
+    narrar("Sin hablar.");
+    narrar("Sin sonreír.");
+    narrar("Solo caminando en el mismo ritmo.");
+    narrar("");
+
+    narrar("Escoge su marca:");
+
+	vector<string> dialogos = {
+    	"Una hoja oxidada que vibra al contacto de la traición.",
+    	"Un pequeño objeto envuelto en vendas, que supura algo invisible.",
+    	"Un guante quemado en forma de garra, que no parece querer soltar nada.",
+    	"Una voz aguda, como de niño, pero sin ninguna infancia en ella."
+	};
+
+    Heroe* ans = elegirHeroe(dialogos, yaElejidos, "Escoge su marca: ");
+
+    narrar("");
+    narrar("Y así fueron tres.");
+    narrar("");
+
+    return ans;
+
+}
+
+
+void HistoriaIV() {
+
+
+    narrar("No formaron un grupo.");
+    narrar("No tejieron alianzas.");
+    narrar("No compartieron esperanzas.");
+    narrar("");
+    narrar("Solo descubrieron que el silencio compartido es menos insoportable que el silencio solo.");
+    narrar("Que los pasos en conjunto no pesan tanto.");
+    narrar("Que la locura es más lenta cuando alguien más también la arrastra.");
+    narrar("");
+    narrar("Cada uno venía de un lugar distinto del infierno.");
+    narrar("Pero el dolor…");
+    narrar("era idéntico.");
+    narrar("");
+
+    narrar("Primero fue el murmullo.");
+    narrar("Luego, los sueños.");
+    narrar("Después, el viento cambió de dirección, como si algo respirara desde el subsuelo.");
+    narrar("");
+    narrar("Y entonces apareció.");
+    narrar("Una herida antigua en la carne del mundo.");
+    narrar("Un abismo que no se construyó, sino que despertó.");
+    narrar("");
+    narrar("La Dark Dungeon.");
+    narrar("La única cosa que aún crece mientras el mundo se muere.");
+
+}
+
+
+
 
 void inicioNarracion(vector<Heroe*> grupoJugador) {
 
-	
-
-	narrar("Una lluvia fría cae sobre los restos del mundo conocido...");
+	narrar("Entoces un dia del cual lluvia fría caia sobre los restos del mundo conocido...");
 	narrar("Entre los susurros del viento, una antigua entrada emerge del abismo: la entrada a la Dark Dungeon.");
     	narrar("Dicen que ninguna luz escapa de sus muros, y que quienes entran... rara vez regresan.");
     	narrar("");
-   	narrar("Un grupo de guerreros, marcado por cicatrices físicas y espirituales, se reúne frente a la grieta en la tierra.");
+   	narrar("Un grupo de gente sin rumbo, marcado por cicatrices físicas y espirituales, se reúne frente a la grieta en la tierra.");
     	narrar("No por gloria, no por oro... sino porque ya no tienen nada que perder.");
     	narrar("");
 	
@@ -110,13 +348,50 @@ void inicioNarracion(vector<Heroe*> grupoJugador) {
     	narrar("Aquí no hay héroes. Solo sobrevivientes.\n");
 }
 
+void narracionVictoria() {
+    narrar("Salimos.");
+    narrar("No ilesos, nunca ilesos… pero vivos.");
+    narrar("");
+    narrar("La dungeon no nos entregó su secreto sin cobrar un precio.");
+    narrar("Nos desgarró la carne, torció nuestra cordura, y nos obligó a mirarnos sin máscaras.");
+    narrar("Allí abajo, el tiempo se quebraba, y los nombres ya no importaban.");
+    narrar("");
+    narrar("Pero resistimos.");
+    narrar("No por esperanza, sino por terquedad.");
+    narrar("Porque algo en nosotros se negó a morir donde tantos lo hicieron.");
+    narrar("");
+    narrar("La última puerta cayó.");
+    narrar("La última sombra huyó de nuestra mirada.");
+    narrar("Y cuando el silencio reemplazó al eco de la oscuridad, supimos que habíamos ganado.");
+    narrar("");
+    narrar("No hay canción para nosotros.");
+    narrar("No hay monumentos ni leyendas.");
+    narrar("");
+    narrar("Solo la certeza de que la oscuridad, por una vez… retrocedió.");
+}
+
 // FIN DIALOGOS ==============================================================================================================================
 
-void eventoCofre(GrupoJugador* jugador ) {
+vector<Heroe*> SeleccionDeHeroe() {
+
+	vector<Heroe*> ans = {};
+
+	ans.push_back(HistoriaI(ans));
+	ans.push_back(HistoriaII(ans));
+	ans.push_back(HistoriaIII(ans));
+
+	HistoriaIV();
+
+	return ans;
+
+	
+}
+
+void eventoCofre(GrupoJugador* jugador , int nivel) {
 
 	// logica del cofre
 	// 1 objeto ?
-	narrar("Felicidades, has temrinado la sala 3! \n") ;
+	narrar("Felicidades, has temrinado la sala " + to_string(nivel) + "!\n") ;
 	srand(static_cast<unsigned int>(time(nullptr)));
 
 	vector<Objeto> objetosCofre = {
@@ -188,11 +463,22 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 		mensaje_combate = enemigos->getEnemigos()[0]->nameGetter();
 	}
 
-	cout << "\nEntraste en combate contra " + mensaje_combate + "\n";
+	narrar("\nEntraste en combate contra " + mensaje_combate + "\n", 1000);
 
 	while (jugador->getDerrota() && enemigos->getVivios()) {
 
 
+		for (Heroe* h : grupo_jugador) {
+			if (!h->getEfectosActivos().empty()) {
+				narrar(h->aplicarEfecto(), 1000);
+			}
+		}
+
+		for (Entidad* e : grupo_enemigo) {
+			if (!e->getEfectosActivos().empty()) {
+				narrar(e->aplicarEfecto(), 1000);
+			}
+		}
 
 		vector<Entidad*> orden;
 
@@ -256,14 +542,14 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 
 			bool eleccion_valida = false;
 
-			cout << "Turno de " + h->nameGetter() + "\n\n";
+			 narrar("Turno de " + h->nameGetter() + "\n\n", 500);
 
 			while (!eleccion_valida) {
 
 			bool target_valido = false;
 			int eleccion_jugador = 0;
 
-			cout << "1. Atacar\n2. Habilidades\n3. Usar un item\n";
+			cout << "1. Atacar\n2. Habilidades\n3. Usar un item\n4. Ver estado del grupo\n";
 
 			cout << "Vida de " << h->nameGetter() << " " << h->hpGetter() << endl;
 			
@@ -294,7 +580,7 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 
 						cout << "\n";
 
-						narrar( h->atacar(posiblesObjetivos[target - 1]), 1500 );
+						narrar( h->atacar(posiblesObjetivos[target - 1], jugador), 1500 );
 						target_valido = true;
 						eleccion_valida = true;
 
@@ -343,7 +629,7 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 							if (target > 0 && target <= posiblesObjetivos.size()) {
 								cout << "\n";
 
-								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1), 1500 );
+								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1, jugador), 1500 );
 								target_valido = true;
 								eleccion_valida = true;
 								menu_habilidades = false;
@@ -375,7 +661,7 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 							if (target > 0 && target <= posiblesObjetivos.size()) {
 								cout << "\n";
 
-								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1), 1500 );
+								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1, jugador), 1500 );
 								target_valido = true;
 								eleccion_valida = true;
 								menu_habilidades = false;
@@ -407,7 +693,7 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 							if (target > 0 && target <= posiblesObjetivos.size()) {
 								cout << "\n";
 
-								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1), 1500 );
+								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1, jugador), 1500 );
 								target_valido = true;
 								eleccion_valida = true;
 								menu_habilidades = false;
@@ -440,7 +726,7 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 							if (target > 0 && target <= posiblesObjetivos.size()) {
 								cout << "\n";
 
-								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1), 1500 );
+								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1, jugador), 1500 );
 								target_valido = true;
 								eleccion_valida = true;
 								menu_habilidades = false;
@@ -511,6 +797,10 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 						}
 					}
 				}
+
+			else if (eleccion_jugador == 4) {
+				cout << jugador->toString() << endl;
+			}
 			}
 
 		}	
@@ -554,7 +844,7 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 
 			int target_enemigo = rand() % (int)posibleTargetEnemigo.size();
 
-			narrar( posibleTargetEnemigo[target_enemigo]->recibirAtaque(e->atkGetter()) );
+			narrar( posibleTargetEnemigo[target_enemigo]->recibirAtaque(e->atkGetter()));
 			continue;
 
 
@@ -602,13 +892,80 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 }
 
 // FIN COMBATE NORMAL =================================================================================================================================================================================
-
+ 
+// COMBATES ESPECIALES
 bool combateMiniBoss(GrupoJugador* jugador, int nivel) {
 
-	combate(jugador, GrupoEnemigo::retornarMinibossRandom(nivel), "");
+	return combate(jugador, GrupoEnemigo::retornarMinibossRandom(nivel), "");
 	
-	return true;
 }
+
+bool combateBoss(GrupoJugador* jugador) {
+	return combate(jugador, GrupoEnemigo::retornarBossRandom(), "");
+}
+
+// FIN COMBATES ESPECIALES ============================================================================================================================================================================
+
+// REGISTRAR PUNTAJES Y LEER PUNTAJES ( DAÑO TOTAL DE CADA JUGADOR ) ==================================================================================================================================
+ 
+void registrarPuntaje(string nombre, int daño_total) {
+	
+	string ans;
+
+	ofstream archivo("../data/ranking.txt", ios::app);
+	if (archivo.is_open()) {
+		archivo << nombre << " " << daño_total << "\n";
+		archivo.close();
+	}
+
+	else {
+		cerr << "No se pudo abrir 'data/ranking.txt para escribir'";
+	}
+
+}
+
+string leerPuntajes() {
+	ifstream archivo("../data/ranking.txt");
+	vector<pair<string, int>> puntajes;
+	ostringstream ans;
+
+	if (archivo.is_open()) {
+		string linea;
+		while (getline(archivo, linea)) {
+			istringstream iss(linea);
+			string nombre;
+			int daño;
+			if (iss >> nombre >> daño) {
+				puntajes.push_back({nombre, daño});
+			}
+		}
+		archivo.close();
+		
+		sort(puntajes.begin(), puntajes.end(), [](const auto& a, const auto& b) {return a.second > b.second;
+				});
+
+
+    	ans << "===== RANKING DE UNDER DE DARK DUNGEONS =====\n";
+    	ans << left << setw(5) << "#" 
+        	<< setw(20) << "Nombre" 
+        	<< right << setw(12) << "Daño total" << "\n";
+
+    	for (size_t i = 0; i < puntajes.size(); ++i) {
+       	 	ans << left << setw(5) << to_string(i + 1) + "." 
+           	 << setw(20) << puntajes[i].first 
+            	<< right << setw(12) << puntajes[i].second << "\n";
+    	}
+
+	}
+
+	else {
+		ans << "No hay datos de ranking\n";
+	}
+
+	return ans.str();
+}
+
+// FIN REGISTRAR Y LEER PUNTAJES ======================================================================================================================================================================
 
 
 
@@ -628,22 +985,31 @@ bool combateMiniBoss(GrupoJugador* jugador, int nivel) {
 int main() {
 
 
-	// Pruebas cacorras para el combate
-	
-	
+	// PRUEBAS CACORRAS =========================================================================================================================
+
+ 	/*	
 	GrupoJugador Yura("Yura", 0, 300);
 	vector<Heroe*> testCaballero = {
 		Heroe::Caballero(),
 		Heroe::Mago()
 	};
+	
+	testCaballero[0]->setHp(10);
+
+	cout << to_string(testCaballero[0]->getHp()) << endl;
 
 	Yura.setHeroes(testCaballero);
+
+
 	
 	Objeto brr = Objeto::MegaPocion();
 
 	Yura.agregarObjeto(&brr);
 
-	// eventoSantogrial(&Yura);
+	eventoSantogrial(&Yura);
+
+
+	cout << to_string(testCaballero[0]->getHp()) << endl;
 	
 	Yura.subirDeNivelElEquipo(3);
 
@@ -656,36 +1022,41 @@ int main() {
 	{
 		narrar("Perdiste el combate, todo tu equipo fue masacrado.\n");
 	}
+	*/
 
-	
+	// FIN PRUEBAS ==============================================================================================================================
 
 	// menu de juego principal
 	
-	cout << "\nUnder dark dugeons" << endl;
-
-	cout << endl;
 	
 	bool menu_principal = true;
+	char eleccion_usuario_menu_p;
 
 	while (menu_principal) 
 	{
-	
-		char eleccion_usuario_menu_p;
+			
+		eleccion_usuario_menu_p = '\0';
 		bool juego = false;
 
-		cout << "Presione ENTER para iniciar (ESC para salir)..." << endl;
-		cin.get(eleccion_usuario_menu_p);
+		mostrarBanner();
 
-		if (eleccion_usuario_menu_p == static_cast<char>(27)) {
+		cout << "Presione ENTER para iniciar (ESC para salir)..." << endl;
+		cout << "Ingresa 'T' para ver la tabla de puntuaciones" << endl;
+		cin.clear();
+		eleccion_usuario_menu_p = cin.get();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+		if (eleccion_usuario_menu_p == 27) {
 			menu_principal = false;
 		}
 
-		else {
+		else if (static_cast<char>(tolower(eleccion_usuario_menu_p)) == 't') {
+			cout << leerPuntajes() << endl;
+		}
+
+		else if (eleccion_usuario_menu_p == '\n' || eleccion_usuario_menu_p == '\0') {
 			juego = true;
 		}
-		
-
-
 		
 		if (juego) 
 		{
@@ -693,69 +1064,33 @@ int main() {
 			cout << "Ingrese su nombre: ";
 			cin >> nombre_jugador;
 
+			cout << endl;
+
 			GrupoJugador Jugador(nombre_jugador, 0, 300);
 
 			// Eleccion de heroes
 			
-			vector<Heroe*> grupo_jugador;
-			
-			for (int eleccion_heroes = 0 ; eleccion_heroes < 3; eleccion_heroes++) {
-				int p_heroe = 0;
-				
-				cout << "\n1. Caballero\n2. Mago\n3. Ladron\n4. Marginado\n" << endl;
-				cin >> p_heroe;
-
-				if (p_heroe == 1) {
-					// Seleccionar caballero
-					narrar("\n"); 
-					narrar("Un caballero se une a tu grupo.\n", 1000);
-					grupo_jugador.push_back(Heroe::Caballero());
-				}
-
-				else if (p_heroe == 2) {
-					// Seleccion Mago
-					narrar("\n", 1000);
-					narrar("Un mago se une a tu grupo.\n", 1000);
-					grupo_jugador.push_back(Heroe::Mago());
-				}
-
-				else if (p_heroe == 3) {
-					// Seleccion Ladron
-					narrar("\n", 1000);
-					narrar("Un ladro se une a tu grupo.\n", 1000);
-					grupo_jugador.push_back(Heroe::Ladron());
-				}
-
-				else if (p_heroe == 4) {
-					// Seleccion marginado
-					narrar("\n", 1000);
-					narrar("Un marginado se une a tu grupo\n", 1000);
-					grupo_jugador.push_back(Heroe::Marginado());
-				}
-
-			}
+			vector<Heroe*> grupo_jugador = SeleccionDeHeroe();	
 
 			bool in_game = true;
 			Jugador.setHeroes(grupo_jugador);
 			// Loop del juego
 			int nivel = 0;
+			inicioNarracion(grupo_jugador);
+			bool evento_activo = true;
 			while (in_game) 
 			{
 				
-				// Historia de como llegaron a la dungeon
-				if(nivel == 0) {
-					inicioNarracion(grupo_jugador);
-
-				}
-
 				// Sala 4 mini boss
 				// Sala 9 mini boss
 				// Sala 3 tesoro
 				// Sala 10 Boss
 				// Sala 6 tesoro
 				// Sala 8 santo grial
-				 
-				if (nivel == 1 || nivel == 2 || nivel == 3 || nivel == 5 || nivel == 7 ) {
+				
+				if (evento_activo == true) {
+
+				if (nivel == 1 || nivel == 2 || nivel == 5 || nivel == 7 && evento_activo == true) {
 
 					if ( combate(&Jugador, GrupoEnemigo::genGrupoEnemigo(nivel), "normal") ) {
 
@@ -771,19 +1106,86 @@ int main() {
 						in_game = false;
 						break;
 					}
+
+					evento_activo = false;
+				}
+
+				else if (nivel == 3 || nivel == 6 && evento_activo == true) {
+				
+					// TESORO
+
+					eventoCofre(&Jugador, nivel);
+					evento_activo = false;
+
+				}
+
+				else if (nivel == 8) {
+
+					// SANTOGRIAL
+					eventoSantogrial(&Jugador);
+					evento_activo = false;
 				}
 
 
+				else if( nivel == 4 || nivel == 9 && evento_activo == true) {
+				
+					// MINIBOSS
+					if ( combateMiniBoss(&Jugador, nivel) ) {
+
+						narrar("\nEl grupo salio victorioso...");
+						narrar("...\n");
+
+					}
+
+					else {
+						narrar("\nEl grupo ha sido masacrado...\n");
+						narrar("...");
+						narrar("Fin del juego.\n");
+						in_game = false;
+						break;
+					}
+
+					evento_activo = false;
+
+				}
+
+				else if (nivel == 10 && evento_activo == true) {
+
+					// BOSS
+					if ( combateBoss(&Jugador) ) {
+
+						narrar("\nEl grupo salio victorioso...");
+						narrar("...\n");
+
+					}
+
+					else {
+						narrar("\nEl grupo ha sido masacrado...\n");
+						narrar("...");
+						narrar("Fin del juego.\n");
+						in_game = false;
+						break;
+					}	
+
+					evento_activo = false;
+				}
+
+				}
 
 				if (nivel == 11) {
 					
+					//============================
 					//
 					// Historia de win
 					//
 					// y salir del juego
 					//
-
+					//============================
+					narracionVictoria();
+					cout << endl;
 					in_game = false;
+					registrarPuntaje(Jugador.getName(), Jugador.getTotalDamage());
+					break;
 				}
 
 				int eleccion_in_game;
@@ -793,12 +1195,14 @@ int main() {
 
 				cout << "Selecciona una opcion: ";
 				cin >> eleccion_in_game;
+				cout << "\n";
 
 				if (eleccion_in_game == 1) {
 					if (nivel > 0) {
 						narrar( Jugador.subirDeNivelElEquipo(nivel), 1500 );
 					}
 					nivel++;
+					evento_activo = true;
 				}
 
 				else if (eleccion_in_game == 2) {
@@ -822,6 +1226,7 @@ int main() {
 				else if (eleccion_in_game == 5) {
 
 					// Mostrar a todos los heroes y sus estados
+					narrar( Jugador.toString(), 700); 
 
 				}
 

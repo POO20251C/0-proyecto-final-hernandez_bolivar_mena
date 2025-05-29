@@ -1,6 +1,10 @@
 #include "Grupo_jugador.h"
+#include "Heroe.h"
+#include <ios>
 #include <string>
 #include <vector>
+#include <iomanip>
+#include <sstream>
 
 GrupoJugador::GrupoJugador(std::string name, int dano_t, int oro) {
     this->name = name;
@@ -14,6 +18,10 @@ std::string GrupoJugador::getName() {
 
 int GrupoJugador::getOro() {
     return this->oro;
+}
+
+int GrupoJugador::getTotalDamage() {
+	return this->dano_t;
 }
 
 vector<Heroe*> GrupoJugador::getHeroes() {
@@ -109,6 +117,41 @@ std::string GrupoJugador::subirDeNivelElEquipo(int nivel) {
 
 }
 
+void GrupoJugador::registrarDañoParaTabla(int daño_total) {
+	this->dano_t += daño_total;
+}
+
+
 void GrupoJugador::agregarObjeto(Objeto* objeto) {
     this->inventario.push_back(objeto);
+}
+
+void GrupoJugador::limpiarEfectosDelGrupo() {
+	for (Heroe* h: this->heroes) {
+		h->setEfectos({});		
+	}
+}
+
+string GrupoJugador::toString() {
+	
+	std::ostringstream ans;
+
+	ans << std::left << std::setw(15) << "Nombre"
+	<< std::setw(15) << "vida"
+	<< std::setw(30) << "Arma"
+	<< std::setw(25) << "Armadura" << "\n";
+
+	for (Heroe* h : this->heroes ) {
+		
+		std::string vida = to_string(h->getHp()) + "/" + to_string(h->getHpMax());
+
+		ans << std::left << std::setw(15) << h->nameGetter()
+		<< std::setw(15) << vida
+		<< std::setw(30) << h->getArma()->getName()
+		<< std::setw(25) << h->getArmadura()->getName() << "\n";
+
+	}
+
+	return ans.str();
+
 }

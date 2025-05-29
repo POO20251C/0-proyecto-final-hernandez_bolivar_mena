@@ -114,6 +114,8 @@ class Entidad {
 
 		bool getVivo();
 
+		std::vector<Efecto> getEfectosActivos();
+
 		std::vector<Habilidad> getHabilidades();
 
 		// Funciones de ENTIDAD

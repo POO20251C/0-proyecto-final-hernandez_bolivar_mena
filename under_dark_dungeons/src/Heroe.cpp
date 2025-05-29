@@ -2,6 +2,7 @@
 #include "Entidad.h"
 #include "Armadura.h"
 #include "Arma.h"
+#include "Grupo_jugador.h"
 #include "Habilidad.h"
 #include <time.h>
 #include "Efecto.h"
@@ -69,6 +70,10 @@ void Heroe::setVivo(bool estado) {
 	this->vivo = estado;
 }
 
+void Heroe::setEfectos(vector<Efecto> nuevos_efectos) {
+	this->efectos = nuevos_efectos;
+}
+
 // Getters
 
 int Heroe::getHpMax() {
@@ -89,6 +94,14 @@ int Heroe::getDes() {
 	return this->des;
 }
 
+Arma* Heroe::getArma() {
+	return this->arma;
+}
+
+Armadura* Heroe::getArmadura() {
+	return this->armadura;
+}
+
 
 
 int Heroe::getDef() {
@@ -107,36 +120,39 @@ int Heroe::getDef() {
 
 // Funciones heroe
 
-std::string Heroe::atacar(Entidad* enemigo) {
+std::string Heroe::atacar(Entidad* enemigo, GrupoJugador* jugador) {
 	
 	std::string ans;
+	int dano = getAtk() + this->arma->getAtk();
 
 	if (this->getVivo()) 
 	{
-		int dano = getAtk() + this->arma->getAtk();
 		
 
 		enemigo->recibirAtaque(dano, this->arma->getEfecto());
 		ans = this->name + " Ataco a " + enemigo->nameGetter() + " con " + this->arma->getName() + " y le hizo " + std::to_string(int(dano - (enemigo->defGetter() * 0.3)) ) + " de daño\n";
 
 	}
+	
+	jugador->registrarDañoParaTabla(dano - (enemigo->defGetter() * 0.3));
 
 	return ans;
 }
 
-std::string Heroe::atacarConHabilidad(Entidad* enemigo, int indx_habilidad) {
+std::string Heroe::atacarConHabilidad(Entidad* enemigo, int indx_habilidad, GrupoJugador* jugador) {
 	
 	std::string ans;
+	int dano = getAtk() * habilidades[indx_habilidad].multGetter();
 
 	if (this->getVivo()) 
 	{
-		int dano = getAtk() * habilidades[indx_habilidad].multGetter();
 		
-
 		enemigo->recibirAtaque(dano, this->habilidades[indx_habilidad].efectoGetter());
 		ans = this->name + " Ataco a " + enemigo->nameGetter() + " con " + this->habilidades[indx_habilidad].nameGetter() + " y le hizo " + std::to_string(int(dano - (enemigo->defGetter() * 0.3)) ) + " de daño\n";
 
 	}
+
+	jugador->registrarDañoParaTabla(dano - (enemigo->defGetter() * 0.3));
 
 	return ans;
 }
@@ -213,13 +229,17 @@ std::string Heroe::aplicarEfecto() {
 	for (Efecto e : efectos_validos) {
 		
 		dano_total += e.gethp();
-		ans = this->name + " recibio " + std::to_string(e.gethp()) + " por "  + e.getname() + "\n";
+		ans = this->name + " recibio " + std::to_string(e.gethp() * -1 ) + " por "  + e.getname() + "\n";
 
 		if (this->hp + dano_total <= 0)
 		{
 			ans += this->name + " murio por " + e.getname() + "\n";
+			this->hp = 0;
+			this->vivo = false;
 			break;
 		}
+
+		this->hp += dano_total;
 
 	}
 
@@ -230,8 +250,9 @@ std::string Heroe::aplicarEfecto() {
 void Heroe::subirDeNivel(int nivel) {
 
 	// Entonces por cada heroe -> Heroe.setHp( Heroe.getHp + (Heroe.getHp * (0.10 * nivel)) )
-	 
+	
 	this->hp = this->hp + (this->hp * (0.10 * nivel));
+	this->hp_max = this->hp_max + (this->hp_max * (0.10 * nivel));
 	this->atk = this->atk + (nivel * 25);
 	this->des = this->des + (nivel * 25); 
 	this->lck = this->lck + (nivel * 2.5);
