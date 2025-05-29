@@ -20,21 +20,21 @@ int Objeto::getPrecio() {
 }
 
 Objeto Objeto::Pocion() {
-	return {"Pocion", 50, 30};
+	return {"Elixir divino pequeño", 50, 30};
 }
 
 Objeto Objeto::BayaZidra() {
-	return {"Baya Zidra", 30, 50};
+	return {"Elixir divino mediano", 30, 50};
 }
 
 Objeto Objeto::BayaAranja() {
-	return {"Baya Aranja", 10, 15};
+	return {"Gotas de elixir divino", 10, 15};
 }
 
 Objeto Objeto::HiperPocion() {
-	return {"Hiper Pocion", 200, 170};
+	return {"Escencia de dios caido", 200, 170};
 }
 
 Objeto Objeto::MegaPocion() {
-	return {"Mega Pocion", 100, 120};
+	return {"Elixir divino grande", 100, 120};
 }

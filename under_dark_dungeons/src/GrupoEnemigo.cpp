@@ -67,6 +67,57 @@ GrupoEnemigo* GrupoEnemigo::genGrupoEnemigo(int nivel) {
 }
 
 
+GrupoEnemigo* GrupoEnemigo::retornarMinibossRandom(int nivel) {
+	
+	srand(time(nullptr));
+	
+	std::vector<Entidad*> pool = {
+		
+		Entidad::Toxsydra(nivel),
+		Entidad::Frostbane(nivel),
+		Entidad::Razorbleed(nivel),
+		Entidad::Voltstryx(nivel),
+		Entidad::CianotipoElMounstroCopiador(nivel),
+		Entidad::MiguelDavidArroyo(nivel),
+		Entidad::JimboElPayasoAsesino(nivel)
+
+	};
+
+	std::vector<Entidad*> ans;
+
+	int miniboss_random = rand() % 7;
+
+	ans.push_back(pool[miniboss_random]);
+
+	return new GrupoEnemigo(ans);
+	
+
+}
+
+
+GrupoEnemigo* GrupoEnemigo::retornarBossRandom() {
+	
+	srand(time(nullptr));
+
+	std::vector<Entidad*> pool = {
+		Entidad::AshkarIncandescente(),
+		Entidad::GelumdraSilente(),
+		Entidad::VarkhemSangrante(),
+		Entidad::VoltumnDevorasínapsis(),
+		Entidad::DiosDesesperacion(),
+		Entidad::XyrothInfecto()
+	};
+	
+	std::vector<Entidad*> ans;
+
+	int boss_random = rand() % (int) pool.size();
+	
+	ans.push_back(pool[boss_random]);
+
+	return new GrupoEnemigo(ans);
+
+}
+
 
 // Getters
 

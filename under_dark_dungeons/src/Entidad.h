@@ -58,6 +58,8 @@ class Entidad {
 		static Entidad* JimboElPayasoAsesino(int nivel);
 		static Entidad* CianotipoElMounstroCopiador(int nivel);
 		
+		static std::vector<Entidad*> retornarMinibossRandom(int nivel);
+
 		// Bosses
 
 		static Entidad* AshkarIncandescente();
@@ -66,6 +68,8 @@ class Entidad {
 		static Entidad* VoltumnDevorasínapsis();
 		static Entidad* VarkhemSangrante();
 		static Entidad* DiosDesesperacion();
+
+		static std::vector<Entidad*> retornarBossRandom();
 
 
 

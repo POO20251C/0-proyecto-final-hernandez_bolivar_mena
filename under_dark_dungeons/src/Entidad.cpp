@@ -109,7 +109,7 @@ std::vector<Entidad*> Entidad::Orcos(int cantidad, int nivel ) {
 
 Entidad* Entidad::Toxsydra(int nivel) {
 
-	int hp = 80 + (nivel * 20);
+	int hp = 80 + (nivel * 40);
 	int atk = 30 + (nivel * 20);
 	int def = 35 + (nivel * 20);
 	int des = 45 + (nivel * 20);
@@ -121,7 +121,7 @@ Entidad* Entidad::Toxsydra(int nivel) {
 
 Entidad* Entidad::Frostbane(int nivel) {
 
-	int hp = 120 + (nivel * 20);
+	int hp = 120 + (nivel * 40);
 	int atk = 40 + (nivel * 20);
 	int def = 20 + (nivel * 20);
 	int des = 40 + (nivel * 20);
@@ -134,7 +134,7 @@ Entidad* Entidad::Frostbane(int nivel) {
 
 Entidad* Entidad::Razorbleed(int nivel) {
 
-	int hp = 130 + (nivel * 20);
+	int hp = 130 + (nivel * 40);
 	int atk = 15 + (nivel * 20);
 	int def = 60 + (nivel * 20);
 	int des = 10 + (nivel * 20);
@@ -146,7 +146,7 @@ Entidad* Entidad::Razorbleed(int nivel) {
 
 Entidad* Entidad::Voltstryx(int nivel) {
 
-	int hp = 70 + (nivel * 20);
+	int hp = 70 + (nivel * 40);
 	int atk = 50 + (nivel * 20);
 	int def = 15 + (nivel * 20);
 	int des = 50 + (nivel * 20);
@@ -160,7 +160,7 @@ Entidad* Entidad::Voltstryx(int nivel) {
 Entidad* Entidad::CianotipoElMounstroCopiador(int nivel) {
 
 
-	int hp = 110 + (nivel * 20);
+	int hp = 110 + (nivel * 40);
 	int atk = 45 + (nivel * 20);
 	int def = 36 + (nivel * 20);
 	int des = 45 + (nivel * 20);
@@ -172,7 +172,7 @@ Entidad* Entidad::CianotipoElMounstroCopiador(int nivel) {
 
 Entidad* Entidad::MiguelDavidArroyo(int nivel) {
 
-	int hp = 70 + (nivel * 20);
+	int hp = 70 + (nivel * 40);
 	int atk = 35 + (nivel * 20);
 	int def = 25 + (nivel * 20);
 	int des = 65 + (nivel * 20);
@@ -184,7 +184,7 @@ Entidad* Entidad::MiguelDavidArroyo(int nivel) {
 
 Entidad* Entidad::JimboElPayasoAsesino(int nivel) {
 
-	int hp = 140 + (nivel * 20);
+	int hp = 140 + (nivel * 40);
 	int atk = 20 + (nivel * 20);
 	int def = 40 + (nivel * 20);
 	int des = 10 + (nivel * 20);
@@ -192,6 +192,34 @@ Entidad* Entidad::JimboElPayasoAsesino(int nivel) {
 	int p = 300 + (nivel * 20);
 
 	return new Entidad("Cianotipo El Mounstro Copiador", hp, atk, def, des, lck, p, {Habilidad::HitoHitoNoMi()}, {} );
+}
+
+
+std::vector<Entidad*> Entidad::retornarMinibossRandom(int nivel) {
+	
+	srand(time(nullptr));
+	
+	std::vector<Entidad*> pool = {
+		
+		Entidad::Toxsydra(nivel),
+		Entidad::Frostbane(nivel),
+		Entidad::Razorbleed(nivel),
+		Entidad::Voltstryx(nivel),
+		Entidad::CianotipoElMounstroCopiador(nivel),
+		Entidad::MiguelDavidArroyo(nivel),
+		Entidad::JimboElPayasoAsesino(nivel)
+
+	};
+
+	std::vector<Entidad*> ans;
+
+	int miniboss_random = rand() % 7;
+
+	ans.push_back(pool[miniboss_random]);
+
+	return ans;
+	
+
 }
 
 // BOSSES MAYORES
@@ -212,17 +240,42 @@ Entidad *Entidad::VarkhemSangrante() {
 Entidad* Entidad::VoltumnDevorasínapsis() {
 	return new Entidad("Voltumn, el Devorasínapsis ", 150, 100,80,90,90,850, {Habilidad::GoroGoroNoMi(), Habilidad::PikaPikaNoMi()}, {});
 }
+
 Entidad* Entidad::DiosDesesperacion() {
-	return new Entidad("Dios la Desesperacion", 400, 100,100,100,90,2000, {Habilidad::HoroHoroNoMi(), Habilidad::YamiYamiNoMi(),
-																										Habilidad::BomuBomuNoMi(), Habilidad::PikaPikaNoMi(), Habilidad::GoroGoroNoMi(),
-																										Habilidad::HieHieNoMi(), Habilidad::SunaSunaNoMi(), Habilidad::OpeOpeNoMi(),
-																										Habilidad::DokuDokuNoMi(), Habilidad::KageKageNoMi(), Habilidad::MaguMaguNoMi(),
-																										Habilidad::MeraMeraNoMi(), Habilidad::NoroNoroNoMi()}, {});
+	return new Entidad("Dios la Desesperacion", 400, 100,100,100,90,2000, {Habilidad::HoroHoroNoMi(), Habilidad::YamiYamiNoMi(), 
+			Habilidad::BomuBomuNoMi(), Habilidad::PikaPikaNoMi(), Habilidad::GoroGoroNoMi(), Habilidad::HieHieNoMi(), Habilidad::SunaSunaNoMi(), 
+			Habilidad::OpeOpeNoMi(), Habilidad::DokuDokuNoMi(), Habilidad::KageKageNoMi(), Habilidad::MaguMaguNoMi(), Habilidad::MeraMeraNoMi(),
+			Habilidad::NoroNoroNoMi()}, {});
 }
 
 Entidad *Entidad::XyrothInfecto() {
 	return new Entidad("Xyroth, el Jardín Infecto ", 200, 100,50,85,90,750, {Habilidad::DokuDokuNoMi(), Habilidad::NoroNoroNoMi()}, {});
 }
+
+
+std::vector<Entidad*> Entidad::retornarBossRandom() {
+	
+	srand(time(nullptr));
+
+	std::vector<Entidad*> pool = {
+		Entidad::AshkarIncandescente(),
+		Entidad::GelumdraSilente(),
+		Entidad::VarkhemSangrante(),
+		Entidad::VoltumnDevorasínapsis(),
+		Entidad::DiosDesesperacion(),
+		Entidad::XyrothInfecto()
+	};
+	
+	std::vector<Entidad*> ans;
+
+	int boss_random = rand() % (int) pool.size();
+	
+	ans.push_back(pool[boss_random]);
+
+	return ans;
+
+}
+
 
 // Getters - Setters
 

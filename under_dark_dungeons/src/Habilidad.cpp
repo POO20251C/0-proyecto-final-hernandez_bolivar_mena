@@ -52,13 +52,9 @@ Habilidad Habilidad::OpeOpeNoMi() {
 	return Habilidad("Escama Roja Fluyente", Efecto::Sangrado(),2);
 }
 
-<<<<<<< HEAD
+
 Habilidad Habilidad::HieHieNoMi() {
 	return {"Ice Saber", {Efecto::Congelacion()},2};
-=======
-// CONGELACION DE TODA LA VIDA
-class Habilidad Habilidad::HieHieNoMi() {
-	return Habilidad("Ice Saber", Efecto::Congelacion(),2);
 }
 
 
@@ -188,7 +184,6 @@ std::vector<Habilidad> Habilidad::Habilidades_marginado() {
 
 	return ans;
 
->>>>>>> 441b1870c7c320bf7507bf1d393a6cf712dfaeb7
 }
 
 Habilidad Habilidad::BomuBomuNoMi() {

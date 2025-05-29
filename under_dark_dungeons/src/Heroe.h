@@ -42,7 +42,7 @@ class Heroe: public Entidad {
 		void setHp(int nueva_hp);
 		void setHpMax(int max);
 		void setHpBase(int base);
-
+		void setVivo(bool estado); 
 
 
 		// Getters
@@ -60,6 +60,7 @@ class Heroe: public Entidad {
 		std::string mostrarHabilidades();
 
 		std::string atacar(Entidad* enemigo);
+		std::string atacarConHabilidad(Entidad* enemigo, int indx_habilidad);
 
 		std::string recibirAtaque(int dano);
 

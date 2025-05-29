@@ -16,7 +16,8 @@ class GrupoEnemigo {
 
 		GrupoEnemigo(std::vector<Entidad*> enemigos);
 		static GrupoEnemigo* genGrupoEnemigo(int nivel);
-
+		static GrupoEnemigo* retornarMinibossRandom(int nivel);
+		static GrupoEnemigo* retornarBossRandom();
 		// Getters
 		
 		std::vector<Entidad*> getEnemigos();

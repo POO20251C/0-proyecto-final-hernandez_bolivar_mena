@@ -53,8 +53,19 @@ std::string GrupoJugador::sumarOro(int cantidad) {
 }
 
 std::string GrupoJugador::usarItem(int indx, Heroe* heroe) {
-    std::string ans = "Se uso " + inventario[indx]->getName() + " en " + heroe->nameGetter();
-    return ans;    
+	
+	heroe->setHp(heroe->getHp() + inventario[indx]->getVida_proporcionada());
+	
+    	std::string ans = "Se uso " + inventario[indx]->getName() + " en " + heroe->nameGetter() + "y lo curo " + to_string(inventario[indx]->getVida_proporcionada()) + "\n";
+		
+	inventario.erase(inventario.begin() + indx);
+	
+	if (!heroe->getVivo()) {
+		heroe->setVivo(true);
+		ans += heroe->nameGetter() + " volvio a la vida y puede seguir luchando.\n";
+	}
+
+    	return ans;    
 }
 
 std::string GrupoJugador::equiparArma(int indx, Heroe* heroe) {

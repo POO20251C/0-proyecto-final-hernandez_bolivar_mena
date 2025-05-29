@@ -165,18 +165,27 @@ void eventoSantogrial(GrupoJugador* jugador) {
 
 }
 
-bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos) {
+// COMBATE NORMAL =====================================================================================================================================================================================
+
+bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_combate) {
 
 	vector<Entidad*> grupo_enemigo = enemigos->getEnemigos();
 	vector<Heroe*> grupo_jugador = jugador->getHeroes();
-
 	string mensaje_combate;
-	if (enemigos->getEnemigos().size() > 1) {
-		mensaje_combate = "un grupo de " + enemigos->getEnemigos()[0]->nameGetter() + "\n";
+
+	if (tipo_de_combate == "normal") {
+		if (enemigos->getEnemigos().size() > 1) {
+			mensaje_combate = "un grupo de " + enemigos->getEnemigos()[0]->nameGetter() + "\n";
+		}
+
+		else {
+			mensaje_combate = "un " + enemigos->getEnemigos()[0]->nameGetter() + "\n";
+		}
+
 	}
 
 	else {
-		mensaje_combate = "un " + enemigos->getEnemigos()[0]->nameGetter() + "\n";
+		mensaje_combate = enemigos->getEnemigos()[0]->nameGetter();
 	}
 
 	cout << "\nEntraste en combate contra " + mensaje_combate + "\n";
@@ -245,13 +254,14 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos) {
 				}
 
 
-			int eleccion_jugador = 0;
 			bool eleccion_valida = false;
 
 			cout << "Turno de " + h->nameGetter() + "\n\n";
 
 			while (!eleccion_valida) {
+
 			bool target_valido = false;
+			int eleccion_jugador = 0;
 
 			cout << "1. Atacar\n2. Habilidades\n3. Usar un item\n";
 
@@ -295,41 +305,221 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos) {
 						break;
 
 					}
-
-
-
-
-
 				}
-
-
-
 			}
 
 			// CASO DE USAR HABILIDAD
 			else if (eleccion_jugador == 2) {
+				bool menu_habilidades = true;
 
+				while (menu_habilidades) {
+					
+					int eleccion_habilidad = 0;
 
+					for (int i = 0; i < h->getHabilidades().size(); i++ ) {
+						cout << to_string(i + 1) << ". " << h->getHabilidades()[i].nameGetter() << endl;
+					}
+					
+					cout << "5. Salir\n";
 
+					cout << "Seleccina una habilidad: ";
+					cin >> eleccion_habilidad;
+					
+					if (eleccion_habilidad == 1) {
+						
+						while (!target_valido) {
+
+							for(size_t j = 0; j < posiblesObjetivos.size(); j++) {
+								cout << to_string(j + 1) << ". " << posiblesObjetivos[j]->nameGetter() << "\t" << posiblesObjetivos[j]->hpGetter() << endl;
+							}
+
+							cout << "4. Volver\n";
+
+							int target = 0;
+							cout << "Elije un objetivo: ";
+							cin.clear();
+							cin >> target;
+	
+							if (target > 0 && target <= posiblesObjetivos.size()) {
+								cout << "\n";
+
+								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1), 1500 );
+								target_valido = true;
+								eleccion_valida = true;
+								menu_habilidades = false;
+
+							}
+
+							if (target == 4) {
+
+								break;
+
+							}
+						}
+					}
+
+					else if (eleccion_habilidad == 2) {
+						while (!target_valido) {
+
+							for(size_t j = 0; j < posiblesObjetivos.size(); j++) {
+								cout << to_string(j + 1) << ". " << posiblesObjetivos[j]->nameGetter() << "\t" << posiblesObjetivos[j]->hpGetter() << endl;
+							}
+
+							cout << "4. Volver\n";
+
+							int target = 0;
+							cout << "Elije un objetivo: ";
+							cin.clear();
+							cin >> target;
+	
+							if (target > 0 && target <= posiblesObjetivos.size()) {
+								cout << "\n";
+
+								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1), 1500 );
+								target_valido = true;
+								eleccion_valida = true;
+								menu_habilidades = false;
+
+							}
+
+							if (target == 4) {
+
+								break;
+
+							}
+						}
+					}
+
+					else if (eleccion_habilidad == 3) {
+						while (!target_valido) {
+
+							for(size_t j = 0; j < posiblesObjetivos.size(); j++) {
+								cout << to_string(j + 1) << ". " << posiblesObjetivos[j]->nameGetter() << "\t" << posiblesObjetivos[j]->hpGetter() << endl;
+							}
+
+							cout << "4. Volver\n";
+
+							int target = 0;
+							cout << "Elije un objetivo: ";
+							cin.clear();
+							cin >> target;
+	
+							if (target > 0 && target <= posiblesObjetivos.size()) {
+								cout << "\n";
+
+								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1), 1500 );
+								target_valido = true;
+								eleccion_valida = true;
+								menu_habilidades = false;
+								cin.clear();
+
+							}
+
+							if (target == 4) {
+
+								break;
+
+							}
+						}
+					}
+
+					else if ( eleccion_habilidad == 4) {
+						while (!target_valido) {
+
+							for(size_t j = 0; j < posiblesObjetivos.size(); j++) {
+								cout << to_string(j + 1) << ". " << posiblesObjetivos[j]->nameGetter() << "\t" << posiblesObjetivos[j]->hpGetter() << endl;
+							}
+
+							cout << "4. Volver\n";
+
+							int target = 0;
+							cout << "Elije un objetivo: ";
+							cin.clear();
+							cin >> target;
+	
+							if (target > 0 && target <= posiblesObjetivos.size()) {
+								cout << "\n";
+
+								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1), 1500 );
+								target_valido = true;
+								eleccion_valida = true;
+								menu_habilidades = false;
+								cin.clear();
+
+							}
+
+							if (target == 4) {
+
+								break;
+
+							}
+						}
+
+					}
+
+					else if (eleccion_habilidad == 5) {
+
+						break;
+
+					}
+				}
 			}
 
 			// CASO DE USAR UN ITEM
 			else if (eleccion_jugador == 3) {
+					bool eleccion_valida_inventario = true;
+					while (eleccion_valida_inventario) {
+						int aux_i = 0;
+						for (int i = 0; i < jugador->getInventario().size(); i++) {
+							cout << to_string(i+1) << ". " << jugador->getInventario()[i]->getName() << " " << to_string(jugador->getInventario()[i]->getVida_proporcionada()) << endl;
+							aux_i = i;
+						}
+						aux_i += 2;
+						cout << to_string(aux_i) << ". Volver" << endl;
+						int eleccion_usuario_item = 0;
+						cout << "Seleccione un item: ";
+						cin >> eleccion_usuario_item;
 
+						if(eleccion_usuario_item > 0 && eleccion_usuario_item <= jugador->getInventario().size()) {
+								bool seleccion_heroe_inventario = true;
+								while (seleccion_heroe_inventario) {
+								
+									int heroe_item = 0;
+									for (int i = 0; i < grupo_jugador.size(); i++) {
+										cout << to_string(i+1) << ". " << grupo_jugador[i]->nameGetter() << endl;
+									}
+									cout << "4. Volver\n";
+
+									cout << "Selecciona un heroe: ";
+									cin >> heroe_item;
+
+									if (heroe_item == 4) {
+										break;
+									}
+									else if (heroe_item <= grupo_jugador.size() && heroe_item > 0) {
+									
+										narrar(jugador->usarItem(eleccion_usuario_item - 1, grupo_jugador[heroe_item - 1]));
+										seleccion_heroe_inventario = false;
+										eleccion_valida_inventario = false;
+										eleccion_valida = true;
+										cin.clear();
+									}
+								}
+						}
+						else if( eleccion_usuario_item == aux_i) {
+							break;
+						}
+					}
+				}
 			}
 
-
-			}
-
-
-		}
+		}	
 
 		else
 
 		{
 
 			// LOGICA PARA LA IA ========================================================
-			
 			srand(time(nullptr));
 			int prob_hab = 1 + rand() % 100;
 
@@ -351,6 +541,13 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos) {
 
 				narrar(e->nameGetter() + " va a usar una habilidad\n", 1500);
 
+				int habilidad_a_usar = rand() % (int)e->getHabilidades().size();
+
+				int target_enemigo = rand() % (int)posibleTargetEnemigo.size();
+
+				narrar(posibleTargetEnemigo[target_enemigo]->recibirAtaqueHabilidad(e->atkGetter() * e->getHabilidades()[habilidad_a_usar].multGetter() , e->getHabilidades()[habilidad_a_usar].efectoGetter()));
+				continue;
+
 			}
 
 			else {
@@ -358,6 +555,7 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos) {
 			int target_enemigo = rand() % (int)posibleTargetEnemigo.size();
 
 			narrar( posibleTargetEnemigo[target_enemigo]->recibirAtaque(e->atkGetter()) );
+			continue;
 
 
 			}
@@ -390,11 +588,11 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos) {
 
 	bool ans;
 
-	if (!jugador->getDerrota()) {
+	if (!jugador->getDerrota() && enemigos->getVivios()) {
 		ans = false;
 	}
 
-	else if (!enemigos->getVivios()) {
+	else if (!enemigos->getVivios() && jugador->getDerrota()) {
 		ans = true;
 	}
 
@@ -402,6 +600,16 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos) {
 	return ans;
 
 }
+
+// FIN COMBATE NORMAL =================================================================================================================================================================================
+
+bool combateMiniBoss(GrupoJugador* jugador, int nivel) {
+
+	combate(jugador, GrupoEnemigo::retornarMinibossRandom(nivel), "");
+	
+	return true;
+}
+
 
 
 // MAIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIN ACA ESTA EL PROGRAMA PRINCIPAL
@@ -422,18 +630,24 @@ int main() {
 
 	// Pruebas cacorras para el combate
 	
-	/*
+	
 	GrupoJugador Yura("Yura", 0, 300);
 	vector<Heroe*> testCaballero = {
-		Heroe::Caballero()
+		Heroe::Caballero(),
+		Heroe::Mago()
 	};
 
 	Yura.setHeroes(testCaballero);
+	
+	Objeto brr = Objeto::MegaPocion();
 
-	eventoSantogrial(&Yura);
+	Yura.agregarObjeto(&brr);
 
+	// eventoSantogrial(&Yura);
+	
+	Yura.subirDeNivelElEquipo(3);
 
-	if ( combate(&Yura, GrupoEnemigo::genGrupoEnemigo(1)) )
+	if (combateMiniBoss(&Yura, 3))
 	 {
 		narrar("Ganaste el combate.\n");
 	 }
@@ -443,7 +657,7 @@ int main() {
 		narrar("Perdiste el combate, todo tu equipo fue masacrado.\n");
 	}
 
-	*/
+	
 
 	// menu de juego principal
 	
@@ -543,7 +757,7 @@ int main() {
 				 
 				if (nivel == 1 || nivel == 2 || nivel == 3 || nivel == 5 || nivel == 7 ) {
 
-					if (combate(&Jugador, GrupoEnemigo::genGrupoEnemigo(nivel)) ) {
+					if ( combate(&Jugador, GrupoEnemigo::genGrupoEnemigo(nivel), "normal") ) {
 
 						narrar("\nEl grupo salio victorioso...");
 						narrar("...\n");
