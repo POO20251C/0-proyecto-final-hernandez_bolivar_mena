@@ -25,7 +25,19 @@ Heroe::Heroe(std::string name, int hp, int hp_base, int atk, int def, int des, i
     }
 
 Heroe* Heroe::Caballero() {
-	return new Heroe("Charles el caballero sin nombre", 120, 120, 30, 40, 40, 30, 0, {}, {}, Armadura::mallaLigera(), Arma::Espada_basica());
+	return new Heroe("Caballero", 120, 120, 30, 40, 40, 30, 0, Habilidad::Habilidades_caballero(), {}, Armadura::mallaLigera(), Arma::Espada_basica());
+}
+
+Heroe* Heroe::Mago() {
+	return new Heroe("Mago", 70, 70, 15, 15, 30, 80, 0, Habilidad::Habilidades_mago(), {}, Armadura::capa_basica(), Arma::Baston_basico());
+}
+
+Heroe* Heroe::Ladron() {
+	return new Heroe("Ladron", 70, 70, 40, 20, 50, 60, 0, Habilidad::Habilidades_ladron(), {}, Armadura::peto_de_cuero(), Arma::Daga_basica());
+}
+
+Heroe* Heroe::Marginado() {
+	return new Heroe("Marginado", 101, 100, 35, 35, 40, 20, 0, Habilidad::Habilidades_marginado(), {},  Armadura::Piel_de_oso(), Arma::Palo_desgastado());
 }
 
 // Fin constructores
