@@ -17,7 +17,6 @@ Efecto Efecto::Nada() {
 	return {"Nada", 0, 0, 0, 0};
 }
 
-
 Efecto Efecto::Quemadura() {
 	return {"Quemadura", -5, -2, -1, 0};
 }
@@ -36,6 +35,26 @@ Efecto Efecto::Paralisis() {
 
 Efecto Efecto::Sangrado() {
   return {"Sangrado", -2, -10, -20, 10};
+}
+
+Efecto Efecto::Ceguera() {
+	return {"Ceguera", 0, 0, -60, -15};
+}
+
+Efecto Efecto::Debilidad() {
+	return {"Debilidad", 0, -25, -15, -5};
+}
+
+Efecto Efecto::Desesperacion() {
+	return {"Desesperacion", -10, -30, 10, -20};
+}
+
+Efecto Efecto::Lentitud() {
+	return {"Lentitud", 0, -10, -80, 4};
+}
+
+Efecto Efecto::Miedo() {
+	return {"Miedo", 0, -30, -40, 0};
 }
 
 // Getters

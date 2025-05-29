@@ -65,7 +65,7 @@ class Entidad {
 		static Entidad* XyrothInfecto();
 		static Entidad* VoltumnDevorasínapsis();
 		static Entidad* VarkhemSangrante();
-		static Entidad* SatanasElDiablo();
+		static Entidad* DiosDesesperacion();
 
 
 

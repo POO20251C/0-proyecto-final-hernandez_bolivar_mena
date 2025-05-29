@@ -198,26 +198,30 @@ Entidad* Entidad::JimboElPayasoAsesino(int nivel) {
 
 Entidad* Entidad::AshkarIncandescente() {
 
-	return new Entidad("Ashkar, el Corazón Incandescente", 250, 80, 80, 40, 80, 700, {Habilidad::MeraMeraNoMi()}, {} );
+	return new Entidad("Ashkar, el Corazón Incandescente", 250, 80, 80, 40, 80, 700, {Habilidad::MeraMeraNoMi(), Habilidad::MaguMaguNoMi()}, {} );
 }
 
 Entidad* Entidad::GelumdraSilente() {
-	return new Entidad("Gelumdra, Reina del Hielo Silente ", 200, 100,50,75,85,800, {Habilidad::HieHieNoMi()}, {});
+	return new Entidad("Gelumdra, Reina del Hielo Silente ", 200, 100,50,75,85,800, {Habilidad::HieHieNoMi(), Habilidad::SunaSunaNoMi()}, {});
 }
 
 Entidad *Entidad::VarkhemSangrante() {
-	return new Entidad("Varkhem, el Desollado Sangrante ", 350, 90,90,45,85,900, {Habilidad::OpeOpeNoMi()}, {});
+	return new Entidad("Varkhem, el Desollado Sangrante ", 350, 90,90,45,85,900, {Habilidad::OpeOpeNoMi(), Habilidad::BomuBomuNoMi()}, {});
 }
 
 Entidad* Entidad::VoltumnDevorasínapsis() {
-	return new Entidad("Voltumn, el Devorasínapsis ", 150, 100,80,90,90,850, {Habilidad::GoroGoroNoMi()}, {});
+	return new Entidad("Voltumn, el Devorasínapsis ", 150, 100,80,90,90,850, {Habilidad::GoroGoroNoMi(), Habilidad::PikaPikaNoMi()}, {});
 }
-Entidad* Entidad::SatanasElDiablo() {
-	return new Entidad("EL MISMISIMO DIABLO", 400, 100,100,100,90,1000, {Habilidad::MeraMeraNoMi()}, {});
+Entidad* Entidad::DiosDesesperacion() {
+	return new Entidad("Dios la Desesperacion", 400, 100,100,100,90,2000, {Habilidad::HoroHoroNoMi(), Habilidad::YamiYamiNoMi(),
+																										Habilidad::BomuBomuNoMi(), Habilidad::PikaPikaNoMi(), Habilidad::GoroGoroNoMi(),
+																										Habilidad::HieHieNoMi(), Habilidad::SunaSunaNoMi(), Habilidad::OpeOpeNoMi(),
+																										Habilidad::DokuDokuNoMi(), Habilidad::KageKageNoMi(), Habilidad::MaguMaguNoMi(),
+																										Habilidad::MeraMeraNoMi(), Habilidad::NoroNoroNoMi()}, {});
 }
 
 Entidad *Entidad::XyrothInfecto() {
-	return new Entidad("Xyroth, el Jardín Infecto ", 200, 100,50,85,90,750, {Habilidad::DokuDokuNoMi()}, {});
+	return new Entidad("Xyroth, el Jardín Infecto ", 200, 100,50,85,90,750, {Habilidad::DokuDokuNoMi(), Habilidad::NoroNoroNoMi()}, {});
 }
 
 // Getters - Setters

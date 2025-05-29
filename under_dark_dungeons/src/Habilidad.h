@@ -20,11 +20,19 @@ class Habilidad{
 		Habilidad(std::string name, Efecto efecto, int mult);
 
 		static Habilidad HitoHitoNoMi(); // Nada
-		static Habilidad MeraMeraNoMi(); // Calcinacion
+		static Habilidad MeraMeraNoMi(); // Quemadura
 		static Habilidad GoroGoroNoMi(); // Paralisis
 		static Habilidad DokuDokuNoMi(); // Veneno
 		static Habilidad OpeOpeNoMi(); // Desangrado
 		static Habilidad HieHieNoMi(); // Congelacion
+		static Habilidad BomuBomuNoMi(); // Quemadura x2
+		static Habilidad SunaSunaNoMi(); // Ceguera
+		static Habilidad YamiYamiNoMi(); // Miedo
+		static Habilidad PikaPikaNoMi(); // Ceguera
+		static Habilidad MaguMaguNoMi(); // Quemadura
+		static Habilidad NoroNoroNoMi(); // Lentitud
+		static Habilidad HoroHoroNoMi(); // Debilidad
+		static Habilidad KageKageNoMi(); // Desesperacion
 
 
 		

@@ -53,7 +53,7 @@ void eventoCofre(GrupoJugador* jugador ) {
 
 	// logica del cofre
 	// 1 objeto ?
-	cout<< "Felicidades, has temrinado la sala 3! \n";
+	narrar("Felicidades, has temrinado la sala 3! \n") ;
 	srand(static_cast<unsigned int>(time(nullptr)));
 
 	vector<Objeto> objetosCofre = {
@@ -81,9 +81,9 @@ void eventoCofre(GrupoJugador* jugador ) {
 
 void eventoSantogrial(GrupoJugador* jugador) {
 
-	cout << "Legendario Heroe, has encontrado una pequeña luz en el grande camino\n" ;
-	cout << "Has llegado al santo Grial\n";
-	cout << "Una energía invade tu cuerpo\n";
+	narrar( "Legendario Heroe, has encontrado una pequeña luz en el grande camino\n")  ;
+	narrar("Has llegado al santo Grial\n")  ;
+	narrar("Una energía invade tu cuerpo\n");
 
 	vector<Heroe*> heroes = jugador->getHeroes();
 

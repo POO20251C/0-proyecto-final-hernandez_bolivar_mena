@@ -43,6 +43,38 @@ Habilidad Habilidad::OpeOpeNoMi() {
 	return {"Escama Roja Fluyente", {Efecto::Sangrado()},2};
 }
 
-class Habilidad Habilidad::HieHieNoMi() {
+Habilidad Habilidad::HieHieNoMi() {
 	return {"Ice Saber", {Efecto::Congelacion()},2};
+}
+
+Habilidad Habilidad::BomuBomuNoMi() {
+	return {"Bomba Explosiva", {Efecto::Quemadura()}, 1};
+}
+
+Habilidad Habilidad::SunaSunaNoMi() {
+	return {"Bomba de Humo", {Efecto::Ceguera()}, 1};
+}
+
+Habilidad Habilidad::HoroHoroNoMi() {
+	return {"Fantasmas Negativos", {Efecto::Debilidad()}, 1};
+}
+
+Habilidad Habilidad::KageKageNoMi() {
+	return {"Sombra Asechadora", {Efecto::Desesperacion()}, 1};
+}
+
+Habilidad Habilidad::MaguMaguNoMi() {
+	return {"Golpe Magma", {Efecto::Quemadura()}, 2};
+}
+
+Habilidad Habilidad::NoroNoroNoMi() {
+	return {"Rayo Ralentizador", {Efecto::Lentitud()}, 1};
+}
+
+Habilidad Habilidad::PikaPikaNoMi() {
+	return {"Rafaga de luz", {Efecto::Ceguera()}, 1};
+}
+
+Habilidad Habilidad::YamiYamiNoMi() {
+	return {"Agujero Negro", {Efecto::Miedo()}, 2};
 }

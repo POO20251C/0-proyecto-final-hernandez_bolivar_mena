@@ -28,6 +28,12 @@ class Efecto {
 		static Efecto Veneno();
 		static Efecto Paralisis();
 		static Efecto Sangrado();
+		static Efecto Miedo();
+		static Efecto Lentitud();
+		static Efecto Debilidad();
+		static Efecto Ceguera();
+		static Efecto Desesperacion();
+
 
 		// Getters
 		std::string getname();
