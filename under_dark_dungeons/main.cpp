@@ -7,7 +7,6 @@
 #include <chrono>
 #include <thread>
 #include <algorithm>
-#include <GrupoEnemigo.h>
 #include <vector>
 
 #include "src/Entidad.h"
@@ -27,6 +26,9 @@ void narrar(const std::string& linea, int milisegundos = 3000) {
 // INICIO DIALOGOS ===========================================================================================================================
 
 void inicioNarracion(vector<Heroe*> grupoJugador) {
+
+	
+
 	narrar("Una lluvia fría cae sobre los restos del mundo conocido...");
 	narrar("Entre los susurros del viento, una antigua entrada emerge del abismo: la entrada a la Dark Dungeon.");
     	narrar("Dicen que ninguna luz escapa de sus muros, y que quienes entran... rara vez regresan.");
@@ -34,10 +36,71 @@ void inicioNarracion(vector<Heroe*> grupoJugador) {
    	narrar("Un grupo de guerreros, marcado por cicatrices físicas y espirituales, se reúne frente a la grieta en la tierra.");
     	narrar("No por gloria, no por oro... sino porque ya no tienen nada que perder.");
     	narrar("");
-    	narrar("El primero en entrar es un caballero exiliado, cuyo nombre fue borrado de los libros por traición.");
-    	narrar("A su lado, un mago que olvidó su rostro entre llamas negras y pactos prohibidos.");
-    	narrar("Les sigue un ladrón, que camina sin sombra desde que robó de un dios dormido.");
-    	narrar("Y por último, un marginado sin nombre ni historia, que ríe cada vez que escucha el llanto de los vivos.");
+	
+	// PRIEMRO
+
+	if (grupoJugador[0]->nameGetter() == "Caballero") {
+    		narrar("El primero en entrar es un caballero exiliado, cuyo nombre fue borrado de los libros por traición.");
+	}
+
+	else if (grupoJugador[0]->nameGetter() == "Mago") {
+
+    		narrar("El primero en entrar es un Mago que olvido su rostro entre llamas negras y pactos prohibidos.");
+	}
+
+	else if (grupoJugador[0]->nameGetter() == "Ladron") {
+
+    		narrar("El primero en entrar es un Ladron que camina sin sombra desde que robó a un dios dormido.");
+	}
+
+	else if (grupoJugador[0]->nameGetter() == "Marginado") {
+
+    		narrar("El primero en entrar es un Marginado sin nombre ni historia, que rie cada vez que escucha el llanto de los vivos.");
+	}
+
+	// LE SIGUE
+
+	if (grupoJugador[1]->nameGetter() == "Caballero") {
+    		narrar("A su lado, un caballero exiliado, cuyo nombre fue borrado de los libros por traición.");
+	}
+
+	else if (grupoJugador[1]->nameGetter() == "Mago") {
+
+    		narrar("A su lado, un Mago que olvido su rostro entre llamas negras y pactos prohibidos.");
+	}
+
+	else if (grupoJugador[1]->nameGetter() == "Ladron") {
+
+    		narrar("A su lado, un Ladron que camina sin sombra desde que robó a un dios dormido.");
+	}
+
+	else if (grupoJugador[1]->nameGetter() == "Marginado") {
+
+    		narrar("A su lado, un Marginado sin nombre ni historia, que rie cada vez que escucha el llanto de los vivos.");
+	}
+
+	// POR ULTIMO
+
+	
+	if (grupoJugador[2]->nameGetter() == "Caballero") {
+    		narrar("Y por ultimo, un caballero exiliado, cuyo nombre fue borrado de los libros por traición.");
+	}
+
+	else if (grupoJugador[2]->nameGetter() == "Mago") {
+
+    		narrar("Y por ultimo, un Mago que olvido su rostro entre llamas negras y pactos prohibidos.");
+	}
+
+	else if (grupoJugador[2]->nameGetter() == "Ladron") {
+
+    		narrar("Y por ultimo, un Ladron que camina sin sombra desde que robó a un dios dormido.");
+	}
+
+	else if (grupoJugador[2]->nameGetter() == "Marginado") {
+
+    		narrar("Y por ultimo, un Marginado sin nombre ni historia, que rie cada vez que escucha el llanto de los vivos.");
+	}
+	
     	narrar("");
     	narrar("Avanzan por túneles donde la piedra sangra y los ecos devoran los pensamientos.");
     	narrar("Cada nivel los lleva más profundo, no solo en la dungeon... sino en sí mismos.");
@@ -81,15 +144,24 @@ void eventoCofre(GrupoJugador* jugador ) {
 
 void eventoSantogrial(GrupoJugador* jugador) {
 
+	narrar("Legendario Heroe, has encontrado una pequeña luz en el grande camino\n", 1500) ;
+	narrar( "Han llegado al santo Grial\n", 1500);
+	narrar( "Una energía invade su cuerpo\n", 1500);
+
+	vector<Heroe*> heroes = jugador->getHeroes();
+
+	for (Heroe* h : heroes) {
+
+		h->setHp(h->getHpMax());
+	}
+
+	narrar("Tu grupo ha sido restaurado por completo");
 
 	// Logica del santo grial
 	// Cura a todos los heroes
 	// aumenta la vida y todos los atributos de las entidades/heroes en un 10%?
 	//
 	// Entonces por cada heroe -> Heroe.setHp( Heroe.getHp + (Heroe.getHp * (0.10 * 8)) )
-
-
-
 
 }
 
@@ -107,9 +179,8 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos) {
 		mensaje_combate = "un " + enemigos->getEnemigos()[0]->nameGetter() + "\n";
 	}
 
-	cout << "Entraste en combate contra " + mensaje_combate + "\n";
+	cout << "\nEntraste en combate contra " + mensaje_combate + "\n";
 
-	// HACER COMBATE OTRA FOKIN VEZ
 	while (jugador->getDerrota() && enemigos->getVivios()) {
 
 
@@ -213,15 +284,11 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos) {
 
 						cout << "\n";
 
-						narrar( h->atacar(posiblesObjetivos[target - 1]) );
+						narrar( h->atacar(posiblesObjetivos[target - 1]), 1500 );
 						target_valido = true;
 						eleccion_valida = true;
 
 					}
-
-
-
-					// VOLVER ESTA ROTO POR AHORA NO SÉ PORQUE.
 
 					if (target == 4) {
 
@@ -282,7 +349,7 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos) {
 
 				// IA USA UNA HABILIDAD
 
-				narrar(e->nameGetter() + " va a usar una habilidad\n");
+				narrar(e->nameGetter() + " va a usar una habilidad\n", 1500);
 
 			}
 
@@ -355,13 +422,15 @@ int main() {
 
 	// Pruebas cacorras para el combate
 	
-
+	/*
 	GrupoJugador Yura("Yura", 0, 300);
 	vector<Heroe*> testCaballero = {
 		Heroe::Caballero()
 	};
 
 	Yura.setHeroes(testCaballero);
+
+	eventoSantogrial(&Yura);
 
 
 	if ( combate(&Yura, GrupoEnemigo::genGrupoEnemigo(1)) )
@@ -374,7 +443,7 @@ int main() {
 		narrar("Perdiste el combate, todo tu equipo fue masacrado.\n");
 	}
 
-
+	*/
 
 	// menu de juego principal
 	
@@ -390,7 +459,7 @@ int main() {
 		char eleccion_usuario_menu_p;
 		bool juego = false;
 
-		cout << "Presione una tecla para iniciar (ESC para salir)..." << endl;
+		cout << "Presione ENTER para iniciar (ESC para salir)..." << endl;
 		cin.get(eleccion_usuario_menu_p);
 
 		if (eleccion_usuario_menu_p == static_cast<char>(27)) {
@@ -419,27 +488,35 @@ int main() {
 			for (int eleccion_heroes = 0 ; eleccion_heroes < 3; eleccion_heroes++) {
 				int p_heroe = 0;
 				
-				cout << "1. Caballero\n2. Mago\n3. Ladron\n4. Marginado" << endl;
+				cout << "\n1. Caballero\n2. Mago\n3. Ladron\n4. Marginado\n" << endl;
 				cin >> p_heroe;
 
 				if (p_heroe == 1) {
 					// Seleccionar caballero
-					narrar("");
-					narrar("Un caballero se ha unido a tu grupo");
-					narrar("\n");
+					narrar("\n"); 
+					narrar("Un caballero se une a tu grupo.\n", 1000);
 					grupo_jugador.push_back(Heroe::Caballero());
 				}
 
 				else if (p_heroe == 2) {
 					// Seleccion Mago
+					narrar("\n", 1000);
+					narrar("Un mago se une a tu grupo.\n", 1000);
+					grupo_jugador.push_back(Heroe::Mago());
 				}
 
 				else if (p_heroe == 3) {
 					// Seleccion Ladron
+					narrar("\n", 1000);
+					narrar("Un ladro se une a tu grupo.\n", 1000);
+					grupo_jugador.push_back(Heroe::Ladron());
 				}
 
 				else if (p_heroe == 4) {
 					// Seleccion marginado
+					narrar("\n", 1000);
+					narrar("Un marginado se une a tu grupo\n", 1000);
+					grupo_jugador.push_back(Heroe::Marginado());
 				}
 
 			}
@@ -457,29 +534,82 @@ int main() {
 
 				}
 
-				if (nivel == 1) {
-					combate(&Jugador, GrupoEnemigo::genGrupoEnemigo(nivel));
+				// Sala 4 mini boss
+				// Sala 9 mini boss
+				// Sala 3 tesoro
+				// Sala 10 Boss
+				// Sala 6 tesoro
+				// Sala 8 santo grial
+				 
+				if (nivel == 1 || nivel == 2 || nivel == 3 || nivel == 5 || nivel == 7 ) {
+
+					if (combate(&Jugador, GrupoEnemigo::genGrupoEnemigo(nivel)) ) {
+
+						narrar("\nEl grupo salio victorioso...");
+						narrar("...\n");
+
+					}
+
+					else {
+						narrar("\nEl grupo ha sido masacrado...\n");
+						narrar("...");
+						narrar("Fin del juego.\n");
+						in_game = false;
+						break;
+					}
 				}
 
+
+
+				if (nivel == 11) {
+					
+					//
+					// Historia de win
+					//
+					// y salir del juego
+					//
+
+					in_game = false;
+				}
 
 				int eleccion_in_game;
 
 				
-				cout << "1. Avanzar\n2. Ver Armas\n3. Ver Armaduras\n4. Ver equipo\n5. Ver inventario\n6. Ver estado de los heroes" << endl;
+				cout << "1. Avanzar\n2. Ver Armas\n3. Ver Armaduras\n4. Ver inventario\n5. Ver estado de los heroes\n" << endl;
+
+				cout << "Selecciona una opcion: ";
 				cin >> eleccion_in_game;
 
 				if (eleccion_in_game == 1) {
+					if (nivel > 0) {
+						narrar( Jugador.subirDeNivelElEquipo(nivel), 1500 );
+					}
 					nivel++;
 				}
 
+				else if (eleccion_in_game == 2) {
+					
+					// Mostrar armas y preguntar si equipar
 
-				
-				if (nivel == 8 && Jugador.getDerrota()) {
-					in_game = false;
 				}
-	
 
+				else if (eleccion_in_game == 3) {
+					
+					// Mostrar armaduras y preguntar si equipar
 
+				}
+
+				else if (eleccion_in_game == 4) {
+
+					// mostrar inventario y preguntar si usar un item 
+
+				}
+
+				else if (eleccion_in_game == 5) {
+
+					// Mostrar a todos los heroes y sus estados
+
+				}
 
 
 			}

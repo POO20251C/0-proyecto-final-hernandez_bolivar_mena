@@ -18,12 +18,26 @@ Heroe::Heroe(std::string name, int hp, int hp_base, int atk, int def, int des, i
 
 		this->arma = arma_inicial;
 		this->armadura = armadura_inicial;
-		this->hp_base = hp_base;
+		this->hp = hp;
 		this->vivo = true;
+		this->hp_max = hp_base;
+
     }
 
 Heroe* Heroe::Caballero() {
-	return new Heroe("Charles el caballero sin nombre", 120, 120, 30, 40, 40, 30, 0, Habilidad::Habilidades_caballero(), {}, Armadura::mallaLigera(), Arma::Espada_basica());
+	return new Heroe("Caballero", 120, 120, 30, 40, 40, 30, 0, Habilidad::Habilidades_caballero(), {}, Armadura::mallaLigera(), Arma::Espada_basica());
+}
+
+Heroe* Heroe::Mago() {
+	return new Heroe("Mago", 70, 70, 15, 15, 30, 80, 0, Habilidad::Habilidades_mago(), {}, Armadura::capa_basica(), Arma::Baston_basico());
+}
+
+Heroe* Heroe::Ladron() {
+	return new Heroe("Ladron", 70, 70, 40, 20, 50, 60, 0, Habilidad::Habilidades_ladron(), {}, Armadura::peto_de_cuero(), Arma::Daga_basica());
+}
+
+Heroe* Heroe::Marginado() {
+	return new Heroe("Marginado", 101, 100, 35, 35, 40, 20, 0, Habilidad::Habilidades_marginado(), {},  Armadura::Piel_de_oso(), Arma::Palo_desgastado());
 }
 
 // Fin constructores
@@ -38,12 +52,38 @@ void Heroe::setArmadura(Armadura* armadura) {
 	this->armadura = armadura;
 }
 
+void Heroe::setHp(int nueva_hp) {
+	this->hp = std::min(nueva_hp,hp_max);
+}
+
+void Heroe::setHpMax(int max) {
+	this->hp_max = max;
+}
+
+void Heroe::setHpBase(int base) {
+	this->hp_base = base;
+}
+
 // Getters
+
+int Heroe::getHpMax() {
+	return this->hp_max;
+}
+
+int Heroe::getHp() {
+	return this->hp;
+}
+
 
 int Heroe::getAtk() {
 	int dano = this->atk  + this->arma->getAtk();
 	return dano;
-} 
+}
+
+int Heroe::getDes() {
+	return this->des;
+}
+
 
 
 int Heroe::getDef() {
@@ -164,9 +204,10 @@ void Heroe::subirDeNivel(int nivel) {
 
 	// Entonces por cada heroe -> Heroe.setHp( Heroe.getHp + (Heroe.getHp * (0.10 * nivel)) )
 	 
-	this->hp = this->hp_base + (this->hp_base * (0.10 * nivel));
+	this->hp = this->hp + (this->hp * (0.10 * nivel));
 	this->atk = this->atk + (nivel * 25);
 	this->def = this->def + (nivel * 25);
 	this->des = this->des + (nivel * 25); 
 	this->lck = this->lck + (nivel * 5);
 }
+

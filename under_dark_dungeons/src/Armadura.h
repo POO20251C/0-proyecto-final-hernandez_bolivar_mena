@@ -26,7 +26,13 @@ public:
 
     Armadura(std::string name, int def_p, int vel_n, std::vector<Efecto> inv, int precio);
 	
+    // ARMADURAS INICIALES
     static Armadura* mallaLigera();
+    static Armadura* capa_basica();
+    static Armadura* peto_de_cuero();
+    static Armadura* Piel_de_oso();
+
+
     static Armadura* Escarcha();
     static Armadura* Transistora();
     static Armadura* Lava();

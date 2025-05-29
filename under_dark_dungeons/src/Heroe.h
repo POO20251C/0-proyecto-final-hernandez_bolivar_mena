@@ -16,7 +16,8 @@
 class Heroe: public Entidad {
 
 	private:
-		int hp_base;	
+		int hp_base;
+		int hp_max{};
 		Armadura* armadura;
 		Arma* arma;
 
@@ -38,13 +39,19 @@ class Heroe: public Entidad {
 		
 		void setArma(Arma* arma);
 		void setArmadura(Armadura* armadura);
-		void setHp(int hp_base, int nivel);
+		void setHp(int nueva_hp);
+		void setHpMax(int max);
+		void setHpBase(int base);
+
 
 
 		// Getters
+		int getHpMax();
 		int getHp();
 		int getAtk();
 		int getDef();
+		int getDes();
+
 
 		// Funciones de Heroe
 		

@@ -10,8 +10,23 @@ Armadura::Armadura(std::string name, int def, int vel, std::vector<Efecto> inv, 
 }
 
 Armadura* Armadura::mallaLigera() {
-	return new Armadura("Malla ligera", 30, 10, {}, 100);
+	return new Armadura("Malla ligera", 30, -10, {}, 100);
 }
+
+
+Armadura* Armadura::capa_basica() {
+	return new Armadura("Capa basica", 15, 10, {}, 100);
+}
+
+Armadura* Armadura::peto_de_cuero() {
+	return new Armadura("Peto de cuero", 20, 0, {}, 100);
+}
+
+Armadura* Armadura::Piel_de_oso() {
+	return new Armadura("Piel de oso", 25, -5, {}, 100);
+}
+
+
 
 Armadura* Armadura::Escarcha() {
     return new Armadura("Armadura de Escarcha", 50, -10, {Efecto::Congelacion()}, 150);
