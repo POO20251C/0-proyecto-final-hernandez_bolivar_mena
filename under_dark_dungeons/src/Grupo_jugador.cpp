@@ -61,13 +61,13 @@ std::string GrupoJugador::sumarOro(int cantidad) {
 }
 
 std::string GrupoJugador::usarItem(int indx, Heroe* heroe) {
-	
+
 	heroe->setHp(heroe->getHp() + inventario[indx]->getVida_proporcionada());
-	
+
     	std::string ans = "Se uso " + inventario[indx]->getName() + " en " + heroe->nameGetter() + "y lo curo " + to_string(inventario[indx]->getVida_proporcionada()) + "\n";
-		
+
 	inventario.erase(inventario.begin() + indx);
-	
+
 	if (!heroe->getVivo()) {
 		heroe->setVivo(true);
 		ans += heroe->nameGetter() + " volvio a la vida y puede seguir luchando.\n";
@@ -87,7 +87,7 @@ std::string GrupoJugador::equiparArmadura(int indx, Heroe* heroe) {
 }
 
 bool GrupoJugador::getDerrota() {
-	
+
 	vector<Heroe*> heroes_muertos;
 
 	for (Heroe* h : this->heroes ) {
@@ -99,13 +99,13 @@ bool GrupoJugador::getDerrota() {
 	if ((int) heroes_muertos.size() == (int) this->heroes.size()) {
 		this->derrotado = false;
 	}
-    	
+
 	return this->derrotado;
 }
 
 
 std::string GrupoJugador::subirDeNivelElEquipo(int nivel) {
-	
+
 	std::string ans = "Tu equipo se siente mas fuerte";
 
 
@@ -123,7 +123,15 @@ void GrupoJugador::registrarDañoParaTabla(int daño_total) {
 
 
 void GrupoJugador::agregarObjeto(Objeto* objeto) {
-    this->inventario.push_back(objeto);
+    inventario.push_back(objeto);
+}
+
+void GrupoJugador::agregarArma(Arma* arma) {
+    armas.push_back(arma);
+}
+
+void GrupoJugador::agregarArmadura(Armadura* armadura) {
+    armaduras.push_back(armadura);
 }
 
 void GrupoJugador::limpiarEfectosDelGrupo() {
@@ -133,7 +141,7 @@ void GrupoJugador::limpiarEfectosDelGrupo() {
 }
 
 string GrupoJugador::toString() {
-	
+
 	std::ostringstream ans;
 
 	ans << std::left << std::setw(15) << "Nombre"
@@ -142,7 +150,7 @@ string GrupoJugador::toString() {
 	<< std::setw(25) << "Armadura" << "\n";
 
 	for (Heroe* h : this->heroes ) {
-		
+
 		std::string vida = to_string(h->getHp()) + "/" + to_string(h->getHpMax());
 
 		ans << std::left << std::setw(15) << h->nameGetter()
@@ -152,6 +160,6 @@ string GrupoJugador::toString() {
 
 	}
 
-	return ans.str();
+	return ans.str();;
 
 }

@@ -66,7 +66,7 @@ class Heroe: public Entidad {
 		std::string atacar(Entidad* enemigo, GrupoJugador* jugador);
 		std::string atacarConHabilidad(Entidad* enemigo, int indx_habilidad, GrupoJugador* jugador);
 
-		std::string recibirAtaque(int dano);
+		std::string recibirAtaque(int dano, Efecto posible_efecto = Efecto::Nada());
 
 		std::string recibirAtaqueHabilidad(int dano, Efecto posible_efecto);
 

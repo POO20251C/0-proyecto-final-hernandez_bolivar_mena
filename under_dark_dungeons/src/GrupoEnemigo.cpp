@@ -148,7 +148,7 @@ bool GrupoEnemigo::getVivios() {
 		}
 	}
 
-	if (muertos == this->enemigos.size()) {
+	if (muertos == (int)this->enemigos.size()) {
 		vivos = false;
 	}
 

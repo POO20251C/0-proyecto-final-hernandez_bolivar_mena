@@ -45,7 +45,11 @@ Armadura* Armadura::Rayo() {
 }
 
 Armadura* Armadura::Sombra() {
-    return new Armadura("Armadura Transistora", 40, 5, {Efecto::Paralisis()}, 130);
+    return new Armadura("Armadura de Sombra", 35, 25, {Efecto::Nada()}, 400);
+}
+
+Armadura* Armadura::Transistora() {
+    return new Armadura("Armadura Transistora", 30, 35, {Efecto::Nada()}, 350);
 }
 
 std::string Armadura::getName() {
@@ -61,5 +65,9 @@ int Armadura::getVel() {
 }
 
 int Armadura::getPrecio() {
-    return this->precio;
+    return precio;
+}
+
+std::vector<Efecto> Armadura::getEfectos() {
+    return invulnerable;
 }

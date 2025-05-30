@@ -41,6 +41,8 @@ public:
     // Acciones
     void sumarDano_t(int dano);
     void agregarObjeto(Objeto* objeto);
+    void agregarArma(Arma* arma);
+    void agregarArmadura(Armadura* armadura);
     std::string sumarOro(int cantidad);
 
     void limpiarEfectosDelGrupo();

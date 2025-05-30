@@ -196,11 +196,11 @@ Entidad* Entidad::JimboElPayasoAsesino(int nivel) {
 
 
 std::vector<Entidad*> Entidad::retornarMinibossRandom(int nivel) {
-	
+
 	srand(time(nullptr));
-	
+
 	std::vector<Entidad*> pool = {
-		
+
 		Entidad::Toxsydra(nivel),
 		Entidad::Frostbane(nivel),
 		Entidad::Razorbleed(nivel),
@@ -218,7 +218,7 @@ std::vector<Entidad*> Entidad::retornarMinibossRandom(int nivel) {
 	ans.push_back(pool[miniboss_random]);
 
 	return ans;
-	
+
 
 }
 
@@ -254,7 +254,7 @@ Entidad *Entidad::XyrothInfecto() {
 
 
 std::vector<Entidad*> Entidad::retornarBossRandom() {
-	
+
 	srand(time(nullptr));
 
 	std::vector<Entidad*> pool = {
@@ -265,11 +265,11 @@ std::vector<Entidad*> Entidad::retornarBossRandom() {
 		Entidad::DiosDesesperacion(),
 		Entidad::XyrothInfecto()
 	};
-	
+
 	std::vector<Entidad*> ans;
 
 	int boss_random = rand() % (int) pool.size();
-	
+
 	ans.push_back(pool[boss_random]);
 
 	return ans;
@@ -309,12 +309,12 @@ void Entidad::defSetter(int def) {
 }
 
 int Entidad::defGetter() {
-	
+
 	int trueDef = this->def;
 
 	if (!this->efectos.empty()) {
 
-		for (int i = 0; i < this->efectos.size(); i++ ) {
+		for (size_t i = 0; i < this->efectos.size(); i++ ) {
 			trueDef += efectos[i].getdef();
 		}
 	}
@@ -331,7 +331,7 @@ int Entidad::desGetter() {
 
 	if (!this->efectos.empty()) {
 
-		for (int i = 0; i < this->efectos.size(); i++ ) {
+		for (size_t i = 0; i < this->efectos.size(); i++ ) {
 			trueDes += efectos[i].getvel();
 		}
 	}
@@ -348,7 +348,7 @@ int Entidad::lckGetter() {
 
 	if (!this->efectos.empty()) {
 
-		for (int i = 0; i < this->efectos.size(); i++ ) {
+		for (size_t i = 0; i < this->efectos.size(); i++ ) {
 			trueLck += efectos[i].getlck();
 		}
 	}
@@ -399,7 +399,7 @@ std::string Entidad::recibirAtaque(int dano, Efecto posible_efecto) {
 		this->hp = 0;
 		ans = this->name + " cayó muerto.\n";
 	}
-	
+
 	else {
 
 		// RECIBE EL DAÑOOOO
@@ -429,7 +429,7 @@ std::string Entidad::aplicarEfecto() {
 	}
 
 	for (Efecto e : efectos_validos) {
-		
+
 		dano_total += e.gethp();
 		ans = this->name + " recibio " + std::to_string(e.gethp() * -1) + " por "  + e.getname() + "\n";
 
@@ -467,6 +467,3 @@ std::string Entidad::mostrarHabilidades() {
 
 	return ans;
 }
-
-
-

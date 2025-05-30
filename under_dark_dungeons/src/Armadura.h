@@ -52,6 +52,7 @@ public:
     int getVel();
 
     int getPrecio();
+    std::vector<Efecto> getEfectos();
 
     //bool esInmuneA(const std::string& efecto) const;
 

@@ -6,7 +6,7 @@
 class Objeto {
 
 	private:
-		
+
 		std::string name;
 		int precio;
 		int vida_proporcionada;
@@ -15,13 +15,11 @@ class Objeto {
 
 		Objeto(std::string name, int vida_proporcionada, int precio);
 
+		static Objeto BayaAranja();
+		static Objeto BayaZidra();
 		static Objeto Pocion();
 		static Objeto MegaPocion();
 		static Objeto HiperPocion();
-		static Objeto BayaZidra();
-		static Objeto BayaAranja();
-
-
 
 		//getters, no se necesitan setters ya que los vamos a sobrecargar directamente en el .cpp
 
@@ -30,6 +28,5 @@ class Objeto {
 		int getPrecio();
 
 };
-
 
 #endif

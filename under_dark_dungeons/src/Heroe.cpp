@@ -157,7 +157,7 @@ std::string Heroe::atacarConHabilidad(Entidad* enemigo, int indx_habilidad, Grup
 	return ans;
 }
 
-std::string Heroe::recibirAtaque(int dano) {
+std::string Heroe::recibirAtaque(int dano, Efecto posible_efecto) {
 
 	// def es un porcentaje -> dano - (dano * (def/100))
 	// lck es un una probabilidad de que no se aplique el efecto
