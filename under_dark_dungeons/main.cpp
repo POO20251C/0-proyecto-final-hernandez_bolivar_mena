@@ -455,6 +455,7 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 	vector<Entidad*> grupo_enemigo = enemigos->getEnemigos();
 	vector<Heroe*> grupo_jugador = jugador->getHeroes();
 	string mensaje_combate;
+	int total_oro_ganado;
 
 	if (tipo_de_combate == "normal") {
 		if (enemigos->getEnemigos().size() > 1) {
@@ -589,6 +590,10 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 						cout << "\n";
 
 						narrar( h->atacar(posiblesObjetivos[target - 1], jugador), 1500 );
+						if (!posiblesObjetivos[target - 1]->getVivo()){
+							narrar(posiblesObjetivos[target - 1]->nameGetter() + " cayo muerto.");
+							total_oro_ganado += posiblesObjetivos[target - 1]->pGetter();
+						}
 						target_valido = true;
 						eleccion_valida = true;
 
@@ -638,6 +643,10 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 								cout << "\n";
 
 								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1, jugador), 1500 );
+								if (!posiblesObjetivos[target - 1]->getVivo()){
+									narrar(posiblesObjetivos[target - 1]->nameGetter() + " cayo muerto.");
+									total_oro_ganado += posiblesObjetivos[target - 1]->pGetter();
+								}
 								target_valido = true;
 								eleccion_valida = true;
 								menu_habilidades = false;
@@ -670,6 +679,10 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 								cout << "\n";
 
 								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1, jugador), 1500 );
+								if (!posiblesObjetivos[target - 1]->getVivo()){
+									narrar(posiblesObjetivos[target - 1]->nameGetter() + " cayo muerto.");
+									total_oro_ganado += posiblesObjetivos[target - 1]->pGetter();
+								}
 								target_valido = true;
 								eleccion_valida = true;
 								menu_habilidades = false;
@@ -702,6 +715,10 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 								cout << "\n";
 
 								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1, jugador), 1500 );
+								if (!posiblesObjetivos[target - 1]->getVivo()){
+									narrar(posiblesObjetivos[target - 1]->nameGetter() + " cayo muerto.");
+									total_oro_ganado += posiblesObjetivos[target - 1]->pGetter();
+								}
 								target_valido = true;
 								eleccion_valida = true;
 								menu_habilidades = false;
@@ -735,6 +752,10 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 								cout << "\n";
 
 								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1, jugador), 1500 );
+								if (!posiblesObjetivos[target - 1]->getVivo()){
+									narrar(posiblesObjetivos[target - 1]->nameGetter() + " cayo muerto.");
+									total_oro_ganado += posiblesObjetivos[target - 1]->pGetter();
+								}
 								target_valido = true;
 								eleccion_valida = true;
 								menu_habilidades = false;
@@ -892,6 +913,7 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 
 	else if (!enemigos->getVivios() && jugador->getDerrota()) {
 		ans = true;
+		narrar(jugador->sumarOro(total_oro_ganado));
 	}
 
 
