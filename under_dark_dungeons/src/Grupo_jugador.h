@@ -44,6 +44,7 @@ public:
     void agregarArma(Arma* arma);
     void agregarArmadura(Armadura* armadura);
     std::string sumarOro(int cantidad);
+    std::string sumarOroC(int oro);
 
     void limpiarEfectosDelGrupo();
     std::string usarItem(int itemIndex, Heroe* heroe);
