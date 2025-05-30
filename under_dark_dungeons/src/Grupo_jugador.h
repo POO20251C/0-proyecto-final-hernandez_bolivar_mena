@@ -42,6 +42,7 @@ public:
     void sumarDano_t(int dano);
     void agregarObjeto(Objeto* objeto);
     std::string sumarOro(int cantidad);
+    std::string sumarOroC(int oro);
 
     void limpiarEfectosDelGrupo();
     std::string usarItem(int itemIndex, Heroe* heroe);

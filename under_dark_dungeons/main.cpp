@@ -905,7 +905,7 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 
 	else if (!enemigos->getVivios() && jugador->getDerrota()) {
 		ans = true;
-		narrar(jugador->sumarOro(total_oro_ganado));
+		narrar(jugador->sumarOroC(total_oro_ganado));
 	}
 
 
