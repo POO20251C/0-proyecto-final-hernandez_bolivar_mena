@@ -450,12 +450,12 @@ void irATienda(GrupoJugador* jugador) {
 
 // COMBATE NORMAL =====================================================================================================================================================================================
 
-bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_combate) {
+bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_combate, int nivel = 1) {
 
 	vector<Entidad*> grupo_enemigo = enemigos->getEnemigos();
 	vector<Heroe*> grupo_jugador = jugador->getHeroes();
 	string mensaje_combate;
-	int total_oro_ganado;
+	int total_oro_ganado = 0;
 
 	if (tipo_de_combate == "normal") {
 		if (enemigos->getEnemigos().size() > 1) {
@@ -645,7 +645,6 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1, jugador), 1500 );
 								if (!posiblesObjetivos[target - 1]->getVivo()){
 									narrar(posiblesObjetivos[target - 1]->nameGetter() + " cayo muerto.");
-									total_oro_ganado += posiblesObjetivos[target - 1]->pGetter();
 								}
 								target_valido = true;
 								eleccion_valida = true;
@@ -681,7 +680,6 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1, jugador), 1500 );
 								if (!posiblesObjetivos[target - 1]->getVivo()){
 									narrar(posiblesObjetivos[target - 1]->nameGetter() + " cayo muerto.");
-									total_oro_ganado += posiblesObjetivos[target - 1]->pGetter();
 								}
 								target_valido = true;
 								eleccion_valida = true;
@@ -717,12 +715,10 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1, jugador), 1500 );
 								if (!posiblesObjetivos[target - 1]->getVivo()){
 									narrar(posiblesObjetivos[target - 1]->nameGetter() + " cayo muerto.");
-									total_oro_ganado += posiblesObjetivos[target - 1]->pGetter();
 								}
 								target_valido = true;
 								eleccion_valida = true;
 								menu_habilidades = false;
-								cin.clear();
 
 							}
 
@@ -754,7 +750,6 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 								narrar( h->atacarConHabilidad(posiblesObjetivos[target - 1], eleccion_habilidad - 1, jugador), 1500 );
 								if (!posiblesObjetivos[target - 1]->getVivo()){
 									narrar(posiblesObjetivos[target - 1]->nameGetter() + " cayo muerto.");
-									total_oro_ganado += posiblesObjetivos[target - 1]->pGetter();
 								}
 								target_valido = true;
 								eleccion_valida = true;
@@ -913,6 +908,9 @@ bool combate(GrupoJugador* jugador, GrupoEnemigo* enemigos, string tipo_de_comba
 
 	else if (!enemigos->getVivios() && jugador->getDerrota()) {
 		ans = true;
+		// Oro escalado por dificulta
+		float multiplicador_oro = 1.5f + (nivel * 0.2f); //Esto lo hago ya que se podia comprar demasiadas cosas luego del nivel 1 y aumentar la dificualtad entonces--> 1.5x en nivel 1, hasta 3.5x en nivel 10 uwu
+		total_oro_ganado = total_oro_ganado * multiplicador_oro;
 		narrar(jugador->sumarOroC(total_oro_ganado));
 	}
 
@@ -1122,7 +1120,7 @@ int main() {
 				if ((nivel == 1 || nivel == 2 || nivel == 5 || nivel == 7) && evento_activo == true) {
 
 
-					if ( combate(&Jugador, GrupoEnemigo::genGrupoEnemigo(nivel), "normal") ) {
+					if ( combate(&Jugador, GrupoEnemigo::genGrupoEnemigo(nivel), "normal", nivel) ) {
 
 						narrar("\nEl grupo salio victorioso...");
 						narrar("...\n");

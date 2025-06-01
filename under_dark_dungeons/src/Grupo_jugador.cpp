@@ -49,10 +49,19 @@ void GrupoJugador::sumarDano_t(int dano) {
 }
 
 std::string GrupoJugador::sumarOroC(int oro) {
-	
+
+	if (oro < 0 && this->oro + oro < 0) {
+		this->oro = 0;
+		return "No tienes suficiente oro. Oro actual: " + to_string(this->oro);
+	}
+
 	this->oro += oro;
 
-	return "El grupo gano " + to_string(oro) + " de oro.";
+	if (oro >= 0) {
+		return "El grupo gano " + to_string(oro) + " de oro. Total: " + to_string(this->oro);
+	} else {
+		return "Se gastaron " + to_string(-oro) + " de oro. Total: " + to_string(this->oro);
+	}
 
 }
 

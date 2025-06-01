@@ -164,7 +164,7 @@ std::string Heroe::recibirAtaque(int dano, Efecto posible_efecto) {
 
 
 	std::string ans;
-	int dano_total = dano -  ( this->getDef() * 0.2);
+	int dano_total = dano -  ( this->getDef() * 0.15); // reuci de 0.2 a 0.15 la defensa para aumentar la dificultad ya que estaba pasando niveles con sollo oprimir una tecla
 	if(this->hp - dano_total <= 0) {
 		this->hp = 0;
 		this->vivo = false;

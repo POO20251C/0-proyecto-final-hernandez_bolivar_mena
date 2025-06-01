@@ -36,20 +36,20 @@ public:
     void menuPrincipal(GrupoJugador* grupo);
     void refrescarInventario();
     
-    // Métodos de menú específicos
+    // Métodos de menu especificos
     void menuArmas(GrupoJugador* grupo);
     void menuArmaduras(GrupoJugador* grupo);
     void menuObjetos(GrupoJugador* grupo);
     void menuBoosters(GrupoJugador* grupo);
     
-    // Métodos de compra
+    // Metodos de compra
     bool comprarBoosterArma(GrupoJugador* grupo);
     bool comprarBoosterArmadura(GrupoJugador* grupo);
     bool comprarArma(int indice, GrupoJugador* grupo);
     bool comprarArmadura(int indice, GrupoJugador* grupo);
     bool comprarObjeto(int indice, GrupoJugador* grupo);
     
-    // Métodos de visualización
+    // Metodos de visualización
     void mostrarTienda(int oro_jugador);
     void mostrarBoosters(int oro_jugador);
     void mostrarArmas(int oro_jugador);
@@ -57,7 +57,7 @@ public:
     void mostrarObjetos(int oro_jugador);
 
 private:
-    // Métodos de inicialización
+    // Metodos de inicialización
     void inicializarPools();
     void generarInventarioAleatorio();
 };

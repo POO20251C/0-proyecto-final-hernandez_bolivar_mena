@@ -31,7 +31,7 @@ Entidad::Entidad(std::string name, int hp, int atk, int def, int des, int lck, i
 
 Entidad* Entidad::generarGoblin(int nivel) {
     int hp = 40 + (nivel * 20);
-    int atk = 15 + (nivel * 20);
+    int atk = 25 + (nivel * 25); // aumenta de 15 a 25 base, y de 20 a 25 por nivel
     int def = 5 + (nivel * 20);
     int des = 20 + (nivel * 20);
     int lck = 10 + (nivel * 7);
@@ -41,7 +41,7 @@ Entidad* Entidad::generarGoblin(int nivel) {
 
 Entidad* Entidad::generarLagarto(int nivel) {
 	int hp = 60 + (nivel * 20);
-	int atk = 22 + (nivel * 20);
+	int atk = 32 + (nivel * 25); // aumenta de 22 a 32 base
 	int def = 10 + (nivel * 20);
 	int des = 12 + (nivel * 20);
     int lck = 6 + (nivel * 7);
@@ -51,7 +51,7 @@ Entidad* Entidad::generarLagarto(int nivel) {
 
 Entidad* Entidad::generarAraña(int nivel) {
     int hp = 80 + (nivel * 20);
-    int atk = 20 + (nivel * 20);
+    int atk = 30 + (nivel * 25); // aumenta de 20 a 30 base
     int def = 15 + (nivel * 20);
     int des = 15 + (nivel * 20);
     int lck = 10 + (nivel * 7);
@@ -61,7 +61,7 @@ Entidad* Entidad::generarAraña(int nivel) {
 
 Entidad* Entidad::generarOrco(int nivel) {
     int hp = 100 + (nivel * 20);
-    int atk = 25 + (nivel * 20);
+    int atk = 40 + (nivel * 30); // Aumentado de 25 a 40 base, y de 20 a 30 por nivel
     int def = 20 + (nivel * 20);
     int des = 28 + (nivel * 20);
     int lck = 3 + (nivel * 7);

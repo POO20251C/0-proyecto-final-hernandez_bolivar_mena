@@ -333,13 +333,13 @@ bool Tienda::comprarObjeto(int indice, GrupoJugador* grupo) {
 }
 
 bool Tienda::comprarBoosterArma(GrupoJugador* grupo) {
-    const int precio = 200;
+    const int precio = 300; // aumento de 200 a 300
     
     if(grupo->getOro() < precio) {
         std::cout << "No tienes suficiente oro para comprar el Booster de Armas.\n";
         return false;
     }
-    
+                                                                    //decidi aumentar precio de los boosters para que no se puedan comprar tan facilmente
     grupo->sumarOro(-precio);
     Arma arma_obtenida = booster_arma->abrir();
     grupo->agregarArma(new Arma(arma_obtenida));
@@ -349,7 +349,7 @@ bool Tienda::comprarBoosterArma(GrupoJugador* grupo) {
 }
 
 bool Tienda::comprarBoosterArmadura(GrupoJugador* grupo) {
-    const int precio = 250;
+    const int precio = 350; // aumento de 250 a 350
     
     if(grupo->getOro() < precio) {
         std::cout << "No tienes suficiente oro para comprar el Booster de Armaduras.\n";
@@ -375,21 +375,21 @@ void Tienda::abrirTienda(GrupoJugador* grupo) {
 }
 
 void Tienda::mostrarTienda(int oro_jugador) {
-    // Implementación vacía para compatibilidad
+    // Implementacion vacía para compatibilidad
 }
 
 void Tienda::mostrarBoosters(int oro_jugador) {
-    // Implementación vacía para compatibilidad
+    // Implementacion vacía para compatibilidad
 }
 
 void Tienda::mostrarArmas(int oro_jugador) {
-    // Implementación vacía para compatibilidad
+    // Implementacion vacía para compatibilidad
 }
 
 void Tienda::mostrarArmaduras(int oro_jugador) {
-    // Implementación vacía para compatibilidad
+    // Implementacion vacía para compatibilidad
 }
 
 void Tienda::mostrarObjetos(int oro_jugador) {
-    // Implementación vacía para compatibilidad
+    // Implementacion vacía para compatibilidad
 }
