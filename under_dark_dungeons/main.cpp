@@ -1093,7 +1093,7 @@ int main() {
 
 			cout << endl;
 
-			GrupoJugador Jugador(nombre_jugador, 0, 300);
+			GrupoJugador Jugador(nombre_jugador, 0, 0);
 
 			// Eleccion de heroes
 
@@ -1408,7 +1408,7 @@ int main() {
                                     continue;
                                 }
 
-                                // PASA A ELEGIR HÉROE
+
                                 vector<Heroe*> heroes = Jugador.getHeroes();
 
                                 if (heroes.empty()) {
@@ -1440,7 +1440,7 @@ int main() {
                                 cout << "Se equipó " << Jugador.getArmaduras()[indexArmadura]->getName()
                                      << " a " << heroes[indexHeroe]->nameGetter() << ".\n";
 
-                                // Pausa para mostrar resultado
+
                                 cout << "\nPresiona Enter para continuar...";
                                 cin.ignore();
                                 cin.get();
@@ -1462,7 +1462,7 @@ int main() {
                                 cout << i << ". " << Jugador.getInventario()[i]->getName()
                                      << " - Vida: +" << Jugador.getInventario()[i]->getVida_proporcionada() << "\n";
                             }
-                            cout << Jugador.getInventario().size() << ". Volver\n";
+                            cout << Jugador.getInventario().size() + 1 << ". Volver\n";
 
                             int itemIndex;
                             cout << "Elige el número del objeto que deseas usar: ";
@@ -1509,8 +1509,9 @@ int main() {
                             string resultado = Jugador.usarItem(itemIndex, heroes[heroeIndex]);
                             cout << resultado << "\n";
 
+                            GrupoJugador* punteroJugador = &Jugador;
 
-                            Jugador.removerObjeto(itemIndex);
+                            punteroJugador->removerObjeto(itemIndex);
 
                             cout << "\nPresiona Enter para continuar...";
                             cin.ignore();

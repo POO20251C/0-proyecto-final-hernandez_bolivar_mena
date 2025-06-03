@@ -88,7 +88,7 @@ std::string GrupoJugador::usarItem(int indx, Heroe* heroe) {
 
 	heroe->setHp(heroe->getHp() + inventario[indx]->getVida_proporcionada());
 
-    	std::string ans = "Se uso " + inventario[indx]->getName() + " en " + heroe->nameGetter() + "y lo curo " + to_string(inventario[indx]->getVida_proporcionada()) + "\n";
+    	std::string ans = "Se uso " + inventario[indx]->getName() + " en " + heroe->nameGetter() + " y lo curo " + to_string(inventario[indx]->getVida_proporcionada()) + "\n";
 
 	inventario.erase(inventario.begin() + indx);
 
