@@ -25,11 +25,11 @@ Objeto Objeto::BayaAranja() {
 }
 
 Objeto Objeto::BayaZidra() {
-	return {"Elixir divino mediano", 30, 50};
+	return {"Elixir divino pequeño", 30, 50};
 }
 
 Objeto Objeto::Pocion() {
-	return {"Elixir divino pequeño", 50, 30};
+	return {"Elixir divino mediano", 50, 30};
 }
 
 Objeto Objeto::MegaPocion() {

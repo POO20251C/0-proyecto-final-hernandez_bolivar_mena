@@ -48,6 +48,13 @@ void GrupoJugador::sumarDano_t(int dano) {
     this->dano_t += dano;
 }
 
+void GrupoJugador::removerObjeto(int index) {
+    if (index >= 0 && index < (int)inventario.size()) {
+        inventario.erase(inventario.begin() + index);
+    }
+}
+
+
 std::string GrupoJugador::sumarOroC(int oro) {
 
 	if (oro < 0 && this->oro + oro < 0) {
