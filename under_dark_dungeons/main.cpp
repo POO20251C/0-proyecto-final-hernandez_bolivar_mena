@@ -1343,7 +1343,7 @@ int main() {
 
                         if (armaElegida == Jugador.getArmas().size() + 1) {
                             cout << "Volviendo al menú...\n";
-                            // No hacemos nada y salimos
+
                         } else if (armaElegida >= 1 && armaElegida <= (int)Jugador.getArmas().size()) {
                             Arma* armaSeleccionada = Jugador.getArmas()[armaElegida - 1];
 
@@ -1363,7 +1363,7 @@ int main() {
                                 cout << "Volviendo al menú...\n";
                             } else if (heroeElegido >= 1 && heroeElegido <= (int)Jugador.getHeroes().size()) {
                                 Heroe* heroeSeleccionado = Jugador.getHeroes()[heroeElegido - 1];
-                                heroeSeleccionado->setArma(armaSeleccionada);  // Asumiendo que existe setArma
+                                heroeSeleccionado->setArma(armaSeleccionada);
                                 cout << "Arma equipada con éxito: " << armaSeleccionada->getName()
                                      << " a " << heroeSeleccionado->nameGetter() << ".\n";
                             } else {
