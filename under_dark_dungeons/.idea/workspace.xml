@@ -7,7 +7,6 @@
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
-    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
   </component>
   <component name="CMakePresetLoader">{
   &quot;useNewFormat&quot;: true
@@ -32,7 +31,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ab6870e1-6f14-4a7e-93f8-380a93d69e28" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Booster_armaduras.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Booster_armaduras.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +158,8 @@
       <workItem from="1748671688756" duration="738000" />
       <workItem from="1748672468336" duration="294000" />
       <workItem from="1748811034758" duration="259000" />
-      <workItem from="1748923830100" duration="4902000" />
+      <workItem from="1748923830100" duration="5374000" />
+      <workItem from="1748931170533" duration="1000" />
     </task>
     <servers />
   </component>
