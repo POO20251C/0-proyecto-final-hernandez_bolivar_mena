@@ -1329,57 +1329,201 @@ int main() {
 
 					// Mostrar armas y preguntar si equipar
 					if (!Jugador.getArmas().empty()) {
-						cout << "\n=== ARMAS DISPONIBLES ===\n";
-						for (size_t i = 0; i < Jugador.getArmas().size(); i++) {
-							cout << i + 1 << ". " << Jugador.getArmas()[i]->getName() 
-								 << " - ATK: " << Jugador.getArmas()[i]->getAtk()
-								 << " - DES: " << Jugador.getArmas()[i]->getDes() << "\n";
-						}
-						cout << "\nPresiona Enter para continuar...";
-						cin.ignore();
-						cin.get();
-					} else {
-						cout << "No tienes armas en tu inventario.\n";
-					}
+                        cout << "\n=== ARMAS DISPONIBLES ===\n";
+                        for (size_t i = 0; i < Jugador.getArmas().size(); i++) {
+                            cout << i + 1 << ". " << Jugador.getArmas()[i]->getName()
+                                 << " - ATK: " << Jugador.getArmas()[i]->getAtk()
+                                 << " - DES: " << Jugador.getArmas()[i]->getDes() << "\n";
+                        }
+                        cout << Jugador.getArmas().size() + 1 << ". Volver\n";
 
-				}
+                        int armaElegida;
+                        cout << "Elige un arma para equipar (número): ";
+                        cin >> armaElegida;
+
+                        if (armaElegida == Jugador.getArmas().size() + 1) {
+                            cout << "Volviendo al menú...\n";
+                            // No hacemos nada y salimos
+                        } else if (armaElegida >= 1 && armaElegida <= (int)Jugador.getArmas().size()) {
+                            Arma* armaSeleccionada = Jugador.getArmas()[armaElegida - 1];
+
+                            cout << "\n=== HÉROES DISPONIBLES ===\n";
+                            for (size_t i = 0; i < Jugador.getHeroes().size(); i++) {
+                                cout << i + 1 << ". " << Jugador.getHeroes()[i]->nameGetter()
+                                     << " - Vida: " << Jugador.getHeroes()[i]->getHp() << "/"
+                                     << Jugador.getHeroes()[i]->getHpMax() << "\n";
+                            }
+                            cout << Jugador.getHeroes().size() + 1 << ". Volver\n";
+
+                            int heroeElegido;
+                            cout << "Elige un héroe para equiparle el arma (número): ";
+                            cin >> heroeElegido;
+
+                            if (heroeElegido == Jugador.getHeroes().size() + 1) {
+                                cout << "Volviendo al menú...\n";
+                            } else if (heroeElegido >= 1 && heroeElegido <= (int)Jugador.getHeroes().size()) {
+                                Heroe* heroeSeleccionado = Jugador.getHeroes()[heroeElegido - 1];
+                                heroeSeleccionado->setArma(armaSeleccionada);  // Asumiendo que existe setArma
+                                cout << "Arma equipada con éxito: " << armaSeleccionada->getName()
+                                     << " a " << heroeSeleccionado->nameGetter() << ".\n";
+                            } else {
+                                cout << "Selección inválida de héroe.\n";
+                            }
+                        } else {
+                            cout << "Selección inválida de arma.\n";
+                        }
+
+                        cout << "\nPresiona Enter para continuar...";
+                        cin.ignore();
+                        cin.get();
+                    } else {
+                        cout << "No tienes armas en tu inventario.\n";
+                    }
+                }
+
+
 
 				else if (eleccion_in_game == 3) {
+                    // Mostrar armaduras y preguntar si equipar
+                            if (!Jugador.getArmaduras().empty()) {
+                                cout << "\n=== ARMADURAS DISPONIBLES ===\n";
+                                for (size_t i = 0; i < Jugador.getArmaduras().size(); i++) {
+                                    cout << i << ". " << Jugador.getArmaduras()[i]->getName()
+                                         << " - DEF: " << Jugador.getArmaduras()[i]->getDef()
+                                         << " - VEL: " << Jugador.getArmaduras()[i]->getVel() << "\n";
+                                }
+                                cout << Jugador.getArmaduras().size() << ". Volver\n";
 
-					// Mostrar armaduras y preguntar si equipar
-					if (!Jugador.getArmaduras().empty()) {
-						cout << "\n=== ARMADURAS DISPONIBLES ===\n";
-						for (size_t i = 0; i < Jugador.getArmaduras().size(); i++) {
-							cout << i + 1 << ". " << Jugador.getArmaduras()[i]->getName() 
-								 << " - DEF: " << Jugador.getArmaduras()[i]->getDef()
-								 << " - VEL: " << Jugador.getArmaduras()[i]->getVel() << "\n";
-						}
-						cout << "\nPresiona Enter para continuar...";
-						cin.ignore();
-						cin.get();
-					} else {
-						cout << "No tienes armaduras en tu inventario.\n";
-					}
+                                int indexArmadura;
+                                cout << "Elige el número de la armadura que deseas equipar: ";
+                                cin >> indexArmadura;
 
-				}
+                                if (indexArmadura == (int)Jugador.getArmaduras().size()) {
+                                    cout << "Volviendo al menú...\n";
+                                    continue;
+                                }
+
+                                if (indexArmadura < 0 || indexArmadura >= (int)Jugador.getArmaduras().size()) {
+                                    cout << "Índice de armadura inválido.\n";
+                                    continue;
+                                }
+
+                                // PASA A ELEGIR HÉROE
+                                vector<Heroe*> heroes = Jugador.getHeroes();
+
+                                if (heroes.empty()) {
+                                    cout << "No hay héroes disponibles.\n";
+                                    continue;
+                                }
+
+                                cout << "\n=== HÉROES DISPONIBLES ===\n";
+                                for (size_t i = 0; i < heroes.size(); i++) {
+                                    cout << i << ". " << heroes[i]->nameGetter() << "\n";
+                                }
+                                cout << heroes.size() << ". Volver\n";
+
+                                int indexHeroe;
+                                cout << "Elige el número del héroe para equipar la armadura: ";
+                                cin >> indexHeroe;
+
+                                if (indexHeroe == (int)heroes.size()) {
+                                    cout << "Volviendo al menú...\n";
+                                    continue;
+                                }
+
+                                if (indexHeroe < 0 || indexHeroe >= (int)heroes.size()) {
+                                    cout << "Índice de héroe inválido.\n";
+                                    continue;
+                                }
+
+                                heroes[indexHeroe]->setArmadura(Jugador.getArmaduras()[indexArmadura]);
+                                cout << "Se equipó " << Jugador.getArmaduras()[indexArmadura]->getName()
+                                     << " a " << heroes[indexHeroe]->nameGetter() << ".\n";
+
+                                // Pausa para mostrar resultado
+                                cout << "\nPresiona Enter para continuar...";
+                                cin.ignore();
+                                cin.get();
+
+                            } else {
+                                cout << "No tienes armaduras en tu inventario.\n";
+                                cout << "\nPresiona Enter para continuar...";
+                                cin.ignore();
+                                cin.get();
+                            }
+                        }
+
 
 				else if (eleccion_in_game == 4) {
+					// mostrar inventario y preguntar si usar un item
+                        if (!Jugador.getInventario().empty()) {
+                            cout << "\n=== INVENTARIO ===\n";
+                            for (size_t i = 0; i < Jugador.getInventario().size(); i++) {
+                                cout << i << ". " << Jugador.getInventario()[i]->getName()
+                                     << " - Vida: +" << Jugador.getInventario()[i]->getVida_proporcionada() << "\n";
+                            }
+                            cout << Jugador.getInventario().size() << ". Volver\n";
 
-					// mostrar inventario y preguntar si usar un item 
-					if (!Jugador.getInventario().empty()) {
-						cout << "\n=== INVENTARIO ===\n";
-						for (size_t i = 0; i < Jugador.getInventario().size(); i++) {
-							cout << i + 1 << ". " << Jugador.getInventario()[i]->getName() 
-								 << " - Vida: +" << Jugador.getInventario()[i]->getVida_proporcionada() << "\n";
-						}
-						cout << "\nPresiona Enter para continuar...";
-						cin.ignore();
-						cin.get();
-					} else {
-						cout << "Tu inventario está vacío.\n";
-					}
+                            int itemIndex;
+                            cout << "Elige el número del objeto que deseas usar: ";
+                            cin >> itemIndex;
 
-				}
+                            if (itemIndex == (int)Jugador.getInventario().size()) {
+                                cout << "Volviendo al menú...\n";
+                                continue;
+                            }
+
+                            if (itemIndex < 0 || itemIndex >= (int)Jugador.getInventario().size()) {
+                                cout << "Índice de objeto inválido.\n";
+                                continue;
+                            }
+
+                            vector<Heroe*> heroes = Jugador.getHeroes();
+
+                            if (heroes.empty()) {
+                                cout << "No hay héroes disponibles.\n";
+                                continue;
+                            }
+
+                            cout << "\n=== HÉROES DISPONIBLES ===\n";
+                            for (size_t i = 0; i < heroes.size(); i++) {
+                                cout << i << ". " << heroes[i]->nameGetter()
+                                     << " - Vida actual: " << heroes[i]->getHp() << "/" << heroes[i]->getHpMax() << "\n";
+                            }
+                            cout << heroes.size() << ". Volver\n";
+
+                            int heroeIndex;
+                            cout << "Elige el número del héroe al que aplicar el objeto: ";
+                            cin >> heroeIndex;
+
+                            if (heroeIndex == (int)heroes.size()) {
+                                cout << "Volviendo al menú...\n";
+                                continue;
+                            }
+
+                            if (heroeIndex < 0 || heroeIndex >= (int)heroes.size()) {
+                                cout << "Índice de héroe inválido.\n";
+                                continue;
+                            }
+
+                            string resultado = Jugador.usarItem(itemIndex, heroes[heroeIndex]);
+                            cout << resultado << "\n";
+
+
+                            Jugador.removerObjeto(itemIndex);
+
+                            cout << "\nPresiona Enter para continuar...";
+                            cin.ignore();
+                            cin.get();
+
+                        } else {
+                            cout << "Tu inventario está vacío.\n";
+                            cout << "\nPresiona Enter para continuar...";
+                            cin.ignore();
+                            cin.get();
+                        }
+                    }
+
 
 				else if (eleccion_in_game == 5) {
 

@@ -43,6 +43,7 @@ public:
     void agregarObjeto(Objeto* objeto);
     void agregarArma(Arma* arma);
     void agregarArmadura(Armadura* armadura);
+    void removerObjeto(int index);
     std::string sumarOro(int cantidad);
     std::string sumarOroC(int oro);
 
